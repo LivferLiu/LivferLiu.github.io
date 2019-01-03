@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="各种坑PHP设置坑set_time_limit – 设置脚本最大执行时间：此配置一般PHP默认是30秒，如果你是数据小的，可能就不会发现有该设置问题，但如果你数据达到了百万级导出，往往30秒是不够的，因此你需要在你的脚本中添加 set_time_limit(0)，让该脚本没有执行时间现在 memory_limit – PHP的内存限定：此配置一般php默认是128M,如果之前做过小数据的朋友可能也">
+<meta name="description" content="PHP到处大数据的时候会遇到内存溢出或者超时等现象. 各种坑PHP设置坑set_time_limit – 设置脚本最大执行时间：此配置一般PHP默认是30秒，如果你是数据小的，可能就不会发现有该设置问题，但如果你数据达到了百万级导出，往往30秒是不够的，因此你需要在你的脚本中添加 set_time_limit(0)，让该脚本没有执行时间现在">
 <meta name="keywords" content="PHP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP导出大数据">
 <meta property="og:url" content="http://yoursite.com/2019/01/03/PHP导出大数据/index.html">
 <meta property="og:site_name" content="Livfer&#39;s Blog">
-<meta property="og:description" content="各种坑PHP设置坑set_time_limit – 设置脚本最大执行时间：此配置一般PHP默认是30秒，如果你是数据小的，可能就不会发现有该设置问题，但如果你数据达到了百万级导出，往往30秒是不够的，因此你需要在你的脚本中添加 set_time_limit(0)，让该脚本没有执行时间现在 memory_limit – PHP的内存限定：此配置一般php默认是128M,如果之前做过小数据的朋友可能也">
+<meta property="og:description" content="PHP到处大数据的时候会遇到内存溢出或者超时等现象. 各种坑PHP设置坑set_time_limit – 设置脚本最大执行时间：此配置一般PHP默认是30秒，如果你是数据小的，可能就不会发现有该设置问题，但如果你数据达到了百万级导出，往往30秒是不够的，因此你需要在你的脚本中添加 set_time_limit(0)，让该脚本没有执行时间现在">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-03T09:17:56.864Z">
+<meta property="og:updated_time" content="2019-01-03T09:24:52.097Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP导出大数据">
-<meta name="twitter:description" content="各种坑PHP设置坑set_time_limit – 设置脚本最大执行时间：此配置一般PHP默认是30秒，如果你是数据小的，可能就不会发现有该设置问题，但如果你数据达到了百万级导出，往往30秒是不够的，因此你需要在你的脚本中添加 set_time_limit(0)，让该脚本没有执行时间现在 memory_limit – PHP的内存限定：此配置一般php默认是128M,如果之前做过小数据的朋友可能也">
+<meta name="twitter:description" content="PHP到处大数据的时候会遇到内存溢出或者超时等现象. 各种坑PHP设置坑set_time_limit – 设置脚本最大执行时间：此配置一般PHP默认是30秒，如果你是数据小的，可能就不会发现有该设置问题，但如果你数据达到了百万级导出，往往30秒是不够的，因此你需要在你的脚本中添加 set_time_limit(0)，让该脚本没有执行时间现在">
 
 
 
@@ -349,7 +349,9 @@
       
 
       
-        <h2 id="各种坑"><a href="#各种坑" class="headerlink" title="各种坑"></a>各种坑</h2><h3 id="PHP设置坑"><a href="#PHP设置坑" class="headerlink" title="PHP设置坑"></a>PHP设置坑</h3><p><code>set_time_limit – 设置脚本最大执行时间：</code><br>此配置一般PHP默认是30秒，如果你是数据小的，可能就不会发现有该设置问题，但如果你数据达到了百万级导出，往往30秒是不够的，因此你需要在你的脚本中添加 <code>set_time_limit(0)</code>，让该脚本没有执行时间现在</p>
+        <p>PHP到处大数据的时候会遇到内存溢出或者超时等现象.</p>
+<h2 id="各种坑"><a href="#各种坑" class="headerlink" title="各种坑"></a>各种坑</h2><h3 id="PHP设置坑"><a href="#PHP设置坑" class="headerlink" title="PHP设置坑"></a>PHP设置坑</h3><p><code>set_time_limit – 设置脚本最大执行时间：</code><br>此配置一般PHP默认是30秒，如果你是数据小的，可能就不会发现有该设置问题，但如果你数据达到了百万级导出，往往30秒是不够的，因此你需要在你的脚本中添加 <code>set_time_limit(0)</code>，让该脚本没有执行时间现在</p>
+<a id="more"></a>
 <p><code>memory_limit – PHP的内存限定：</code><br>此配置一般php默认是128M,如果之前做过小数据的朋友可能也会动过这个配置就能解决许多问题，或许有人想，你大数据也把这个调大不就行了吗？那么真的是too young too native了，你本地能设置1G或者无限制或许真的没问题，但是正式场，你这么搞迟早会出事的，一个PHP程序占那么大的内存的空间，如果你叫你公司运维帮忙调一下配置，估计运维一定很不情愿，服务器硬件这么搞也是太奢侈了。所以说，我们要尽量避免调大该设置。</p>
 <h3 id="excel坑"><a href="#excel坑" class="headerlink" title="excel坑"></a>excel坑</h3><p>既然是导出数据，大伙们当然马上想到了excel格式了，多方便查看数据呀，然而万万没想到excel也是有脾气的呀！　</p>
 <p>表数据限制：<br><code>Excel 2003及以下的版本。一张表最大支持65536行数据，256列。</code><br><code>Excel 2007-2010版本。一张表最大支持1048576行，16384列。</code><br>也就是说你想几百万条轻轻松松一次性导入一张EXCEL表是不行的，你起码需要进行数据分割，保证数据不能超过104W一张表。</p>
