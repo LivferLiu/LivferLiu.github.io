@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="所有者和群组 由于Linux是一个多人多工的系统,因此可能常常会有多人同时使用这部主机的情况,所有者和群组是一个健全的的安全防护措施.每个用户拥有可操作的文件,且只能操作有权限的   文件拥有者 一个文件只能被拥有这个文件权限(读,写)的用户操作,其他用户无法对此文件操作">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件权限">
+<meta property="og:url" content="http://yoursite.com/2019/01/04/文件权限/index.html">
+<meta property="og:site_name" content="Livfer&#39;s Blog">
+<meta property="og:description" content="所有者和群组 由于Linux是一个多人多工的系统,因此可能常常会有多人同时使用这部主机的情况,所有者和群组是一个健全的的安全防护措施.每个用户拥有可操作的文件,且只能操作有权限的   文件拥有者 一个文件只能被拥有这个文件权限(读,写)的用户操作,其他用户无法对此文件操作">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fyumgeedimg30gc053dfs.gif">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fyumj6zvgbj30ji0c4wfy.jpg">
+<meta property="og:updated_time" content="2019-01-04T09:14:50.336Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="文件权限">
+<meta name="twitter:description" content="所有者和群组 由于Linux是一个多人多工的系统,因此可能常常会有多人同时使用这部主机的情况,所有者和群组是一个健全的的安全防护措施.每个用户拥有可操作的文件,且只能操作有权限的   文件拥有者 一个文件只能被拥有这个文件权限(读,写)的用户操作,其他用户无法对此文件操作">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fyumgeedimg30gc053dfs.gif">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/04/文件权限/">
+
+
+
+
+
+  <title>文件权限 | Livfer's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Livfer's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/04/文件权限/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Livfer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Livfer's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">文件权限</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T15:51:55+08:00">
+                2019-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="所有者和群组"><a href="#所有者和群组" class="headerlink" title="所有者和群组"></a>所有者和群组</h2><blockquote>
+<p>由于Linux是一个多人多工的系统,因此可能常常会有多人同时使用这部主机的情况,所有者和群组是一个健全的的安全防护措施.每个用户拥有可操作的文件,且只能操作有权限的</p>
+</blockquote>
+<ol>
+<li><p>文件拥有者</p>
+<p>一个文件只能被拥有这个文件权限(读,写)的用户操作,其他用户无法对此文件操作</p>
+<a id="more"></a>
+</li>
+<li><p>群组</p>
+<p>群组在团队开发时候很有用处.一个群组里的人可以共享权限,同时又可以对群组里的 人细化权限,组员拥有共享的文件,也可以有私有的文件.</p>
+<p>比如一个家庭是一个群组,这个家庭是[王大毛家],家里有王大毛,王二毛,王三毛.这三个人分别有自己的房间,同时共同拥有一个客厅.</p>
+<ul>
+<li>拥有者: 由于三人分别有各自的房间,所以王二毛可以进入王三毛的房间,但是王二毛不能动王三毛的抽屉,抽屉是王三毛的私人空间,二毛没有权利去动</li>
+<li>群组: 由于共同拥有客厅,客厅内的资源,比如电视,沙发,游戏机等三个人都可以使用.</li>
+</ul>
+<p>在这里<strong>王大毛家</strong>就是群组,三兄弟就是三个使用者,这三个使用者在一个群组里,同时这三个人可以拥有自己的私人空间,同时共享公共空间.</p>
+<p><strong>一个账号可以从属与多个群组</strong></p>
+</li>
+<li><p>其他人</p>
+<p>张小猪是[张小猪家]这个群组的,一般情况下他是无法进入到[王大毛家]这个群组,但是如果张小猪认识三毛,可以通过三毛的关系进入到[王大毛家],这个时候张小猪就是属于其他人</p>
+</li>
+<li><p>特殊</p>
+<p>Linux里有个特殊的账号<strong>root</strong>,他拥有所有的权限,可以去任何他想去的地方</p>
+</li>
+</ol>
+<ul>
+<li><p>Linux使用者和群组的记录</p>
+<p>Linux中预设情况下,账号相关信息记录在<code>/etc/passwd</code>这个文件中.个人的密码记录在<code>/etc/shadow</code>文件下.群组记录在<code>/etc/group</code>内.这个三个文件是Linux中账号,密码,群组信息的集中地.</p>
+</li>
+</ul>
+<h2 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h2><h3 id="文件属性"><a href="#文件属性" class="headerlink" title="文件属性"></a>文件属性</h3><p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fyumgeedimg30gc053dfs.gif" alt=""></p>
+<h4 id="第一栏文件类型权限"><a href="#第一栏文件类型权限" class="headerlink" title="第一栏文件类型权限"></a>第一栏文件类型权限</h4><p>文件权限有十个字元,如下图</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fyumj6zvgbj30ji0c4wfy.jpg" alt=""></p>
+<ul>
+<li>第一个表示这个文档是文件,目录,连接档等:<ul>
+<li>d: 表示为目录</li>
+<li>-: 表示为文件</li>
+<li>l: 表示为连接档(link file),类似于快捷方式</li>
+<li>b: 表示为块设备,可供存储的周边设备</li>
+<li>c: 字符设备文件,比如鼠标,键盘</li>
+</ul>
+</li>
+<li>接下来的字元,以三个一组,且均为[rwx]三个参数的组合,<code>r</code>表示可读,<code>w</code>表示可写,<code>x</code>表示可执行.这个三个顺序不可改变,入股偶没有权限就会出现<code>-</code><ul>
+<li>第一组为文件拥有者的权限</li>
+<li>第二组为群组中账号的权限</li>
+<li>第三组为非本人且没有加入群组(others)的权限</li>
+</ul>
+</li>
+</ul>
+<h4 id="第二栏表示有多少个档名连接到此节点"><a href="#第二栏表示有多少个档名连接到此节点" class="headerlink" title="第二栏表示有多少个档名连接到此节点"></a>第二栏表示有多少个档名连接到此节点</h4><p>每个档案都会将他的权限与属性记录到档案系统的i-node中.在目录树中,我们使用档案名来做记录,此处的意思就是有多少个档案名连接到同一个i-node中</p>
+<h4 id="第三栏表示该档案拥有者"><a href="#第三栏表示该档案拥有者" class="headerlink" title="第三栏表示该档案拥有者"></a>第三栏表示该档案拥有者</h4><h4 id="第四栏表示该档案的所属群组"><a href="#第四栏表示该档案的所属群组" class="headerlink" title="第四栏表示该档案的所属群组"></a>第四栏表示该档案的所属群组</h4><h4 id="第五栏表示该档案的大小-预设单位为bytes"><a href="#第五栏表示该档案的大小-预设单位为bytes" class="headerlink" title="第五栏表示该档案的大小,预设单位为bytes"></a>第五栏表示该档案的大小,预设单位为bytes</h4><h4 id="第六栏为该档案创建时间或者更新时间"><a href="#第六栏为该档案创建时间或者更新时间" class="headerlink" title="第六栏为该档案创建时间或者更新时间"></a>第六栏为该档案创建时间或者更新时间</h4><h4 id="第七栏是该档案名称-如果档案名前有个-则表示为隐藏档案"><a href="#第七栏是该档案名称-如果档案名前有个-则表示为隐藏档案" class="headerlink" title="第七栏是该档案名称,如果档案名前有个.则表示为隐藏档案"></a>第七栏是该档案名称,如果档案名前有个<code>.</code>则表示为隐藏档案</h4><h2 id="改变属性和权限"><a href="#改变属性和权限" class="headerlink" title="改变属性和权限"></a>改变属性和权限</h2><h3 id="改变群组chgrp"><a href="#改变群组chgrp" class="headerlink" title="改变群组chgrp"></a>改变群组<code>chgrp</code></h3><p>改变的群组必须存在于系统中,也就是<code>/etc/group</code>中有这个群组信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chgrp [-R] dirname/filename ...</span><br><span class="line"><span class="meta">#</span><span class="bash"> -R 进行递归操作</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#例子:</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将<span class="built_in">test</span>目录以及所有子目录的群组改为users</span></span><br><span class="line">chgrp users -R test/</span><br></pre></td></tr></table></figure>
+<h3 id="改变拥有者chown"><a href="#改变拥有者chown" class="headerlink" title="改变拥有者chown"></a>改变拥有者<code>chown</code></h3><p>改变的拥有者账号必须存在于系统中,也就是<code>/etc/passwd</code>中有这个账号信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 将档案或者目录拥有者改为xxx</span></span><br><span class="line">chwon [-R] 账号名称 档案或目录</span><br><span class="line"><span class="meta">#</span><span class="bash"> 此命令可以群组,用户一起改</span></span><br><span class="line">chwon [-R] 账号名称:群组名称 档案或目录</span><br></pre></td></tr></table></figure>
+<h3 id="改变权限-chmod"><a href="#改变权限-chmod" class="headerlink" title="改变权限 chmod"></a>改变权限 <code>chmod</code></h3><ul>
+<li><p>数字类型权限</p>
+<p>[rwx]在Linux中对应着不同数字,可以通过数字来更改类型,规则如下:r: 4,w: 2,x: 1</p>
+<p>比如 owner =  rwx = 4 + 2 + 1 = 7</p>
+<p>group =rwx = 4 +  2 + 1 = 7</p>
+<p>others= — = 0+0+0 = 0</p>
+<p>这个情况下,数字类型的权限即为 <code>770</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R xxx 档案或目录</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>符号型权限</p>
+<p>符号权限:</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>身份</th>
+<th>权限</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chmod</td>
+<td>u(用户),g(组),o(其他),a(all)</td>
+<td>rwx</td>
+<td>+(加入),-(去除),=(设定)</td>
+</tr>
+</tbody>
+</table>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># owner = rwx g = rx o = rx u=rwx,go=rx 是連在一起的，中間並沒有任何空白字元！</span></span><br><span class="line">chmod  u=rwx,go=rx  .bashrc</span><br><span class="line"><span class="comment"># 所有增加写权限</span></span><br><span class="line">chmod a+w .bashrc</span><br><span class="line"><span class="comment"># 所有去除可执行权限</span></span><br><span class="line">chmod a-x .bashrc</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/04/MBR和GPT/" rel="next" title="MBR和GPT">
+                <i class="fa fa-chevron-left"></i> MBR和GPT
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Livfer">
+            
+              <p class="site-author-name" itemprop="name">Livfer</p>
+              <p class="site-description motion-element" itemprop="description">代码的搬运工</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LivferLiu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:livfer@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#所有者和群组"><span class="nav-number">1.</span> <span class="nav-text">所有者和群组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件权限"><span class="nav-number">2.</span> <span class="nav-text">文件权限</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文件属性"><span class="nav-number">2.1.</span> <span class="nav-text">文件属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一栏文件类型权限"><span class="nav-number">2.1.1.</span> <span class="nav-text">第一栏文件类型权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二栏表示有多少个档名连接到此节点"><span class="nav-number">2.1.2.</span> <span class="nav-text">第二栏表示有多少个档名连接到此节点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三栏表示该档案拥有者"><span class="nav-number">2.1.3.</span> <span class="nav-text">第三栏表示该档案拥有者</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第四栏表示该档案的所属群组"><span class="nav-number">2.1.4.</span> <span class="nav-text">第四栏表示该档案的所属群组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第五栏表示该档案的大小-预设单位为bytes"><span class="nav-number">2.1.5.</span> <span class="nav-text">第五栏表示该档案的大小,预设单位为bytes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第六栏为该档案创建时间或者更新时间"><span class="nav-number">2.1.6.</span> <span class="nav-text">第六栏为该档案创建时间或者更新时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第七栏是该档案名称-如果档案名前有个-则表示为隐藏档案"><span class="nav-number">2.1.7.</span> <span class="nav-text">第七栏是该档案名称,如果档案名前有个.则表示为隐藏档案</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改变属性和权限"><span class="nav-number">3.</span> <span class="nav-text">改变属性和权限</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#改变群组chgrp"><span class="nav-number">3.1.</span> <span class="nav-text">改变群组chgrp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改变拥有者chown"><span class="nav-number">3.2.</span> <span class="nav-text">改变拥有者chown</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改变权限-chmod"><span class="nav-number">3.3.</span> <span class="nav-text">改变权限 chmod</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Livfer</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
