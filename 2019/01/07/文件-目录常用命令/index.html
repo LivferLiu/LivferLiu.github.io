@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="目录与路径常用命令 cd: 进入目录 pwd: 显示当前路径 mkdir: 创建新目录 rmdir 删除一个空目录">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文件&#x2F;目录常用命令">
+<meta property="og:url" content="http://yoursite.com/2019/01/07/文件-目录常用命令/index.html">
+<meta property="og:site_name" content="Livfer&#39;s Blog">
+<meta property="og:description" content="目录与路径常用命令 cd: 进入目录 pwd: 显示当前路径 mkdir: 创建新目录 rmdir 删除一个空目录">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-07T09:05:11.841Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="文件&#x2F;目录常用命令">
+<meta name="twitter:description" content="目录与路径常用命令 cd: 进入目录 pwd: 显示当前路径 mkdir: 创建新目录 rmdir 删除一个空目录">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/07/文件-目录常用命令/">
+
+
+
+
+
+  <title>文件/目录常用命令 | Livfer's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Livfer's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/07/文件-目录常用命令/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Livfer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Livfer's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">文件/目录常用命令</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-07T15:11:07+08:00">
+                2019-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="目录与路径"><a href="#目录与路径" class="headerlink" title="目录与路径"></a>目录与路径</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
+<li><code>cd</code>: 进入目录</li>
+<li><code>pwd</code>: 显示当前路径</li>
+<li><code>mkdir</code>: 创建新目录</li>
+<li><code>rmdir</code> 删除一个空目录</li>
+</ul>
+<a id="more"></a>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#cd 相对/绝对 路径</span></span><br><span class="line"><span class="built_in">cd</span> /var/spool/mail</span><br><span class="line"><span class="built_in">cd</span> ../postfix</span><br><span class="line"></span><br><span class="line"><span class="comment">#pwd [-P] -P:显示真实的路径,而非软连接路径</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz etc]<span class="comment"># cd /var/mail/</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz mail]<span class="comment"># ls</span></span><br><span class="line">www</span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz mail]<span class="comment"># pwd</span></span><br><span class="line">/var/mail</span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz mail]<span class="comment"># pwd -P</span></span><br><span class="line">/var/spool/mail</span><br><span class="line"></span><br><span class="line"><span class="comment">#mkdir [-mp] m:设定权限 -p:递归建立目录</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz /]<span class="comment"># cd tmp/</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz tmp]<span class="comment"># mkdir test</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz tmp]<span class="comment"># mkdir test1/test2/test3</span></span><br><span class="line">mkdir: 无法创建目录<span class="string">"test1/test2/test3"</span>: 没有那个文件或目录</span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz tmp]<span class="comment"># mkdir -p test1/test2/test3</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz tmp]<span class="comment"># mkdir -m 711 test2</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz tmp]<span class="comment"># ls -ld test*</span></span><br><span class="line">drwxr-xr-x 2 root root 4096 1月   7 15:21 <span class="built_in">test</span></span><br><span class="line">drwxr-xr-x 3 root root 4096 1月   7 15:22 test1</span><br><span class="line">drwx--x--x 2 root root 4096 1月   7 15:22 test2</span><br><span class="line"></span><br><span class="line"><span class="comment">#rmdir [-p] -p:递归删除目录</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz tmp]<span class="comment"># ls -ld test*</span></span><br><span class="line">drwxr-xr-x 2 root root 4096 1月   7 15:21 <span class="built_in">test</span></span><br><span class="line">drwxr-xr-x 3 root root 4096 1月   7 15:22 test1</span><br><span class="line">drwx--x--x 2 root root 4096 1月   7 15:22 test2</span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz tmp]<span class="comment"># rmdir test</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz tmp]<span class="comment"># rmdir test1</span></span><br><span class="line">rmdir: 删除 <span class="string">"test1"</span> 失败: 目录非空</span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz tmp]<span class="comment"># rmdir -p test1/test2/test3/</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz tmp]<span class="comment"># ls -ld test*</span></span><br><span class="line">drwx--x--x 2 root root 4096 1月   7 15:22 test2</span><br></pre></td></tr></table></figure>
+<h2 id="文件与目录管理"><a href="#文件与目录管理" class="headerlink" title="文件与目录管理"></a>文件与目录管理</h2><h3 id="查看文档与目录列表-ls"><a href="#查看文档与目录列表-ls" class="headerlink" title="查看文档与目录列表: ls"></a>查看文档与目录列表: <code>ls</code></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">ls [-aAdfFhilnrRSt] 文件/目录</span><br><span class="line">ls [--color=&#123;never,auto,always&#125;] 文件/目录</span><br><span class="line">ls [--full-time] 文件/目录</span><br><span class="line">-a : 列出全部,包括隐藏(以.开头的)</span><br><span class="line">-A : 列出全部,包括隐藏,但不包括 .与..开头的</span><br><span class="line">-d : 仅列出目录本身,不列出目录内的</span><br><span class="line">-f : 直接列出结果,不进行排序(ls预设以文档名排序)</span><br><span class="line">-F : 列出文档相关信息,比如 *:代表可执行文件 /:代表目录 =:代表socket文件 |:代表fifo文件</span><br><span class="line">-h : 以人类已读的方式列出(例如GB,KB)</span><br><span class="line">-i : 列出inode号码</span><br><span class="line">-l : 使用较长格式列出信息,(属性,权限等)</span><br><span class="line">-n : 类似 -l，但列出UID 及GID 号</span><br><span class="line">-r : 逆序排列</span><br><span class="line">-R : 递归列出,包括子目录内内容</span><br><span class="line">-S : 以文件大小排序,而不是文件名排序</span><br><span class="line">-t : 按照时间排序</span><br><span class="line">--color=never : 不根据文档特性显示颜色</span><br><span class="line">--color=always : 显示颜色</span><br><span class="line">--color=auto : 系统自动判定</span><br><span class="line">--full-time : 完整时间模式显示</span><br><span class="line">--time=&#123;atime,ctime&#125; : 输出access时间或者改变属性的时间,而非内容改变时间</span><br></pre></td></tr></table></figure>
+<h3 id="复制-删除与移动-cp-rm-mv"><a href="#复制-删除与移动-cp-rm-mv" class="headerlink" title="复制,删除与移动: cp,rm,mv"></a>复制,删除与移动: <code>cp</code>,<code>rm</code>,<code>mv</code></h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">cp [-adfilprsu] 来源(source) 目标(destination)</span><br><span class="line">cp [options] source1 source2 source3 .... directory</span><br><span class="line">参数：</span><br><span class="line">-a  ：相当于 -dr --preserve=all 的意思</span><br><span class="line">-d  ：若果来源为链接文件(link file)，则复制软连接属性而非本身；</span><br><span class="line">-f  ：强制(force)的意思，若目标已存在,且无法开启，则移除再试一次</span><br><span class="line">-i  ：若目标(destination)已經存在時，覆盖式会先询问</span><br><span class="line">-l  ：进行硬链接(hard link)的链接档的建立，而非复制档案本身；</span><br><span class="line">-p  ：连同档案的属性(权限、用户、时间)一起复制过去，而非使用预设属性(备份常用)；</span><br><span class="line">-r  ：递归复制目录及其子目录内的所有内容</span><br><span class="line">-s  ： 只创建符号链接而不复制文件(快捷方式)</span><br><span class="line">-u  ： 只在源文件比目标文件新，或目标文件不存在时才进行复制</span><br><span class="line">--preserve=all ：除了 -p 的權限相關參數外，還加入 SELinux 的屬性, links, xattr 等也複製了。</span><br><span class="line">最后需要注意的，如果来源文档有2个以上，则最后一个目标文档必须是目录才行！</span><br><span class="line"></span><br><span class="line">rm [-fir] 檔案或目錄</span><br><span class="line">参数：</span><br><span class="line">-f  ：就是 force 的意思，忽略不存在的,不会出现警告信息；</span><br><span class="line">-i  ：删除前会咨询操作</span><br><span class="line">-r  ：递归操作慎用!!!程序员删库操作!!!</span><br><span class="line"></span><br><span class="line">mv [-fiu] source destination</span><br><span class="line">mv [options] source1 source2 source3 .... directory</span><br><span class="line">参数：</span><br><span class="line">-f  ：force 強制的意思，如果目标文档存在,则直接覆盖</span><br><span class="line">-i  ：若目标存在,则会先咨询操作！</span><br><span class="line">-u  ：若目标已存在，且源文档比较新，才会更新 (update)</span><br></pre></td></tr></table></figure>
+<h3 id="查看文档内容"><a href="#查看文档内容" class="headerlink" title="查看文档内容"></a>查看文档内容</h3><ul>
+<li><code>cat</code> : 由第一行开始</li>
+<li><code>tac</code> : 由最后一行开始</li>
+<li><code>nl</code> : 显示内容病显示行号</li>
+<li><code>more</code> : 一页一页显示</li>
+<li><code>less</code> : 与<code>more</code>类似,不过可以向前翻页</li>
+<li><code>head</code> : 只看头几行</li>
+<li><code>tail</code> : 只看尾几行</li>
+<li><code>od</code> : 以二进制方式读取</li>
+</ul>
+<h4 id="直接查看内容"><a href="#直接查看内容" class="headerlink" title="直接查看内容"></a>直接查看内容</h4><p>直接查看一个文件内容可以使用<code>cat</code>,<code>tac</code>,<code>nl</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">cat [-AbEnTv]</span><br><span class="line">参数:</span><br><span class="line">-A : 相当于 -vET,可列出一些特殊字符而不是空白</span><br><span class="line">-b : 列出行号,仅针对非空白行显示</span><br><span class="line">-E : 在每行结束处显示[$]</span><br><span class="line">-n :  对输出的所有行编号</span><br><span class="line">-T :  将[tab]按键显示为^I</span><br><span class="line">-v : 列出一些特殊字符</span><br><span class="line"></span><br><span class="line">nl [-bnw]</span><br><span class="line">参数:</span><br><span class="line">-b : 指定行号显示方式</span><br><span class="line">	-b a : 所有行都显示行号,包括空白行</span><br><span class="line">	-b t : 如果为空行,则空的哪一行不显示行号</span><br><span class="line">-n : 列出行号表示方法:</span><br><span class="line">	-n ln : 行号在左侧显示</span><br><span class="line">	-n rn : 行号在自己栏位右侧显示,且不加0</span><br><span class="line">	-n rz : 行号在自己栏位右侧显示,加0</span><br><span class="line">-w :  为行号使用指定的栏数</span><br></pre></td></tr></table></figure>
+<h4 id="翻页显示内容"><a href="#翻页显示内容" class="headerlink" title="翻页显示内容"></a>翻页显示内容</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">more /etc/man_db.conf</span><br><span class="line">空格 (space)：代表向下翻一頁；</span><br><span class="line">Enter         ：代表向下翻『一行』；</span><br><span class="line">/字串         ：代表在这个显示的內容中，向下搜索『字串』这个关键字；</span><br><span class="line">:f            ：立刻显示出文件名以及目前显示的行数；</span><br><span class="line">q             ：代表立刻退出 more ，不再显示该文档內容。</span><br><span class="line">b 或 [ctrl]-b ：代表往回翻页</span><br><span class="line"></span><br><span class="line">less /etc/man_db.conf</span><br><span class="line">空格: 向下翻页</span><br><span class="line">pagedown : 向下翻一页</span><br><span class="line">pageup : 向上翻一页</span><br><span class="line">/子串 : 向下搜索『字串』这个关键字；</span><br><span class="line">?字串 : 向上搜索『字串』这个关键字；</span><br><span class="line">n : 重复前一个搜索</span><br><span class="line">N : 反向的重复前一个搜索</span><br><span class="line">g : 到第一行去</span><br><span class="line">G : 到最后一行去</span><br><span class="line">q : 退出</span><br></pre></td></tr></table></figure>
+<h4 id="截取显示"><a href="#截取显示" class="headerlink" title="截取显示"></a>截取显示</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">head [-n number]</span><br><span class="line">参数:</span><br><span class="line">-n : 后面带上数字,代表显示几行</span><br><span class="line"></span><br><span class="line">tail [-n number]</span><br><span class="line">-n : 同head</span><br><span class="line">-f : 文档刷新或有新内容时显示,直到 `ctrl+c`退出</span><br></pre></td></tr></table></figure>
+<h4 id="非纯文字-二进制-od"><a href="#非纯文字-二进制-od" class="headerlink" title="非纯文字(二进制): od"></a>非纯文字(二进制): <code>od</code></h4><h3 id="文件搜索"><a href="#文件搜索" class="headerlink" title="文件搜索"></a>文件搜索</h3><h4 id="whereis"><a href="#whereis" class="headerlink" title="whereis"></a>whereis</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">whereis [-bmsu]</span><br><span class="line">参数:</span><br><span class="line">-l : 列出whereis会去查询的几个主要目录</span><br><span class="line">-b : 只找binary文档</span><br><span class="line">-m : 只搜索 man 手册</span><br><span class="line">-s :只搜索source来源文档</span><br><span class="line">-u : 搜索不在上述三个项目当中的其他特殊文档</span><br></pre></td></tr></table></figure>
+<h4 id="find"><a href="#find" class="headerlink" title="find"></a>find</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> find [PATH] [option] [action]</span><br><span class="line"> 参数:</span><br><span class="line"> 1. 时间有关</span><br><span class="line"> 	-mtime n : n为数字,表示在n天之前的『一天之內』被更改过内容的</span><br><span class="line"> 	-mtime +n : 列出n天之前(不包含n天本身)被更改过内容</span><br><span class="line"> 	-mtime -n : 列出n天之内(包含n)被更改过内容的</span><br><span class="line"> 	-newer file: file 为一个存在的文档,列出比file还要新的文档名</span><br><span class="line"> 2. 与使用者或群组名称有关</span><br><span class="line"> 	-uid n : n为数字,表示使用者的账号ID</span><br><span class="line"> 	-gid n : n为数字,表示群组名称的ID</span><br><span class="line"> 	-user name : name使用者的账号名称</span><br><span class="line"> 	-group name : name群组名称</span><br><span class="line"> 	-nouser : 寻找档案拥有者不在`/etc/passwd`中的</span><br><span class="line"> 	-nogroup : 寻找档案群组不在`/etc/passwd`中的</span><br><span class="line"> 3. 档案权限与名称有关</span><br><span class="line"> 	-name filename : 搜索名称为filename的文件</span><br><span class="line"> 	size [+-]SIZE：搜索比 SIZE大(+)或小(-)的。SIZE 的規格有：</span><br><span class="line">                   c: 代表 byte， k: 代表 1024bytes。所以，要找比 50KB</span><br><span class="line">                   還要大的檔案，就是『 -size +50k 』</span><br><span class="line">   -type TYPE    ：搜索文档的类型,TYPE主要有：一般文档(f), 设备文档(b,c),目录 (d), 链接文档 (l), socket (s), 及 FIFO (p)。</span><br><span class="line">   -perm mode  ：搜文档权限等于mode的文件,mode为文件权限值,比如755</span><br><span class="line">   -perm -mode ：搜索文档的权限『必须要全部包括 mode 的权限』的文档</span><br><span class="line">   -perm /mode ：搜索文档的权限『包含任一 mode的权限』文档</span><br><span class="line"> 4.额外进行的动作：</span><br><span class="line">   -exec command ：command 为其他指令，-exec 后面带上额外指令,来处理所搜出来的结果</span><br><span class="line">   -print        ：将搜索结果打印到屏幕上,预设的动作</span><br><span class="line"><span class="meta">#</span><span class="bash"> find 也可以指定目录去查询,但是find搜索很费硬盘</span></span><br><span class="line">find /etc -name '*httpd*'</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/07/文件类型和后缀/" rel="next" title="文件类型和扩展名">
+                <i class="fa fa-chevron-left"></i> 文件类型和扩展名
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Livfer">
+            
+              <p class="site-author-name" itemprop="name">Livfer</p>
+              <p class="site-description motion-element" itemprop="description">代码的搬运工</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LivferLiu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:livfer@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录与路径"><span class="nav-number">1.</span> <span class="nav-text">目录与路径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令"><span class="nav-number">1.1.</span> <span class="nav-text">常用命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件与目录管理"><span class="nav-number">2.</span> <span class="nav-text">文件与目录管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看文档与目录列表-ls"><span class="nav-number">2.1.</span> <span class="nav-text">查看文档与目录列表: ls</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复制-删除与移动-cp-rm-mv"><span class="nav-number">2.2.</span> <span class="nav-text">复制,删除与移动: cp,rm,mv</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看文档内容"><span class="nav-number">2.3.</span> <span class="nav-text">查看文档内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#直接查看内容"><span class="nav-number">2.3.1.</span> <span class="nav-text">直接查看内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#翻页显示内容"><span class="nav-number">2.3.2.</span> <span class="nav-text">翻页显示内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#截取显示"><span class="nav-number">2.3.3.</span> <span class="nav-text">截取显示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非纯文字-二进制-od"><span class="nav-number">2.3.4.</span> <span class="nav-text">非纯文字(二进制): od</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件搜索"><span class="nav-number">2.4.</span> <span class="nav-text">文件搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#whereis"><span class="nav-number">2.4.1.</span> <span class="nav-text">whereis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#find"><span class="nav-number">2.4.2.</span> <span class="nav-text">find</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Livfer</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
