@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="PHP,PHP新特性,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="PHP7.0PHP7.0新特性组合比较符(&amp;lt;=&amp;gt;)组合比较符号用于比较2个表达式.当$a小于,等于,大于$b时分别返回-1,0,1 123var_dump(456 &amp;lt;=&amp;gt; 123) //int(1)var_dump(123 &amp;lt;=&amp;gt; 456) // int(-1)var_dump(123 &amp;lt;=&amp;gt; 123) //int(0)">
+<meta name="keywords" content="PHP,PHP新特性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP7.0-PHP7.2新特性和变更">
+<meta property="og:url" content="http://yoursite.com/2019/01/10/PHP7新特性/index.html">
+<meta property="og:site_name" content="Livfer&#39;s Blog">
+<meta property="og:description" content="PHP7.0PHP7.0新特性组合比较符(&amp;lt;=&amp;gt;)组合比较符号用于比较2个表达式.当$a小于,等于,大于$b时分别返回-1,0,1 123var_dump(456 &amp;lt;=&amp;gt; 123) //int(1)var_dump(123 &amp;lt;=&amp;gt; 456) // int(-1)var_dump(123 &amp;lt;=&amp;gt; 123) //int(0)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-10T07:08:06.105Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP7.0-PHP7.2新特性和变更">
+<meta name="twitter:description" content="PHP7.0PHP7.0新特性组合比较符(&amp;lt;=&amp;gt;)组合比较符号用于比较2个表达式.当$a小于,等于,大于$b时分别返回-1,0,1 123var_dump(456 &amp;lt;=&amp;gt; 123) //int(1)var_dump(123 &amp;lt;=&amp;gt; 456) // int(-1)var_dump(123 &amp;lt;=&amp;gt; 123) //int(0)">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/10/PHP7新特性/">
+
+
+
+
+
+  <title>PHP7.0-PHP7.2新特性和变更 | Livfer's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Livfer's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/10/PHP7新特性/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Livfer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Livfer's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">PHP7.0-PHP7.2新特性和变更</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-10T09:56:50+08:00">
+                2019-01-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="PHP7-0"><a href="#PHP7-0" class="headerlink" title="PHP7.0"></a>PHP7.0</h2><h3 id="PHP7-0新特性"><a href="#PHP7-0新特性" class="headerlink" title="PHP7.0新特性"></a>PHP7.0新特性</h3><h4 id="组合比较符-lt-gt"><a href="#组合比较符-lt-gt" class="headerlink" title="组合比较符(&lt;=&gt;)"></a>组合比较符(&lt;=&gt;)</h4><p>组合比较符号用于比较2个表达式.当<code>$a</code>小于,等于,大于<code>$b</code>时分别返回<code>-1,0,1</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var_dump(<span class="number">456</span> &lt;=&gt; <span class="number">123</span>) <span class="comment">//int(1)</span></span><br><span class="line">var_dump(<span class="number">123</span> &lt;=&gt; <span class="number">456</span>) <span class="comment">// int(-1)</span></span><br><span class="line">var_dump(<span class="number">123</span> &lt;=&gt; <span class="number">123</span>) <span class="comment">//int(0)</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="null合并运算符"><a href="#null合并运算符" class="headerlink" title="null合并运算符"></a>null合并运算符</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//php7之前</span></span><br><span class="line">$a = <span class="keyword">isset</span>($_GET[<span class="string">'a'</span>]) ? $_GET[<span class="string">'a'</span>] : <span class="string">''</span>;</span><br><span class="line"><span class="comment">//PHP7</span></span><br><span class="line">$a = <span class="keyword">isset</span>($_GET[<span class="string">'a'</span>]) ?? <span class="string">''</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="标量类型声明"><a href="#标量类型声明" class="headerlink" title="标量类型声明"></a>标量类型声明</h4><p>标量类型声明有两种模式: 强制的,严格的.现在可以使用下列类型参数（无论用强制模式还是严格模式）： 字符串(<a href="http://php.net/manual/zh/language.types.string.php" target="_blank" rel="noopener">string</a>), 整数 (<em>int</em>), 浮点数 (<a href="http://php.net/manual/zh/language.types.float.php" target="_blank" rel="noopener">float</a>), 以及布尔值 (<em>bool</em>)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sumOfInts</span><span class="params">(int ...$ints)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> array_sum($ints);</span><br><span class="line">&#125;</span><br><span class="line">var_dump(sumOfInts(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3.1</span>)) <span class="comment">//6</span></span><br><span class="line"><span class="comment">//严格模式</span></span><br><span class="line"><span class="keyword">declare</span>(strict_types=<span class="number">1</span>)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span><span class="params">(int $x,int $y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $x + $y;</span><br><span class="line">&#125;</span><br><span class="line">var_dump(add(<span class="string">'2'</span>,<span class="number">3</span>)); <span class="comment">//PHP Fatal error:  Uncaught TypeError: Argument 1 passed to add() must be of the type integer, string given, called in /www/wwwroot/1.php on line 7 and defined in</span></span><br></pre></td></tr></table></figure>
+<h4 id="返回类型声明"><a href="#返回类型声明" class="headerlink" title="返回类型声明"></a>返回类型声明</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span><span class="params">(int $a)</span>: <span class="title">array</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $a;</span><br><span class="line">&#125;</span><br><span class="line">func(<span class="number">3</span>);<span class="comment">//Fatal erro</span></span><br></pre></td></tr></table></figure>
+<h4 id="通过define-定义常量数组"><a href="#通过define-定义常量数组" class="headerlink" title="通过define()定义常量数组"></a>通过<code>define()</code>定义常量数组</h4><p>Array类型的常量现在可以通过<code>define()</code>来定义,在PHP5.6中只能通过<code>const</code>定义</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">define(<span class="string">'ANIMALS'</span>,[</span><br><span class="line">    <span class="string">'dog'</span>,</span><br><span class="line">    <span class="string">'cat'</span>,</span><br><span class="line">    <span class="string">'bird'</span>,</span><br><span class="line">]);</span><br><span class="line"><span class="keyword">echo</span> ANIMALS[<span class="number">1</span>]; <span class="comment">//cat</span></span><br></pre></td></tr></table></figure>
+<h4 id="匿名类"><a href="#匿名类" class="headerlink" title="匿名类"></a>匿名类</h4><p>PHP7可以通过new class 来实例化一个匿名类</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $logger;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getLogger</span><span class="params">()</span>: <span class="title">Logger</span> </span>&#123;</span><br><span class="line">         <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;logger;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setLogger</span><span class="params">(Logger $logger)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">$this</span>-&gt;logger = $logger;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$app = <span class="keyword">new</span> Application;</span><br><span class="line"><span class="comment">//php7以前</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Logger</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">log</span><span class="params">(string $msg)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FileLog</span> <span class="keyword">implements</span> <span class="title">Logger</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">log</span><span class="params">(string $msg)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'fileLog:'</span>.$msg;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$app-&gt;setLogger(<span class="keyword">new</span> FileLog);</span><br><span class="line"></span><br><span class="line"><span class="comment">//php7</span></span><br><span class="line">$app-&gt;setLogger(<span class="keyword">new</span> <span class="class"><span class="keyword">class</span> <span class="keyword">implements</span> <span class="title">Looger</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">log</span><span class="params">(string msg)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'FileLog:'</span>.$msg;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="Unicode-codepoint-转译语法"><a href="#Unicode-codepoint-转译语法" class="headerlink" title="Unicode codepoint 转译语法"></a>Unicode codepoint 转译语法</h4><p>这接受一个以16进制形式的 Unicode codepoint，并打印出一个双引号或heredoc包围的 UTF-8 编码格式的字符串。 可以接受任何有效的 codepoint，并且开头的 0 是可以省略的。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">"\u&#123;aa&#125;"</span>;<span class="comment">// ª</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"\u&#123;0000aa&#125;"</span>;<span class="comment">// ª</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">"\u&#123;9999&#125;"</span>;<span class="comment">// 香</span></span><br></pre></td></tr></table></figure>
+<h4 id="Closure-call"><a href="#Closure-call" class="headerlink" title="Closure::call()"></a><code>Closure::call()</code></h4><p>闭包绑定<code>Closure::all()</code>现在有着更好的性能,简短干练的暂时绑定一个方法到对象上闭包并调用他</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;<span class="keyword">private</span> $x =<span class="number">1</span>;&#125;</span><br><span class="line"><span class="comment">//PHP7以前</span></span><br><span class="line">$getXCB = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123; <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;x;&#125;</span><br><span class="line">$getX = $getXCB-&gt;bindTo(<span class="keyword">new</span> A,<span class="string">'A'</span>); <span class="comment">//中间层闭包</span></span><br><span class="line"><span class="keyword">echo</span> $getX(); <span class="comment">// 1</span></span><br><span class="line"><span class="comment">//PHP7+</span></span><br><span class="line">$getX = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> <span class="keyword">$this</span>-&gt;x;&#125;</span><br><span class="line"><span class="keyword">echo</span> $getX-&gt;call(<span class="keyword">new</span> A); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<h4 id="为unserialize-提供过滤"><a href="#为unserialize-提供过滤" class="headerlink" title="为unserialize()提供过滤"></a>为<code>unserialize()</code>提供过滤</h4><p>这个特性旨在提供更安全的方式解包不可靠的数据。它通过白名单的方式来防止潜在的代码注入。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将所有的对象都转换为 __PHP_Incomplete_Class 对象</span></span><br><span class="line">$data = unserialize($foo, [<span class="string">"allowed_classes"</span> =&gt; <span class="keyword">false</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将除 MyClass 和 MyClass2 之外的所有对象都转换为 __PHP_Incomplete_Class 对象</span></span><br><span class="line">$data = unserialize($foo, [<span class="string">"allowed_classes"</span> =&gt; [<span class="string">"MyClass"</span>, <span class="string">"MyClass2"</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认情况下所有的类都是可接受的，等同于省略第二个参数</span></span><br><span class="line">$data = unserialize($foo, [<span class="string">"allowed_classes"</span> =&gt; <span class="keyword">true</span>]);</span><br></pre></td></tr></table></figure>
+<h4 id="IntlChar"><a href="#IntlChar" class="headerlink" title="IntlChar"></a><code>IntlChar</code></h4><p>新增加的 <a href="http://php.net/manual/zh/class.intlchar.php" target="_blank" rel="noopener">IntlChar</a> 类旨在暴露出更多的 ICU 功能。这个类自身定义了许多静态方法用于操作多字符集的 unicode 字符。若要使用此类，请先安装<a href="http://php.net/manual/zh/book.intl.php" target="_blank" rel="noopener">Intl</a>扩展,PHP intl 是国际化扩展，是ICU 库的一个包装器</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">printf(<span class="string">'%x'</span>, IntlChar::CODEPOINT_MAX); <span class="comment">//10ffff</span></span><br><span class="line"><span class="keyword">echo</span> IntlChar::charName(<span class="string">'@'</span>); <span class="comment">//COMMERCIAL AT</span></span><br><span class="line">var_dump(IntlChar::ispunct(<span class="string">'!'</span>)); <span class="comment">//bool(true)</span></span><br></pre></td></tr></table></figure>
+<h4 id="Expectations"><a href="#Expectations" class="headerlink" title="Expectations"></a>Expectations</h4><p><a href="http://php.net/manual/zh/function.assert.php#function.assert.expectations" target="_blank" rel="noopener">预期</a>是向后兼用并增强之前的 <a href="http://php.net/manual/zh/function.assert.php" target="_blank" rel="noopener">assert()</a> 的方法。 它使得在生产环境中启用断言为零成本，并且提供当断言失败时抛出特定异常的能力。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ini_set(<span class="string">'assert.exception'</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CustomError</span> <span class="keyword">extends</span> <span class="title">AssertionError</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">assert(<span class="keyword">false</span>, <span class="keyword">new</span> CustomError(<span class="string">'Some error message'</span>));</span><br></pre></td></tr></table></figure>
+<h4 id="命名空间按组一次性导入"><a href="#命名空间按组一次性导入" class="headerlink" title="命名空间按组一次性导入"></a>命名空间按组一次性导入</h4><p>从同一 <a href="http://php.net/manual/zh/language.namespaces.definition.php" target="_blank" rel="noopener"><em>namespace</em></a> 导入的类、函数和常量现在可以通过单个 <a href="http://php.net/manual/zh/language.namespaces.importing.php" target="_blank" rel="noopener"><em>use</em></a> 语句 一次性导入了。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//PHP7之前</span></span><br><span class="line"><span class="keyword">use</span> <span class="title">some</span>\<span class="title">namespace</span>\<span class="title">ClassA</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">some</span>\<span class="title">namespace</span>\<span class="title">ClassB</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">function</span> <span class="title">some</span>\<span class="title">namespace</span>\<span class="title">fn_a</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">function</span> <span class="title">some</span>\<span class="title">namespace</span>\<span class="title">fn_b</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">const</span> <span class="title">some</span>\<span class="title">namespace</span>\<span class="title">ConstA</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">const</span> <span class="title">some</span>\<span class="title">namespace</span>\<span class="title">ConstB</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//PHP7+</span></span><br><span class="line"><span class="keyword">use</span> <span class="title">some</span>\<span class="title">namespace</span>\&#123;<span class="title">ClassA</span>,<span class="title">ClassB</span>&#125;</span><br><span class="line"><span class="title">use</span> <span class="title">function</span> <span class="title">some</span>\<span class="title">namespace</span>\&#123;<span class="title">fn_a</span>,<span class="title">fn_b</span>&#125;</span><br><span class="line"><span class="title">use</span> <span class="title">const</span> <span class="title">some</span>\<span class="title">namespace</span>\&#123;<span class="title">ConstA</span>,<span class="title">ConstB</span>&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="生成器可以返回表达式"><a href="#生成器可以返回表达式" class="headerlink" title="生成器可以返回表达式"></a>生成器可以返回表达式</h4><p> 它允许在生成器函数中通过使用 <em>return</em> 语法来返回一个表达式 （但是不允许返回引用值）， 可以通过调用 <em>Generator::getReturn()</em> 方法来获取生成器的返回值， 但是这个方法只能在生成器完成产生工作以后调用一次。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$gen = (<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> ($gen <span class="keyword">as</span> $val) &#123;</span><br><span class="line">    <span class="keyword">echo</span> $val, PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> $gen-&gt;getReturn(), PHP_EOL;</span><br><span class="line"><span class="comment">//output</span></span><br><span class="line"><span class="comment">//1</span></span><br><span class="line"><span class="comment">//2</span></span><br><span class="line"><span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+<h4 id="生成器委派"><a href="#生成器委派" class="headerlink" title="生成器委派"></a>生成器委派</h4><p>现在，只需在最外层生成其中使用 <a href="http://php.net/manual/zh/language.generators.syntax.php#control-structures.yield.from" target="_blank" rel="noopener"><em>yield from</em></a>， 就可以把一个生成器自动委派给其他的生成器， <strong>Traversable</strong> 对象或者 <a href="http://php.net/manual/zh/language.types.array.php" target="_blank" rel="noopener">array</a>。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gen</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">yield</span> from gen2();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">gen2</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">yield</span> <span class="number">4</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span> (gen() <span class="keyword">as</span> $val)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">echo</span> $val, PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//output</span></span><br><span class="line"><span class="comment">//1</span></span><br><span class="line"><span class="comment">//2</span></span><br><span class="line"><span class="comment">//3</span></span><br><span class="line"><span class="comment">//4</span></span><br></pre></td></tr></table></figure>
+<h4 id="整数触发函数intdiv"><a href="#整数触发函数intdiv" class="headerlink" title="整数触发函数intdiv"></a>整数触发函数<code>intdiv</code></h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var_dump(intdiv(<span class="number">10</span>,<span class="number">3</span>)) <span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+<h4 id="会话选项设置"><a href="#会话选项设置" class="headerlink" title="会话选项设置"></a>会话选项设置</h4><p><a href="http://php.net/manual/zh/function.session-start.php" target="_blank" rel="noopener">session_start()</a> 可以接受一个 <a href="http://php.net/manual/zh/language.types.array.php" target="_blank" rel="noopener">array</a> 作为参数， 用来覆盖 php.ini 文件中设置的 <a href="http://php.net/manual/zh/session.configuration.php" target="_blank" rel="noopener">会话配置选项</a>。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">session_start([</span><br><span class="line">    <span class="string">'cache_limiter'</span> =&gt; <span class="string">'private'</span>,</span><br><span class="line">    <span class="string">'read_and_close'</span> =&gt; <span class="keyword">true</span>,</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+<h4 id="preg-replace-callback-array"><a href="#preg-replace-callback-array" class="headerlink" title="preg_replace_callback_array"></a><code>preg_replace_callback_array</code></h4><p>可以使用一个关联数组来对每个正则表达式注册回调函数， 正则表达式本身作为关联数组的键， 而对应的回调函数就是关联数组的值</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$subject = <span class="string">'Aaaaaa Bbb'</span>;</span><br><span class="line"><span class="comment">//PHP7+</span></span><br><span class="line">preg_replace_callback_array(</span><br><span class="line">    [</span><br><span class="line">        <span class="string">'~[a]+~i'</span> =&gt; <span class="function"><span class="keyword">function</span> <span class="params">($match)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">echo</span> strlen($match[<span class="number">0</span>]), <span class="string">' matches for "a" found'</span>, PHP_EOL;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">'~[b]+~i'</span> =&gt; <span class="function"><span class="keyword">function</span> <span class="params">($match)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">echo</span> strlen($match[<span class="number">0</span>]), <span class="string">' matches for "b" found'</span>, PHP_EOL;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    $subject</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h4 id="随机字符和随即整数"><a href="#随机字符和随即整数" class="headerlink" title="随机字符和随即整数"></a>随机字符和随即整数</h4><p>新加入两个跨平台的函数： <a href="http://php.net/manual/zh/function.random-bytes.php" target="_blank" rel="noopener">random_bytes()</a> 和 <a href="http://php.net/manual/zh/function.random-int.php" target="_blank" rel="noopener">random_int()</a> 用来产生高安全级别的随机字符串和随机整数</p>
+<h3 id="PHP7-0变化"><a href="#PHP7-0变化" class="headerlink" title="PHP7.0变化"></a>PHP7.0变化</h3><h4 id="错误和异常处理相关变更"><a href="#错误和异常处理相关变更" class="headerlink" title="错误和异常处理相关变更"></a>错误和异常处理相关变更</h4><p>PHP 7 改变了大多数错误的报告方式。不同于传统（PHP 5）的错误报告机制，现在大多数错误被作为 <strong>Error</strong> 异常抛出。</p>
+<p>这也意味着，当发生错误的时候，以前代码中的一些错误处理的代码将无法被触发。 因为在 PHP 7 版本中，已经使用抛出异常的错误处理机制了。 （如果代码中没有捕获 <strong>Error</strong> 异常，那么会引发致命错误）。set_error_handle不一定接收的是异常，有可能是错误。</p>
+<p>ERROR层级结构</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Throwable</span></span></span><br><span class="line"><span class="class">    |- <span class="title">Exception</span> <span class="keyword">implements</span> <span class="title">Throwable</span></span></span><br><span class="line"><span class="class">        |- ...</span></span><br><span class="line"><span class="class">    |- <span class="title">Error</span> <span class="keyword">implements</span> <span class="title">Throwable</span></span></span><br><span class="line"><span class="class">        |- <span class="title">TypeError</span> <span class="keyword">extends</span> <span class="title">Error</span></span></span><br><span class="line"><span class="class">        |- <span class="title">ParseError</span> <span class="keyword">extends</span> <span class="title">Error</span></span></span><br><span class="line"><span class="class">        |- <span class="title">AssertionError</span> <span class="keyword">extends</span> <span class="title">Error</span></span></span><br><span class="line"><span class="class">        |- <span class="title">ArithmeticError</span> <span class="keyword">extends</span> <span class="title">Error</span></span></span><br><span class="line"><span class="class">            |- <span class="title">DivisionByZeroError</span> <span class="keyword">extends</span> <span class="title">ArithmeticError</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handler</span><span class="params">(Exception $e)</span> </span>&#123; ... &#125;</span><br><span class="line">set_exception_handler(<span class="string">'handler'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 兼容 PHP 5 和 7</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handler</span><span class="params">($e)</span> </span>&#123; ... &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 仅支持 PHP 7</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handler</span><span class="params">(Throwable $e)</span> </span>&#123; ... &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="list"><a href="#list" class="headerlink" title="list()"></a><code>list()</code></h4><p><code>list()</code>会按照原来的顺序进行赋值.不再是逆序</p>
+<p><code>list()</code>结构现在不能是空的</p>
+<p><code>list()</code>不再能解开字符串</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">list</span>($a[], $a[], $a[]) = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">var_dump($a);</span><br><span class="line"><span class="comment">//PHP7以前</span></span><br><span class="line"><span class="keyword">array</span>(<span class="number">3</span>) &#123;</span><br><span class="line">  [<span class="number">0</span>]=&gt;</span><br><span class="line">  int(<span class="number">3</span>)</span><br><span class="line">  [<span class="number">1</span>]=&gt;</span><br><span class="line">  int(<span class="number">2</span>)</span><br><span class="line">  [<span class="number">2</span>]=&gt;</span><br><span class="line">  int(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//PHP7+</span></span><br><span class="line"><span class="keyword">array</span>(<span class="number">3</span>) &#123;</span><br><span class="line">  [<span class="number">0</span>]=&gt;</span><br><span class="line">  int(<span class="number">1</span>)</span><br><span class="line">  [<span class="number">1</span>]=&gt;</span><br><span class="line">  int(<span class="number">2</span>)</span><br><span class="line">  [<span class="number">2</span>]=&gt;</span><br><span class="line">  int(<span class="number">3</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="函数参数附近的括号不在影响行为"><a href="#函数参数附近的括号不在影响行为" class="headerlink" title="函数参数附近的括号不在影响行为"></a>函数参数附近的括号不在影响行为</h4><p>在 PHP 5中，在以引用方式传递函数参数时，使用冗余的括号对可以隐匿严格标准 的警告。现在，这个警告总会触发。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getArray</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">squareArray</span><span class="params">(array &amp;$a)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">foreach</span> ($a <span class="keyword">as</span> &amp;$v) &#123;</span><br><span class="line">        $v **= <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Generates a warning in PHP 7.</span></span><br><span class="line">squareArray((getArray())); <span class="comment">//Notice: Only variables should be passed by reference in /tmp/test.php on line 13</span></span><br></pre></td></tr></table></figure>
+<h4 id="foreach的变化"><a href="#foreach的变化" class="headerlink" title="foreach的变化"></a><code>foreach</code>的变化</h4><ul>
+<li><code>foreach</code>不在改变内部数组指针</li>
+</ul>
+<p>在PHP7之前，当数组通过 <a href="http://php.net/manual/zh/control-structures.foreach.php" target="_blank" rel="noopener">foreach</a> 迭代时，数组指针会移动。现在开始，不再如此</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$array = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line"><span class="keyword">foreach</span> ($array <span class="keyword">as</span> &amp;$val) &#123;</span><br><span class="line">    var_dump(current($array));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//PHP7以前</span></span><br><span class="line">int(<span class="number">1</span>)</span><br><span class="line">int(<span class="number">2</span>)</span><br><span class="line">bool(<span class="keyword">false</span>)</span><br><span class="line"><span class="comment">//PHP7+</span></span><br><span class="line">int(<span class="number">0</span>)</span><br><span class="line">int(<span class="number">0</span>)</span><br><span class="line">int(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>foreach</code>通过值遍历时,操作的值为数组的副本</p>
+<p>当默认使用通过值遍历数组时,<code>foerach</code>实际操作的是数组的迭代副本，而非数组本身。这就意味着，foreach 中的操作不会修改原数组的值。</p>
+</li>
+<li><p><code>foreach</code> 通过引用遍历时,有更好的迭代特性</p>
+<p>当使用引用遍历数组时，现在 <code>foreach</code>在迭代中能更好的跟踪变化</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$array = [<span class="number">0</span>];</span><br><span class="line"><span class="keyword">foreach</span> ($array <span class="keyword">as</span> &amp;$val) &#123;</span><br><span class="line">    var_dump($val);</span><br><span class="line">    $array[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//PHP7以前</span></span><br><span class="line"><span class="comment">// int(0)</span></span><br><span class="line"><span class="comment">//PHP7+</span></span><br><span class="line"><span class="comment">// int(0)</span></span><br><span class="line"><span class="comment">// int(1)</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>非Traversable对象的遍历</p>
+<p>迭代一个非<strong>Traversable</strong>对象将会与迭代一个引用数组的行为相同。 这将导致在对象添加或删除属性时，<a href="http://php.net/manual/zh/control-structures.foreach.php" target="_blank" rel="noopener">foreach</a>通过引用遍历时，有更好的迭代特性也能被应用</p>
+</li>
+</ul>
+<h4 id="无效的八进制字符"><a href="#无效的八进制字符" class="headerlink" title="无效的八进制字符"></a>无效的八进制字符</h4><p>在之前，一个八进制字符如果含有无效数字，该无效数字将被静默删节(<em>0128</em> 将被解析为 <em>012</em>). 现在这样的八进制字符将产生解析错误。</p>
+<h4 id="负位移运算"><a href="#负位移运算" class="headerlink" title="负位移运算"></a>负位移运算</h4><p>以负数形式进行的位移运算将会抛出一个 <strong>ArithmeticError</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var_dump(<span class="number">1</span> &gt;&gt; <span class="number">-1</span>);</span><br><span class="line"><span class="comment">//PHP7以前</span></span><br><span class="line"><span class="comment">// int(0)</span></span><br><span class="line"><span class="comment">//PHP7+</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">Fatal error: Uncaught ArithmeticError: Bit shift by negative number in /tmp/test.php:2</span></span><br><span class="line"><span class="comment">Stack trace:</span></span><br><span class="line"><span class="comment">#0 &#123;main&#125;</span></span><br><span class="line"><span class="comment">thrown in /tmp/test.php on line 2</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h4 id="超范围后产生位移"><a href="#超范围后产生位移" class="headerlink" title="超范围后产生位移"></a>超范围后产生位移</h4><p>超出<code>integer</code>位宽的位移操作(无论哪个方向),将始终得到0的结果.在从前，这一操作是结构依赖的。</p>
+<h4 id="十六进制字符不再被认为是数字"><a href="#十六进制字符不再被认为是数字" class="headerlink" title="十六进制字符不再被认为是数字"></a>十六进制字符不再被认为是数字</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var_dump(<span class="string">"0x123"</span> == <span class="string">"291"</span>);</span><br><span class="line">var_dump(is_numeric(<span class="string">"0x123"</span>));</span><br><span class="line">var_dump(<span class="string">"0xe"</span> + <span class="string">"0x1"</span>);</span><br><span class="line">var_dump(substr(<span class="string">"foo"</span>, <span class="string">"0x1"</span>));</span><br><span class="line"><span class="comment">//PHP7以前</span></span><br><span class="line">bool(<span class="keyword">true</span>)</span><br><span class="line">bool(<span class="keyword">true</span>)</span><br><span class="line">int(<span class="number">15</span>)</span><br><span class="line">string(<span class="number">2</span>) <span class="string">"oo"</span></span><br><span class="line"><span class="comment">//PHP7+</span></span><br><span class="line">bool(<span class="keyword">false</span>)</span><br><span class="line">bool(<span class="keyword">false</span>)</span><br><span class="line">int(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">Notice: A non well formed numeric value encountered in /tmp/test.php on line <span class="number">5</span></span><br><span class="line">string(<span class="number">3</span>) <span class="string">"foo"</span></span><br></pre></td></tr></table></figure>
+<h4 id="filter-var-函数可以用于检查一个string是否含有16进制字符-并将其转化为integer"><a href="#filter-var-函数可以用于检查一个string是否含有16进制字符-并将其转化为integer" class="headerlink" title="filter_var()函数可以用于检查一个string是否含有16进制字符,并将其转化为integer"></a><code>filter_var()</code>函数可以用于检查一个<code>string</code>是否含有16进制字符,并将其转化为<code>integer</code></h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$str = <span class="string">"0xffff"</span>;</span><br><span class="line">$int = filter_var($str, FILTER_VALIDATE_INT, FILTER_FLAG_ALLOW_HEX);</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">false</span> === $int) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="string">"Invalid integer!"</span>);</span><br><span class="line">&#125;</span><br><span class="line">var_dump($int); <span class="comment">// int(65535)</span></span><br></pre></td></tr></table></figure>
+<h4 id="u-可能引起错误"><a href="#u-可能引起错误" class="headerlink" title="\u{可能引起错误"></a><code>\u{</code>可能引起错误</h4><p>由于新的 <a href="http://php.net/manual/zh/migration70.new-features.php#migration70.new-features.unicode-codepoint-escape-syntax" target="_blank" rel="noopener">Unicode codepoint escape syntax</a>语法， 紧连着无效序列并包含<em>\u{</em> 的字串可能引起致命错误。 为了避免这一报错，应该避免反斜杠开头。</p>
+<h3 id="被移除的函数"><a href="#被移除的函数" class="headerlink" title="被移除的函数"></a>被移除的函数</h3><h4 id="call-user-method-and-call-user-method-array"><a href="#call-user-method-and-call-user-method-array" class="headerlink" title="call_user_method() and call_user_method_array()"></a><a href="http://php.net/manual/zh/function.call-user-method.php" target="_blank" rel="noopener">call_user_method()</a> and <a href="http://php.net/manual/zh/function.call-user-method-array.php" target="_blank" rel="noopener">call_user_method_array()</a></h4><h4 id="所有的-ereg-函数"><a href="#所有的-ereg-函数" class="headerlink" title="所有的 ereg* 函数"></a>所有的 ereg* 函数</h4><h4 id="所有ext-mysql-ext-mssql函数"><a href="#所有ext-mysql-ext-mssql函数" class="headerlink" title="所有ext/mysql,ext/mssql函数"></a>所有ext/mysql,ext/mssql函数</h4><h4 id="mcrypt别名"><a href="#mcrypt别名" class="headerlink" title="mcrypt别名"></a>mcrypt别名</h4><p>已废弃的 <a href="http://php.net/manual/zh/function.mcrypt-generic-end.php" target="_blank" rel="noopener">mcrypt_generic_end()</a> 函数已被移除，请使用<a href="http://php.net/manual/zh/function.mcrypt-generic-deinit.php" target="_blank" rel="noopener">mcrypt_generic_deinit()</a>代替。</p>
+<p>此外，已废弃的 <a href="http://php.net/manual/zh/function.mcrypt-ecb.php" target="_blank" rel="noopener">mcrypt_ecb()</a>, <a href="http://php.net/manual/zh/function.mcrypt-cbc.php" target="_blank" rel="noopener">mcrypt_cbc()</a>, <a href="http://php.net/manual/zh/function.mcrypt-cfb.php" target="_blank" rel="noopener">mcrypt_cfb()</a> 和 <a href="http://php.net/manual/zh/function.mcrypt-ofb.php" target="_blank" rel="noopener">mcrypt_ofb()</a> 函数已被移除，请配合恰当的<strong>MCRYPT_MODE_*</strong> 常量来使用 <a href="http://php.net/manual/zh/function.mcrypt-decrypt.php" target="_blank" rel="noopener">mcrypt_decrypt()</a>进行代替。</p>
+<h4 id="intl别名"><a href="#intl别名" class="headerlink" title="intl别名"></a>intl别名</h4><p>已废弃的 <a href="http://php.net/manual/zh/intldateformatter.settimezoneid.php" target="_blank" rel="noopener">datefmt_set_timezone_id()</a> 和 <a href="http://php.net/manual/zh/intldateformatter.settimezoneid.php" target="_blank" rel="noopener">IntlDateFormatter::setTimeZoneID()</a> 函数已被移除，请使用 <a href="http://php.net/manual/zh/intldateformatter.settimezone.php" target="_blank" rel="noopener">datefmt_set_timezone()</a> 与 <a href="http://php.net/manual/zh/intldateformatter.settimezone.php" target="_blank" rel="noopener">IntlDateFormatter::setTimeZone()</a>代替。</p>
+<h4 id="set-magic-qutoes-runtime"><a href="#set-magic-qutoes-runtime" class="headerlink" title="set_magic_qutoes_runtime()"></a>set_magic_qutoes_runtime()</h4><p><a href="http://php.net/manual/zh/function.set-magic-quotes-runtime.php" target="_blank" rel="noopener">set_magic_quotes_runtime()</a>, 和它的别名 <a href="http://php.net/manual/zh/function.magic-quotes-runtime.php" target="_blank" rel="noopener">magic_quotes_runtime()</a>已被移除. 它们在PHP 5.3.0中已经被废弃,并且 在<a href="http://php.net/manual/zh/migration54.incompatible.php" target="_blank" rel="noopener">in PHP 5.4.0</a>也由于魔术引号的废弃而失去功能。</p>
+<h4 id="set-socket-blocking"><a href="#set-socket-blocking" class="headerlink" title="set_socket_blocking()"></a>set_socket_blocking()</h4><p>已废弃的 <a href="http://php.net/manual/zh/function.set-socket-blocking.php" target="_blank" rel="noopener">set_socket_blocking()</a> 函数已被移除，请使用<a href="http://php.net/manual/zh/function.stream-set-blocking.php" target="_blank" rel="noopener">stream_set_blocking()</a>代替。</p>
+<h4 id="dl"><a href="#dl" class="headerlink" title="dl()"></a>dl()</h4><p><a href="http://php.net/manual/zh/function.dl.php" target="_blank" rel="noopener">dl()</a>在 PHP-FPM 不再可用，在 CLI 和 embed SAPIs 中仍可用。</p>
+<h4 id="GD扩展删除对PostScriptType1字体的支持"><a href="#GD扩展删除对PostScriptType1字体的支持" class="headerlink" title="GD扩展删除对PostScriptType1字体的支持"></a>GD扩展删除对PostScriptType1字体的支持</h4><p>已从GD扩展中删除对PostScript Type1字体的支持，从而删除了以下功能</p>
+<ul>
+<li><a href="http://php.net/manual/zh/function.imagepsbbox.php" target="_blank" rel="noopener">imagepsbbox()</a></li>
+<li><a href="http://php.net/manual/zh/function.imagepsencodefont.php" target="_blank" rel="noopener">imagepsencodefont()</a></li>
+<li><a href="http://php.net/manual/zh/function.imagepsextendfont.php" target="_blank" rel="noopener">imagepsextendfont()</a></li>
+<li><a href="http://php.net/manual/zh/function.imagepsfreefont.php" target="_blank" rel="noopener">imagepsfreefont()</a></li>
+<li><a href="http://php.net/manual/zh/function.imagepsloadfont.php" target="_blank" rel="noopener">imagepsloadfont()</a></li>
+<li><a href="http://php.net/manual/zh/function.imagepsslantfont.php" target="_blank" rel="noopener">imagepsslantfont()</a></li>
+<li><a href="http://php.net/manual/zh/function.imagepstext.php" target="_blank" rel="noopener">imagepstext()</a></li>
+<li>推荐使用 TrueType 字体和相关的函数作为替代。</li>
+</ul>
+<h4 id="移除了ASP和script-PHP标签"><a href="#移除了ASP和script-PHP标签" class="headerlink" title="移除了ASP和script PHP标签"></a>移除了ASP和script PHP标签</h4><table>
+<thead>
+<tr>
+<th>开标签</th>
+<th>闭标签</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;%</code></td>
+<td><code>%&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;%=</code></td>
+<td><code>%&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;script language=&quot;php&quot;&gt;</code></td>
+<td><code>&lt;/script&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="HTTP-RAW-POST-DATA-被移除"><a href="#HTTP-RAW-POST-DATA-被移除" class="headerlink" title="$HTTP_RAW_POST_DATA 被移除"></a><a href="http://php.net/manual/zh/reserved.variables.httprawpostdata.php" target="_blank" rel="noopener">$HTTP_RAW_POST_DATA</a> 被移除</h4><p>不再提供 <a href="http://php.net/manual/zh/reserved.variables.httprawpostdata.php" target="_blank" rel="noopener">$HTTP_RAW_POST_DATA</a> 变量。 请使用 <a href="http://php.net/manual/zh/wrappers.php.php#wrappers.php.input" target="_blank" rel="noopener"><em>php://input</em></a> 作为替代。</p>
+<h4 id="INI-文件中-注释格式被移除"><a href="#INI-文件中-注释格式被移除" class="headerlink" title="INI 文件中 # 注释格式被移除"></a>INI 文件中 <em>#</em> 注释格式被移除</h4><p>在 INI 文件中，不再支持以 <em>#</em> 开始的注释行， 请使用 <em>;</em>（分号）来表示注释。 此变更适用于 php.ini 以及用 <a href="http://php.net/manual/zh/function.parse-ini-file.php" target="_blank" rel="noopener">parse_ini_file()</a> 和 <a href="http://php.net/manual/zh/function.parse-ini-string.php" target="_blank" rel="noopener">parse_ini_string()</a> 函数来处理的文件。</p>
+<h2 id="PHP7-1"><a href="#PHP7-1" class="headerlink" title="PHP7.1"></a>PHP7.1</h2><h3 id="PHP7-1新特性"><a href="#PHP7-1新特性" class="headerlink" title="PHP7.1新特性"></a>PHP7.1新特性</h3><h4 id="可为空-Nullable-类型"><a href="#可为空-Nullable-类型" class="headerlink" title="可为空(Nullable)类型"></a>可为空(Nullable)类型</h4><p>参数以及返回值的类型现在可以通过在类型前加上一个问号使之允许为空。 当启用这个特性时，传入的参数或者函数返回的结果要么是给定的类型，要么是 <a href="http://php.net/manual/zh/language.types.null.php" target="_blank" rel="noopener">null</a> </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testReturn</span><span class="params">()</span>: ?<span class="title">string</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">'elePHPant'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var_dump(testReturn()); <span class="comment">//string(10) "elePHPant"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">testReturn</span><span class="params">()</span>: ?<span class="title">string</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var_dump(testReturn()); <span class="comment">//NULL</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">(?string $name)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    var_dump($name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(<span class="string">'elePHPant'</span>);  <span class="comment">//string(10) "elePHPant"</span></span><br><span class="line">test(<span class="keyword">null</span>);  <span class="comment">//NULL</span></span><br><span class="line">test(); <span class="comment">//Uncaught Error: Too few arguments to function test(), 0 passed in...</span></span><br></pre></td></tr></table></figure>
+<h4 id="Void函数"><a href="#Void函数" class="headerlink" title="Void函数"></a>Void函数</h4><p>一个新的返回值类型void被引入。 返回值声明为 void 类型的方法要么干脆省去 return 语句，要么使用一个空的 return 语句。 对于 void 函数来说，<strong>NULL</strong> 不是一个合法的返回值。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//不能有返回值,即使null也不行</span></span><br><span class="line">fucntion return_nothing(): void</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>; <span class="comment">//Fatal error: A void function must not return a value</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//不存在return</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">none_return</span><span class="params">()</span>:<span class="title">void</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//空的rentun</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">return_nothind</span><span class="params">()</span>:<span class="title">void</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//类函数中对于返回类型的声明也不能被子类覆盖</span></span><br></pre></td></tr></table></figure>
+<h4 id="类常量可见性"><a href="#类常量可见性" class="headerlink" title="类常量可见性"></a>类常量可见性</h4><p>类常量可以设置public,private,protected</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConstDemo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> PUBLIC_CONST_A = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">const</span> PUBLIC_CONST_B = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">const</span> PROTECTED_CONST = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">const</span> PRIVATE_CONST = <span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="list-1"><a href="#list-1" class="headerlink" title="list()"></a><code>list()</code></h4><ul>
+<li><p><code>list()</code>可简写为<code>[]</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$data = [</span><br><span class="line">    [<span class="number">1</span>, <span class="string">'Tom'</span>],</span><br><span class="line">    [<span class="number">2</span>, <span class="string">'Fred'</span>],</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// list() style</span></span><br><span class="line"><span class="keyword">list</span>($id1, $name1) = $data[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// [] style</span></span><br><span class="line">[$id1, $name1] = $data[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// list() style</span></span><br><span class="line"><span class="keyword">foreach</span> ($data <span class="keyword">as</span> <span class="keyword">list</span>($id, $name)) &#123;</span><br><span class="line">    <span class="comment">// logic here with $id and $name</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// [] style</span></span><br><span class="line"><span class="keyword">foreach</span> ($data <span class="keyword">as</span> [$id, $name]) &#123;</span><br><span class="line">    <span class="comment">// logic here with $id and $name</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>list()</code>中指定key</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$array = [<span class="string">"a"</span> =&gt; <span class="number">1</span>, <span class="string">"b"</span> =&gt; <span class="number">2</span>, <span class="string">"c"</span> =&gt; <span class="number">3</span>];</span><br><span class="line">[<span class="string">"a"</span> =&gt; $a, <span class="string">"b"</span> =&gt; $b, <span class="string">"c"</span> =&gt; $c] = $array;</span><br><span class="line"><span class="comment">//相当于</span></span><br><span class="line">$a = $array[<span class="string">'a'</span>];</span><br><span class="line">$b = $array[<span class="string">'b'</span>];</span><br><span class="line">$c = $array[<span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line">$data = [</span><br><span class="line">    [<span class="string">"id"</span> =&gt; <span class="number">1</span>, <span class="string">"name"</span> =&gt; <span class="string">'Tom'</span>],</span><br><span class="line">    [<span class="string">"id"</span> =&gt; <span class="number">2</span>, <span class="string">"name"</span> =&gt; <span class="string">'Fred'</span>],</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// list() style</span></span><br><span class="line"><span class="keyword">list</span>(<span class="string">"id"</span> =&gt; $id1, <span class="string">"name"</span> =&gt; $name1) = $data[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// [] style</span></span><br><span class="line">[<span class="string">"id"</span> =&gt; $id1, <span class="string">"name"</span> =&gt; $name1] = $data[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// list() style</span></span><br><span class="line"><span class="keyword">foreach</span> ($data <span class="keyword">as</span> <span class="keyword">list</span>(<span class="string">"id"</span> =&gt; $id, <span class="string">"name"</span> =&gt; $name)) &#123;</span><br><span class="line">    <span class="comment">// logic here with $id and $name</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// [] style</span></span><br><span class="line"><span class="keyword">foreach</span> ($data <span class="keyword">as</span> [<span class="string">"id"</span> =&gt; $id, <span class="string">"name"</span> =&gt; $name]) &#123;</span><br><span class="line">    <span class="comment">// logic here with $id and $name</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="iterable伪类"><a href="#iterable伪类" class="headerlink" title="iterable伪类"></a>iterable伪类</h4><p>这可以被用在参数或者返回值类型中，它代表接受数组或者实现了<strong>Traversable</strong>接口的对象.</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">iterator</span><span class="params">(iterable $iter)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">foreach</span> ($iter <span class="keyword">as</span> $val) &#123;</span><br><span class="line">        <span class="comment">//</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="多异常捕获"><a href="#多异常捕获" class="headerlink" title="多异常捕获"></a>多异常捕获</h4><p>一个catch语句块现在可以通过管道字符(<em>|</em>)来实现多个异常的捕获。 这对于需要同时处理来自不同类的不同异常时很有用。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// some code</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (FirstException | SecondException $e) &#123;</span><br><span class="line">    <span class="comment">// handle first and second exceptions</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="字符串支持负偏移"><a href="#字符串支持负偏移" class="headerlink" title="字符串支持负偏移"></a>字符串支持负偏移</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var_dump(<span class="string">"abcdef"</span>[<span class="number">-2</span>]); <span class="comment">//string(1)"e"</span></span><br><span class="line">var_dump(strpos(<span class="string">"aabbcc"</span>, <span class="string">"b"</span>, <span class="number">-3</span>)); <span class="comment">//int(3)</span></span><br></pre></td></tr></table></figure>
+<h4 id="openssl支持AEAD"><a href="#openssl支持AEAD" class="headerlink" title="openssl支持AEAD"></a>openssl支持AEAD</h4><p>通过给<a href="http://php.net/manual/zh/function.openssl-encrypt.php" target="_blank" rel="noopener">openssl_encrypt()</a>和<a href="http://php.net/manual/zh/function.openssl-decrypt.php" target="_blank" rel="noopener">openssl_decrypt()</a> 添加额外参数，现在支持了AEAD (模式 GCM and CCM)。</p>
+<h4 id="Clourse-fromCallable-将callable转化为闭包"><a href="#Clourse-fromCallable-将callable转化为闭包" class="headerlink" title="Clourse::fromCallable()将callable转化为闭包"></a>Clourse::fromCallable()将callable转化为闭包</h4><p><a href="http://php.net/manual/zh/class.closure.php" target="_blank" rel="noopener">Closure</a>新增了一个静态方法，用于将<a href="http://php.net/manual/zh/language.types.callable.php" target="_blank" rel="noopener">callable</a>快速地 转为一个<a href="http://php.net/manual/zh/class.closure.php" target="_blank" rel="noopener">Closure</a> 对象。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">exposeFunction</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Closure::fromCallable([<span class="keyword">$this</span>, <span class="string">'privateFunction'</span>]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">privateFunction</span><span class="params">($param)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        var_dump($param);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$privFunc = (<span class="keyword">new</span> Test)-&gt;exposeFunction();</span><br><span class="line"><span class="comment">//相当于</span></span><br><span class="line">$privFunc = <span class="function"><span class="keyword">function</span><span class="params">()</span></span>&#123;</span><br><span class="line">    var_dump($param);</span><br><span class="line">&#125;</span><br><span class="line">$privFunc(<span class="string">'some value'</span>); <span class="comment">//string(10) "some value"</span></span><br></pre></td></tr></table></figure>
+<h4 id="http2服务推送"><a href="#http2服务推送" class="headerlink" title="http2服务推送"></a>http2服务推送</h4><p>对服务器推送的支持现在已经被加入到 CURL 扩展中（ 需要版本 7.46 或更高）。这个可以通过 <a href="http://php.net/manual/zh/function.curl-multi-setopt.php" target="_blank" rel="noopener">curl_multi_setopt()</a> 函数与新的常量 <strong>CURLMOPT_PUSHFUNCTION</strong> 来进行调节。常量 <strong>CURL_PUST_OK</strong> 和 <strong>CURL_PUSH_DENY</strong> 也已经被添加进来，以便服务器推送的回调函数来表明自己会同意或拒绝处理。</p>
+<h4 id="异步信号处理"><a href="#异步信号处理" class="headerlink" title="异步信号处理"></a>异步信号处理</h4><p>一个新的名为 <a href="http://php.net/manual/zh/function.pcntl-async-signals.php" target="_blank" rel="noopener">pcntl_async_signals()</a> 的方法现在被引入， 用于启用无需 ticks （这会带来很多额外的开销）的异步信号处理。</p>
+<h3 id="PHP7-1变更"><a href="#PHP7-1变更" class="headerlink" title="PHP7.1变更"></a>PHP7.1变更</h3><h4 id="当传递参数过少时将抛出错误"><a href="#当传递参数过少时将抛出错误" class="headerlink" title="当传递参数过少时将抛出错误"></a>当传递参数过少时将抛出错误</h4><p>在过去如果我们调用一个用户定义的函数时，提供的参数不足，那么将会产生一个警告(warning)。 现在，这个警告被提升为一个错误异常(Error exception)。这个变更仅对用户定义的函数生效， 并不包含内置函数</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">($param)</span></span>&#123;&#125;</span><br><span class="line">test();</span><br><span class="line"><span class="comment">//Uncaught Error: Too few arguments to function test(), 0 passed in %s on line %d and exactly 1 expected in %s:%d</span></span><br></pre></td></tr></table></figure>
+<h4 id="禁止动态调用的函数"><a href="#禁止动态调用的函数" class="headerlink" title="禁止动态调用的函数"></a>禁止动态调用的函数</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">assert() - with a string <span class="keyword">as</span> the first argument </span><br><span class="line">compact() </span><br><span class="line">extract() </span><br><span class="line">func_get_args() </span><br><span class="line">func_get_arg() </span><br><span class="line">func_num_args() </span><br><span class="line">get_defined_vars() </span><br><span class="line">mb_parse_str() - with one arg </span><br><span class="line">parse_str() - with one arg</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="string">'func_num_args'</span>();</span><br><span class="line">&#125;)();</span><br><span class="line"><span class="comment">//Warning: Cannot call func_num_args() dynamically in %s on line %d</span></span><br></pre></td></tr></table></figure>
+<h4 id="数字串转换现在遵循科学计数法"><a href="#数字串转换现在遵循科学计数法" class="headerlink" title="数字串转换现在遵循科学计数法"></a>数字串转换现在遵循科学计数法</h4><h4 id="修复mt-rand算法"><a href="#修复mt-rand算法" class="headerlink" title="修复mt_rand算法"></a>修复mt_rand算法</h4><h4 id="rand-别名为mt-rand-srand-别名为mt-srand"><a href="#rand-别名为mt-rand-srand-别名为mt-srand" class="headerlink" title="rand()别名为mt_rand,srand()别名为mt_srand"></a>rand()别名为mt_rand,srand()别名为mt_srand</h4><h4 id="Disallow-the-ASCII-delete-control-character-in-identifiers"><a href="#Disallow-the-ASCII-delete-control-character-in-identifiers" class="headerlink" title="Disallow the ASCII delete control character in identifiers"></a>Disallow the ASCII delete control character in identifiers</h4><h4 id="error-log随着syslog变化"><a href="#error-log随着syslog变化" class="headerlink" title="error_log随着syslog变化"></a>error_log随着syslog变化</h4><p>如果error_log ini设置设置为syslog，则PHP错误级别将映射到syslog错误级别。 与前一种方法相比，这会在错误日志中带来更细微的区别，其中所有错误仅以通知级别记录。</p>
+<h4 id="在不完整的对象上不再调用析构方法"><a href="#在不完整的对象上不再调用析构方法" class="headerlink" title="在不完整的对象上不再调用析构方法"></a>在不完整的对象上不再调用析构方法</h4><h4 id="call-user-func-http-php-net-manual-zh-function-call-user-func-php-不再支持对传址的函数的调用"><a href="#call-user-func-http-php-net-manual-zh-function-call-user-func-php-不再支持对传址的函数的调用" class="headerlink" title="call_user_func()](http://php.net/manual/zh/function.call-user-func.php)不再支持对传址的函数的调用"></a>call_user_func()](<a href="http://php.net/manual/zh/function.call-user-func.php)不再支持对传址的函数的调用" target="_blank" rel="noopener">http://php.net/manual/zh/function.call-user-func.php)不再支持对传址的函数的调用</a></h4><p><a href="http://php.net/manual/zh/function.call-user-func.php" target="_blank" rel="noopener">call_user_func()</a> 现在在调用一个以引用作为参数的函数时将始终失败。</p>
+<h4 id="字符串不再支持空索引操作符"><a href="#字符串不再支持空索引操作符" class="headerlink" title="字符串不再支持空索引操作符"></a>字符串不再支持空索引操作符</h4><p>对字符串使用一个空索引操作符（例如<em>$str[] = $x</em>）将会抛出一个致命错误， 而不是静默地将其转为一个数组。</p>
+<h4 id="ini配置项移除"><a href="#ini配置项移除" class="headerlink" title="ini配置项移除"></a>ini配置项移除</h4><p>下列ini配置项已经被移除：</p>
+<ul>
+<li><code>session.entropy_file</code></li>
+<li><code>session.entropy_length</code></li>
+<li><code>session.hash_function</code></li>
+<li><code>session.hash_bits_per_character</code></li>
+</ul>
+<h4 id="ext-mcrypt"><a href="#ext-mcrypt" class="headerlink" title="ext/mcrypt"></a>ext/mcrypt</h4><p>mcrypt 扩展已经过时了大约10年，并且用起来很复杂。因此它被废弃并且被 OpenSSL 所取代。 从PHP 7.2起它将被从核心代码中移除并且移到PECL中。</p>
+<h4 id="mb-ereg-replace-http-php-net-manual-zh-function-mb-ereg-replace-php-和-mb-eregi-replace-http-php-net-manual-zh-function-mb-eregi-replace-php-的Eval选项"><a href="#mb-ereg-replace-http-php-net-manual-zh-function-mb-ereg-replace-php-和-mb-eregi-replace-http-php-net-manual-zh-function-mb-eregi-replace-php-的Eval选项" class="headerlink" title="mb_ereg_replace()](http://php.net/manual/zh/function.mb-ereg-replace.php)和[mb_eregi_replace()](http://php.net/manual/zh/function.mb-eregi-replace.php)的Eval选项"></a>mb_ereg_replace()](<a href="http://php.net/manual/zh/function.mb-ereg-replace.php)和[mb_eregi_replace()](http://php.net/manual/zh/function.mb-eregi-replace.php)的Eval选项" target="_blank" rel="noopener">http://php.net/manual/zh/function.mb-ereg-replace.php)和[mb_eregi_replace()](http://php.net/manual/zh/function.mb-eregi-replace.php)的Eval选项</a></h4><p>对于<a href="http://php.net/manual/zh/function.mb-ereg-replace.php" target="_blank" rel="noopener">mb_ereg_replace()</a>和<a href="http://php.net/manual/zh/function.mb-eregi-replace.php" target="_blank" rel="noopener">mb_eregi_replace()</a>的 <em>e</em>模式修饰符现在已被废弃。</p>
+<h2 id="PHP7-2"><a href="#PHP7-2" class="headerlink" title="PHP7.2"></a>PHP7.2</h2><h3 id="PHP7-2新特性"><a href="#PHP7-2新特性" class="headerlink" title="PHP7.2新特性"></a>PHP7.2新特性</h3><h4 id="新的对象类型"><a href="#新的对象类型" class="headerlink" title="新的对象类型"></a>新的对象类型</h4><p>这种新的对象类型, <a href="http://php.net/manual/zh/language.types.object.php" target="_blank" rel="noopener">object</a>, 引进了可用于逆变（contravariant）参数输入和协变（covariant）返回任何对象类型。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">(object $obj)</span> : <span class="title">object</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> SplQueue();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test(<span class="keyword">new</span> StdClass());</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $var = <span class="string">'Hello World'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$myclass = <span class="keyword">new</span> MyClass;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">(MyClass $arg)</span> : <span class="title">object</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $arg;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> test($myclass)-&gt;var;</span><br></pre></td></tr></table></figure>
+<h4 id="通过名称加载扩展"><a href="#通过名称加载扩展" class="headerlink" title="通过名称加载扩展"></a>通过名称加载扩展</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">; ini file</span><br><span class="line">extension=php-ast</span><br><span class="line">zend_extension=opcache</span><br></pre></td></tr></table></figure>
+<h4 id="允许重写抽象方法-Abstract-method"><a href="#允许重写抽象方法-Abstract-method" class="headerlink" title="允许重写抽象方法(Abstract method)"></a>允许重写抽象方法(Abstract method)</h4><p>当一个抽象类继承于另外一个抽象类的时候，继承后的抽象类可以重写被继承的抽象类的抽象方法。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">abstract</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">(string $s)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// overridden - still maintaining contravariance for parameters and covariance for return</span></span><br><span class="line">    <span class="keyword">abstract</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span><span class="params">($s)</span> : <span class="title">int</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="使用Argon2算法生成密码散列"><a href="#使用Argon2算法生成密码散列" class="headerlink" title="使用Argon2算法生成密码散列"></a>使用Argon2算法生成密码散列</h4><p> Argon2 已经被加入到密码散列（password hashing） API (这些函数以 <em>password_</em> 开头), 以下是暴露出来的常量:</p>
+<ul>
+<li><strong>PASSWORD_ARGON2I</strong></li>
+<li><strong>PASSWORD_ARGON2_DEFAULT_MEMORY_COST</strong></li>
+<li><strong>PASSWORD_ARGON2_DEFAULT_TIME_COST</strong></li>
+<li><strong>PASSWORD_ARGON2_DEFAULT_THREADS</strong></li>
+</ul>
+<h4 id="新增-ext-PDO（PDO扩展）-字符串扩展类型"><a href="#新增-ext-PDO（PDO扩展）-字符串扩展类型" class="headerlink" title="新增 ext/PDO（PDO扩展） 字符串扩展类型"></a>新增 ext/PDO（PDO扩展） 字符串扩展类型</h4><p>当你准备支持多语言字符集，PDO的字符串类型已经扩展支持国际化的字符集。以下是扩展的常量：</p>
+<ul>
+<li><strong>PDO::PARAM_STR_NATL</strong></li>
+<li><strong>PDO::PARAM_STR_CHAR</strong></li>
+<li><strong>PDO::ATTR_DEFAULT_STR_PARAM</strong></li>
+</ul>
+<p>这些常量通过<strong>PDO::PARAM_STR</strong>利用位运算<em>OR</em>进行计算：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>$db-&gt;quote(<span class="string">'über'</span>, PDO::PARAM_STR | PDO::PARAM_STR_NATL);</span><br></pre></td></tr></table></figure>
+<h4 id="允许分组命名空间的尾部逗号"><a href="#允许分组命名空间的尾部逗号" class="headerlink" title="允许分组命名空间的尾部逗号"></a>允许分组命名空间的尾部逗号</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">Foo</span>\<span class="title">Bar</span>\&#123;</span><br><span class="line">    <span class="title">Foo</span>,</span><br><span class="line">    <span class="title">Bar</span>,</span><br><span class="line">    <span class="title">Baz</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="PHP7-2变更"><a href="#PHP7-2变更" class="headerlink" title="PHP7.2变更"></a>PHP7.2变更</h3><h4 id="不带引号的字符串"><a href="#不带引号的字符串" class="headerlink" title="不带引号的字符串"></a>不带引号的字符串</h4><p>不带引号的字符串是不存在的全局常量，转化成他们自身的字符串。 在以前，该行为会产生 <strong>E_NOTICE</strong>，但现在会产生 <strong>E_WARNING</strong>。在下一个 PHP 主版本中，将抛出 <strong>Error</strong> 异常。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var_dump(NONEXISTENT);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">Warning: Use of undefined constant NONEXISTENT - assumed 'NONEXISTENT' (this will throw an Error in a future version of PHP) in %s on line %d</span></span><br><span class="line"><span class="comment">string(11) "NONEXISTENT"</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>####<a href="http://php.net/manual/zh/function.png2wbmp.php" target="_blank" rel="noopener">png2wbmp()</a> 和 <a href="http://php.net/manual/zh/function.jpeg2wbmp.php" target="_blank" rel="noopener">jpeg2wbmp()</a></p>
+<p>GD 扩展内的 <a href="http://php.net/manual/zh/function.png2wbmp.php" target="_blank" rel="noopener">png2wbmp()</a> 和 <a href="http://php.net/manual/zh/function.jpeg2wbmp.php" target="_blank" rel="noopener">jpeg2wbmp()</a> 现已被废弃，将在下一个 PHP 主版本中移除。</p>
+<h4 id="INTL-IDNA-VARIANT-2003-转化"><a href="#INTL-IDNA-VARIANT-2003-转化" class="headerlink" title="INTL_IDNA_VARIANT_2003 转化"></a><strong>INTL_IDNA_VARIANT_2003</strong> 转化</h4><p>Intl 扩展废弃了 <strong>INTL_IDNA_VARIANT_2003</strong> 转化，为<a href="http://php.net/manual/zh/function.idn-to-ascii.php" target="_blank" rel="noopener">idn_to_ascii()</a> 和 <a href="http://php.net/manual/zh/function.idn-to-utf8.php" target="_blank" rel="noopener">idn_to_utf8()</a> 的默认选项。 PHP 7.4 会把默认值设置为 <strong>INTL_IDNA_VARIANT_UTS46</strong>， 并在下一个 PHP 主版本中完全移除 <strong>INTL_IDNA_VARIANT_2003</strong>。</p>
+<h4 id="autoload-方法"><a href="#autoload-方法" class="headerlink" title="__autoload() 方法"></a><a href="http://php.net/manual/zh/function.autoload.php" target="_blank" rel="noopener">__autoload()</a> 方法</h4><p><a href="http://php.net/manual/zh/function.autoload.php" target="_blank" rel="noopener">__autoload()</a> 方法已被废弃， 因为和 <a href="http://php.net/manual/zh/function.spl-autoload-register.php" target="_blank" rel="noopener">spl_autoload_register()</a> 相比功能较差 (因为无法链式处理多个 autoloader)， 而且也无法在两种 autoloading 样式中配合使用。</p>
+<h4 id="track-errors-ini-设置和-php-errormsg-变量"><a href="#track-errors-ini-设置和-php-errormsg-变量" class="headerlink" title="track_errors ini 设置和 $php_errormsg 变量"></a><code>track_errors</code> ini 设置和 <em>$php_errormsg</em> 变量</h4><p>当开启了 <code>track_errors</code> ini 设置，出现非致命错误时， 会在本地作用域创建 <em>$php_errormsg</em> 变量。 由于提供了更好的方式： <a href="http://php.net/manual/zh/function.error-get-last.php" target="_blank" rel="noopener">error_get_last()</a> 来获取此类错误信息，该功能被废弃。</p>
+<h4 id="create-function-函数"><a href="#create-function-函数" class="headerlink" title="create_function() 函数"></a><a href="http://php.net/manual/zh/function.create-function.php" target="_blank" rel="noopener">create_function()</a> 函数</h4><p>考虑到此函数的安全隐患问题（它是 <a href="http://php.net/manual/zh/function.eval.php" target="_blank" rel="noopener">eval()</a> 的瘦包装器），该过时的函数现在已被废弃。 更好的选择是<a href="http://php.net/manual/zh/functions.anonymous.php" target="_blank" rel="noopener">匿名函数</a>。</p>
+<h4 id="mbstring-func-overload-ini-设置"><a href="#mbstring-func-overload-ini-设置" class="headerlink" title="mbstring.func_overload ini 设置"></a><code>mbstring.func_overload</code> ini 设置</h4><p>由于此设置会影响环境中的字符串系列函数，带来相互操作中的问题，它现在已被废弃。</p>
+<h4 id="unset-类型强制转化"><a href="#unset-类型强制转化" class="headerlink" title="(unset) 类型强制转化"></a><em>(unset)</em> 类型强制转化</h4><p>转化任意表达式为此类型，结果总是 <strong>NULL</strong>，所以这个多余的类型转化现在也就被废弃了。</p>
+<h4 id="parse-str-不加第二个参数"><a href="#parse-str-不加第二个参数" class="headerlink" title="parse_str() 不加第二个参数"></a><a href="http://php.net/manual/zh/function.parse-str.php" target="_blank" rel="noopener">parse_str()</a> 不加第二个参数</h4><p>使用 <a href="http://php.net/manual/zh/function.parse-str.php" target="_blank" rel="noopener">parse_str()</a> 时，不加第二个参数会导致查询字符串参数导入当前符号表。 考虑到安全隐患问题，不加第二个参数使用 <a href="http://php.net/manual/zh/function.parse-str.php" target="_blank" rel="noopener">parse_str()</a> 的行为已被废弃。 此函数的第二个选项为必填项，它使查询字符串转为 Array。</p>
+<h4 id="gmp-random-函数"><a href="#gmp-random-函数" class="headerlink" title="gmp_random() 函数"></a><a href="http://php.net/manual/zh/function.gmp-random.php" target="_blank" rel="noopener">gmp_random()</a> 函数</h4><p>此函数基于未知的、取决于平台的 limb 尺寸产生随机数。因此，该函数已被废弃。 使用更好的方式产生随机数： GMP 扩展中的 <a href="http://php.net/manual/zh/function.gmp-random-bits.php" target="_blank" rel="noopener">gmp_random_bits()</a> 和 <a href="http://php.net/manual/zh/function.gmp-random-range.php" target="_blank" rel="noopener">gmp_random_range()</a>。</p>
+<h4 id="each-函数"><a href="#each-函数" class="headerlink" title="each() 函数"></a><a href="http://php.net/manual/zh/function.each.php" target="_blank" rel="noopener">each()</a> 函数</h4><p>使用此函数遍历时，比普通的 <em>foreach</em> 更慢， 并且给新语法的变化带来实现问题。因此它被废弃了。</p>
+<h4 id="assert-一个字符串参数"><a href="#assert-一个字符串参数" class="headerlink" title="assert() 一个字符串参数"></a><a href="http://php.net/manual/zh/function.assert.php" target="_blank" rel="noopener">assert()</a> 一个字符串参数</h4><p><a href="http://php.net/manual/zh/function.assert.php" target="_blank" rel="noopener">assert()</a> 字符串参数将要求它能被 <a href="http://php.net/manual/zh/function.eval.php" target="_blank" rel="noopener">eval()</a> 执行。 考虑到可能被执行远程代码，废弃了字符串的 <a href="http://php.net/manual/zh/function.assert.php" target="_blank" rel="noopener">assert()</a>，最好提供 bool 的表达式。</p>
+<h4 id="错误处理器内的-errcontext-参数"><a href="#错误处理器内的-errcontext-参数" class="headerlink" title="错误处理器内的 $errcontext 参数"></a>错误处理器内的 <em>$errcontext</em> 参数</h4><p><em>$errcontext</em> 参数包含了错误网站的所有本地变量。 考虑到它很少被用到，而且还会导致内部优化问题，它现在被废弃了。 代替用法：调试器应该自己取回错误站点的本地变量。</p>
+<h4 id="read-exif-data-函数"><a href="#read-exif-data-函数" class="headerlink" title="read_exif_data() 函数"></a><a href="http://php.net/manual/zh/function.read-exif-data.php" target="_blank" rel="noopener">read_exif_data()</a> 函数</h4><p><a href="http://php.net/manual/zh/function.read-exif-data.php" target="_blank" rel="noopener">read_exif_data()</a> 别名已被废弃 使用 <a href="http://php.net/manual/zh/function.exif-read-data.php" target="_blank" rel="noopener">exif_read_data()</a> 函数代替。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP/" rel="tag"><i class="fa fa-tag"></i> PHP</a>
+          
+            <a href="/tags/PHP新特性/" rel="tag"><i class="fa fa-tag"></i> PHP新特性</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/09/Api文档生成工具apiDoc/" rel="next" title="Api文档生成工具apiDoc">
+                <i class="fa fa-chevron-left"></i> Api文档生成工具apiDoc
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Livfer">
+            
+              <p class="site-author-name" itemprop="name">Livfer</p>
+              <p class="site-description motion-element" itemprop="description">代码的搬运工</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LivferLiu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:livfer@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP7-0"><span class="nav-number">1.</span> <span class="nav-text">PHP7.0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP7-0新特性"><span class="nav-number">1.1.</span> <span class="nav-text">PHP7.0新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#组合比较符-lt-gt"><span class="nav-number">1.1.1.</span> <span class="nav-text">组合比较符(&lt;=&gt;)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#null合并运算符"><span class="nav-number">1.1.2.</span> <span class="nav-text">null合并运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标量类型声明"><span class="nav-number">1.1.3.</span> <span class="nav-text">标量类型声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回类型声明"><span class="nav-number">1.1.4.</span> <span class="nav-text">返回类型声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过define-定义常量数组"><span class="nav-number">1.1.5.</span> <span class="nav-text">通过define()定义常量数组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#匿名类"><span class="nav-number">1.1.6.</span> <span class="nav-text">匿名类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Unicode-codepoint-转译语法"><span class="nav-number">1.1.7.</span> <span class="nav-text">Unicode codepoint 转译语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Closure-call"><span class="nav-number">1.1.8.</span> <span class="nav-text">Closure::call()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为unserialize-提供过滤"><span class="nav-number">1.1.9.</span> <span class="nav-text">为unserialize()提供过滤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IntlChar"><span class="nav-number">1.1.10.</span> <span class="nav-text">IntlChar</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Expectations"><span class="nav-number">1.1.11.</span> <span class="nav-text">Expectations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命名空间按组一次性导入"><span class="nav-number">1.1.12.</span> <span class="nav-text">命名空间按组一次性导入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成器可以返回表达式"><span class="nav-number">1.1.13.</span> <span class="nav-text">生成器可以返回表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成器委派"><span class="nav-number">1.1.14.</span> <span class="nav-text">生成器委派</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#整数触发函数intdiv"><span class="nav-number">1.1.15.</span> <span class="nav-text">整数触发函数intdiv</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#会话选项设置"><span class="nav-number">1.1.16.</span> <span class="nav-text">会话选项设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#preg-replace-callback-array"><span class="nav-number">1.1.17.</span> <span class="nav-text">preg_replace_callback_array</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#随机字符和随即整数"><span class="nav-number">1.1.18.</span> <span class="nav-text">随机字符和随即整数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP7-0变化"><span class="nav-number">1.2.</span> <span class="nav-text">PHP7.0变化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#错误和异常处理相关变更"><span class="nav-number">1.2.1.</span> <span class="nav-text">错误和异常处理相关变更</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list"><span class="nav-number">1.2.2.</span> <span class="nav-text">list()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数参数附近的括号不在影响行为"><span class="nav-number">1.2.3.</span> <span class="nav-text">函数参数附近的括号不在影响行为</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#foreach的变化"><span class="nav-number">1.2.4.</span> <span class="nav-text">foreach的变化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#无效的八进制字符"><span class="nav-number">1.2.5.</span> <span class="nav-text">无效的八进制字符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#负位移运算"><span class="nav-number">1.2.6.</span> <span class="nav-text">负位移运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超范围后产生位移"><span class="nav-number">1.2.7.</span> <span class="nav-text">超范围后产生位移</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#十六进制字符不再被认为是数字"><span class="nav-number">1.2.8.</span> <span class="nav-text">十六进制字符不再被认为是数字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#filter-var-函数可以用于检查一个string是否含有16进制字符-并将其转化为integer"><span class="nav-number">1.2.9.</span> <span class="nav-text">filter_var()函数可以用于检查一个string是否含有16进制字符,并将其转化为integer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u-可能引起错误"><span class="nav-number">1.2.10.</span> <span class="nav-text">\u{可能引起错误</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#被移除的函数"><span class="nav-number">1.3.</span> <span class="nav-text">被移除的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#call-user-method-and-call-user-method-array"><span class="nav-number">1.3.1.</span> <span class="nav-text">call_user_method() and call_user_method_array()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#所有的-ereg-函数"><span class="nav-number">1.3.2.</span> <span class="nav-text">所有的 ereg* 函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#所有ext-mysql-ext-mssql函数"><span class="nav-number">1.3.3.</span> <span class="nav-text">所有ext/mysql,ext/mssql函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mcrypt别名"><span class="nav-number">1.3.4.</span> <span class="nav-text">mcrypt别名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#intl别名"><span class="nav-number">1.3.5.</span> <span class="nav-text">intl别名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#set-magic-qutoes-runtime"><span class="nav-number">1.3.6.</span> <span class="nav-text">set_magic_qutoes_runtime()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#set-socket-blocking"><span class="nav-number">1.3.7.</span> <span class="nav-text">set_socket_blocking()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#dl"><span class="nav-number">1.3.8.</span> <span class="nav-text">dl()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GD扩展删除对PostScriptType1字体的支持"><span class="nav-number">1.3.9.</span> <span class="nav-text">GD扩展删除对PostScriptType1字体的支持</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移除了ASP和script-PHP标签"><span class="nav-number">1.3.10.</span> <span class="nav-text">移除了ASP和script PHP标签</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP-RAW-POST-DATA-被移除"><span class="nav-number">1.3.11.</span> <span class="nav-text">$HTTP_RAW_POST_DATA 被移除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#INI-文件中-注释格式被移除"><span class="nav-number">1.3.12.</span> <span class="nav-text">INI 文件中 # 注释格式被移除</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP7-1"><span class="nav-number">2.</span> <span class="nav-text">PHP7.1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP7-1新特性"><span class="nav-number">2.1.</span> <span class="nav-text">PHP7.1新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#可为空-Nullable-类型"><span class="nav-number">2.1.1.</span> <span class="nav-text">可为空(Nullable)类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Void函数"><span class="nav-number">2.1.2.</span> <span class="nav-text">Void函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类常量可见性"><span class="nav-number">2.1.3.</span> <span class="nav-text">类常量可见性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list-1"><span class="nav-number">2.1.4.</span> <span class="nav-text">list()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#iterable伪类"><span class="nav-number">2.1.5.</span> <span class="nav-text">iterable伪类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多异常捕获"><span class="nav-number">2.1.6.</span> <span class="nav-text">多异常捕获</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串支持负偏移"><span class="nav-number">2.1.7.</span> <span class="nav-text">字符串支持负偏移</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#openssl支持AEAD"><span class="nav-number">2.1.8.</span> <span class="nav-text">openssl支持AEAD</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Clourse-fromCallable-将callable转化为闭包"><span class="nav-number">2.1.9.</span> <span class="nav-text">Clourse::fromCallable()将callable转化为闭包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#http2服务推送"><span class="nav-number">2.1.10.</span> <span class="nav-text">http2服务推送</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步信号处理"><span class="nav-number">2.1.11.</span> <span class="nav-text">异步信号处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP7-1变更"><span class="nav-number">2.2.</span> <span class="nav-text">PHP7.1变更</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#当传递参数过少时将抛出错误"><span class="nav-number">2.2.1.</span> <span class="nav-text">当传递参数过少时将抛出错误</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#禁止动态调用的函数"><span class="nav-number">2.2.2.</span> <span class="nav-text">禁止动态调用的函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数字串转换现在遵循科学计数法"><span class="nav-number">2.2.3.</span> <span class="nav-text">数字串转换现在遵循科学计数法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修复mt-rand算法"><span class="nav-number">2.2.4.</span> <span class="nav-text">修复mt_rand算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#rand-别名为mt-rand-srand-别名为mt-srand"><span class="nav-number">2.2.5.</span> <span class="nav-text">rand()别名为mt_rand,srand()别名为mt_srand</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Disallow-the-ASCII-delete-control-character-in-identifiers"><span class="nav-number">2.2.6.</span> <span class="nav-text">Disallow the ASCII delete control character in identifiers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#error-log随着syslog变化"><span class="nav-number">2.2.7.</span> <span class="nav-text">error_log随着syslog变化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在不完整的对象上不再调用析构方法"><span class="nav-number">2.2.8.</span> <span class="nav-text">在不完整的对象上不再调用析构方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#call-user-func-http-php-net-manual-zh-function-call-user-func-php-不再支持对传址的函数的调用"><span class="nav-number">2.2.9.</span> <span class="nav-text">call_user_func()](http://php.net/manual/zh/function.call-user-func.php)不再支持对传址的函数的调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符串不再支持空索引操作符"><span class="nav-number">2.2.10.</span> <span class="nav-text">字符串不再支持空索引操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ini配置项移除"><span class="nav-number">2.2.11.</span> <span class="nav-text">ini配置项移除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ext-mcrypt"><span class="nav-number">2.2.12.</span> <span class="nav-text">ext/mcrypt</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mb-ereg-replace-http-php-net-manual-zh-function-mb-ereg-replace-php-和-mb-eregi-replace-http-php-net-manual-zh-function-mb-eregi-replace-php-的Eval选项"><span class="nav-number">2.2.13.</span> <span class="nav-text">mb_ereg_replace()](http://php.net/manual/zh/function.mb-ereg-replace.php)和[mb_eregi_replace()](http://php.net/manual/zh/function.mb-eregi-replace.php)的Eval选项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP7-2"><span class="nav-number">3.</span> <span class="nav-text">PHP7.2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP7-2新特性"><span class="nav-number">3.1.</span> <span class="nav-text">PHP7.2新特性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新的对象类型"><span class="nav-number">3.1.1.</span> <span class="nav-text">新的对象类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过名称加载扩展"><span class="nav-number">3.1.2.</span> <span class="nav-text">通过名称加载扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#允许重写抽象方法-Abstract-method"><span class="nav-number">3.1.3.</span> <span class="nav-text">允许重写抽象方法(Abstract method)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用Argon2算法生成密码散列"><span class="nav-number">3.1.4.</span> <span class="nav-text">使用Argon2算法生成密码散列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新增-ext-PDO（PDO扩展）-字符串扩展类型"><span class="nav-number">3.1.5.</span> <span class="nav-text">新增 ext/PDO（PDO扩展） 字符串扩展类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#允许分组命名空间的尾部逗号"><span class="nav-number">3.1.6.</span> <span class="nav-text">允许分组命名空间的尾部逗号</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PHP7-2变更"><span class="nav-number">3.2.</span> <span class="nav-text">PHP7.2变更</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#不带引号的字符串"><span class="nav-number">3.2.1.</span> <span class="nav-text">不带引号的字符串</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#INTL-IDNA-VARIANT-2003-转化"><span class="nav-number">3.2.2.</span> <span class="nav-text">INTL_IDNA_VARIANT_2003 转化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#autoload-方法"><span class="nav-number">3.2.3.</span> <span class="nav-text">__autoload() 方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#track-errors-ini-设置和-php-errormsg-变量"><span class="nav-number">3.2.4.</span> <span class="nav-text">track_errors ini 设置和 $php_errormsg 变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#create-function-函数"><span class="nav-number">3.2.5.</span> <span class="nav-text">create_function() 函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mbstring-func-overload-ini-设置"><span class="nav-number">3.2.6.</span> <span class="nav-text">mbstring.func_overload ini 设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#unset-类型强制转化"><span class="nav-number">3.2.7.</span> <span class="nav-text">(unset) 类型强制转化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#parse-str-不加第二个参数"><span class="nav-number">3.2.8.</span> <span class="nav-text">parse_str() 不加第二个参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gmp-random-函数"><span class="nav-number">3.2.9.</span> <span class="nav-text">gmp_random() 函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#each-函数"><span class="nav-number">3.2.10.</span> <span class="nav-text">each() 函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#assert-一个字符串参数"><span class="nav-number">3.2.11.</span> <span class="nav-text">assert() 一个字符串参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#错误处理器内的-errcontext-参数"><span class="nav-number">3.2.12.</span> <span class="nav-text">错误处理器内的 $errcontext 参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#read-exif-data-函数"><span class="nav-number">3.2.13.</span> <span class="nav-text">read_exif_data() 函数</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Livfer</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
