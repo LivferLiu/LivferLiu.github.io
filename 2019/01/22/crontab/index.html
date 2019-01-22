@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="cron服务cron是一个Linux下的定时执行工具. 12345service crond start //启动服务service crond stop //暂定服务service crond restart //重启服务service crond reload //重新载入配置service crond status //查看服务状态 查看cron配置文件 /var/spool/cron/ 这">
+<meta name="description" content="cron服务cron是一个Linux下的定时执行工具. 12345service crond start //启动服务service crond stop //暂定服务service crond restart //重启服务service crond reload //重新载入配置service crond status //查看服务状态">
 <meta name="keywords" content="Linux,crontab">
 <meta property="og:type" content="article">
 <meta property="og:title" content="crontab 定时任务">
 <meta property="og:url" content="http://yoursite.com/2019/01/22/crontab/index.html">
 <meta property="og:site_name" content="Livfer&#39;s Blog">
-<meta property="og:description" content="cron服务cron是一个Linux下的定时执行工具. 12345service crond start //启动服务service crond stop //暂定服务service crond restart //重启服务service crond reload //重新载入配置service crond status //查看服务状态 查看cron配置文件 /var/spool/cron/ 这">
+<meta property="og:description" content="cron服务cron是一个Linux下的定时执行工具. 12345service crond start //启动服务service crond stop //暂定服务service crond restart //重启服务service crond reload //重新载入配置service crond status //查看服务状态">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-22T08:39:54.200Z">
+<meta property="og:updated_time" content="2019-01-22T09:16:49.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="crontab 定时任务">
-<meta name="twitter:description" content="cron服务cron是一个Linux下的定时执行工具. 12345service crond start //启动服务service crond stop //暂定服务service crond restart //重启服务service crond reload //重新载入配置service crond status //查看服务状态 查看cron配置文件 /var/spool/cron/ 这">
+<meta name="twitter:description" content="cron服务cron是一个Linux下的定时执行工具. 12345service crond start //启动服务service crond stop //暂定服务service crond restart //重启服务service crond reload //重新载入配置service crond status //查看服务状态">
 
 
 
@@ -351,6 +351,7 @@
       
         <h2 id="cron服务"><a href="#cron服务" class="headerlink" title="cron服务"></a>cron服务</h2><p>cron是一个Linux下的定时执行工具.</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">service crond start //启动服务</span><br><span class="line">service crond stop //暂定服务</span><br><span class="line">service crond restart //重启服务</span><br><span class="line">service crond reload //重新载入配置</span><br><span class="line">service crond status //查看服务状态</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="查看cron配置文件"><a href="#查看cron配置文件" class="headerlink" title="查看cron配置文件"></a>查看cron配置文件</h2><ul>
 <li><code>/var/spool/cron/</code> 这个目录存放的是每个用户包括<code>root</code>的crontab任务,每个任务以创建者的名字命名.比如livfer创建的crontab定时任务,存放的是<code>/var/spool/cron/livfer</code>,一般一个用户最多只有一个crontab文件</li>
 </ul>
