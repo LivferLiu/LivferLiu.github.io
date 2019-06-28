@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Linux,">
+  <meta name="keywords" content="go,">
 
 
 
@@ -86,18 +86,20 @@
 
 
 
-<meta name="description" content="Linux是什么系统/程序电脑主机是由一堆硬件组成,为了能有效控制这些硬件资源,于是就有了系统的诞生. 系统作用:  能有效控制这些硬件资源分配 提供电脑运作所有的功能(如网络) 为程序设计师提供容易的开发环境 系统也会提供系统桌面">
-<meta name="keywords" content="Linux">
+<meta name="description" content="概念切片类似于PHP可操作的所以数据,属于go中可动态改变的特殊数组 切片在go中是一个新的数据类型,与数组最大的不同在于，切片的类型字面量中只有元素的类型，没有长度 切片有三种创建方式: 基于数组,数组切片,直接创建 切片在内存中的组织方式实际上是一个有 3 个域的结构体：指向相关数组的指针，切片 长度以及切片容量。下图给出了一个长度为 2，容量为 4 的切片 var x = []int{2,">
+<meta name="keywords" content="go">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux介绍">
-<meta property="og:url" content="http://yoursite.com/2019/01/04/Linux介绍/index.html">
+<meta property="og:title" content="go数据类型-切片">
+<meta property="og:url" content="http://yoursite.com/2019/06/28/go数据类型-切片/index.html">
 <meta property="og:site_name" content="Livfer&#39;s Blog">
-<meta property="og:description" content="Linux是什么系统/程序电脑主机是由一堆硬件组成,为了能有效控制这些硬件资源,于是就有了系统的诞生. 系统作用:  能有效控制这些硬件资源分配 提供电脑运作所有的功能(如网络) 为程序设计师提供容易的开发环境 系统也会提供系统桌面">
+<meta property="og:description" content="概念切片类似于PHP可操作的所以数据,属于go中可动态改变的特殊数组 切片在go中是一个新的数据类型,与数组最大的不同在于，切片的类型字面量中只有元素的类型，没有长度 切片有三种创建方式: 基于数组,数组切片,直接创建 切片在内存中的组织方式实际上是一个有 3 个域的结构体：指向相关数组的指针，切片 长度以及切片容量。下图给出了一个长度为 2，容量为 4 的切片 var x = []int{2,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-04T06:34:02.527Z">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g4gzdnfjxhj30v00dngop.jpg">
+<meta property="og:updated_time" content="2019-06-28T09:35:00.303Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux介绍">
-<meta name="twitter:description" content="Linux是什么系统/程序电脑主机是由一堆硬件组成,为了能有效控制这些硬件资源,于是就有了系统的诞生. 系统作用:  能有效控制这些硬件资源分配 提供电脑运作所有的功能(如网络) 为程序设计师提供容易的开发环境 系统也会提供系统桌面">
+<meta name="twitter:title" content="go数据类型-切片">
+<meta name="twitter:description" content="概念切片类似于PHP可操作的所以数据,属于go中可动态改变的特殊数组 切片在go中是一个新的数据类型,与数组最大的不同在于，切片的类型字面量中只有元素的类型，没有长度 切片有三种创建方式: 基于数组,数组切片,直接创建 切片在内存中的组织方式实际上是一个有 3 个域的结构体：指向相关数组的指针，切片 长度以及切片容量。下图给出了一个长度为 2，容量为 4 的切片 var x = []int{2,">
+<meta name="twitter:image" content="http://ww3.sinaimg.cn/large/006tNc79gy1g4gzdnfjxhj30v00dngop.jpg">
 
 
 
@@ -127,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/04/Linux介绍/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/28/go数据类型-切片/">
 
 
 
 
 
-  <title>Linux介绍 | Livfer's Blog</title>
+  <title>go数据类型-切片 | Livfer's Blog</title>
   
 
 
@@ -260,7 +262,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/04/Linux介绍/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/28/go数据类型-切片/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Livfer">
@@ -277,7 +279,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux介绍</h1>
+          <h1 class="post-title" itemprop="name headline">go数据类型-切片</h1>
         
 
         <div class="post-meta">
@@ -289,8 +291,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-04T11:45:32+08:00">
-                2019-01-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-28T16:49:14+08:00">
+                2019-06-28
               </time>
             
 
@@ -312,8 +314,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/go/" itemprop="url" rel="index">
+                    <span itemprop="name">go</span>
                   </a>
                 </span>
 
@@ -349,48 +351,18 @@
       
 
       
-        <h2 id="Linux是什么"><a href="#Linux是什么" class="headerlink" title="Linux是什么"></a>Linux是什么</h2><h3 id="系统-程序"><a href="#系统-程序" class="headerlink" title="系统/程序"></a>系统/程序</h3><p>电脑主机是由一堆硬件组成,为了能有效控制这些硬件资源,于是就有了系统的诞生.</p>
-<p>系统作用:</p>
-<ul>
-<li>能有效控制这些硬件资源分配</li>
-<li>提供电脑运作所有的功能(如网络)</li>
-<li>为程序设计师提供容易的开发环境</li>
-<li>系统也会提供系统桌面</li>
-</ul>
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>切片类似于PHP可操作的所以数据,属于go中可动态改变的特殊数组</p>
+<p>切片在go中是一个新的数据类型,与数组最大的不同在于，切片的类型字面量中只有元素的类型，没有长度</p>
+<p>切片有三种创建方式: 基于数组,数组切片,直接创建</p>
+<p>切片在内存中的组织方式实际上是一个有 3 个域的结构体：指向相关数组的指针，切片 长度以及切片容量。下图给出了一个长度为 2，容量为 4 的切片</p>
+<p><code>var x = []int{2, 3, 5, 7, 11}</code></p>
+<p><code>y := x[1:3] //右边不包括 3,5</code></p>
+<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4gzdnfjxhj30v00dngop.jpg" alt=""></p>
 <a id="more"></a>
-<p>### </p>
-<p><strong>Linux就是这样一套系统</strong></p>
-<p>由于不同的硬件的功能和函数不相同,所以每种系统都是针对对应的平台使用.比如windows是针对个人电脑x86架构体设计的,在Mac上就无法安装使用(不包含虚拟机的情况).不过Linux是开源的系统,所以可以被修改适用于各种机器上,这就是Linux的[可移植性].</p>
-<h3 id="Linux发展史"><a href="#Linux发展史" class="headerlink" title="Linux发展史"></a>Linux发展史</h3><ol>
-<li>贝尔实验室(Bell lab.)的Ken Thompson 利用组合语言写成了一个unix前身系统,当时并不叫unix</li>
-<li>1971年~1973年由Dennis Ritchie以C语言进行改写,此时才正式命名为Unix</li>
-<li>1977年由Bill Joy放出了BSD(Berkeley Software Distribution),这些成为Unix-Like系统</li>
-<li>1984年有大学教授Andrew Tanenbaum完成了Minix系统,该系统提供了源码</li>
-<li>1984年由Richard Stallman提倡GNU计划,倡导自由软件,并通过律师规范了GPL(General Public License)授权模式</li>
-<li>1991年荷兰大学生Linus Torvalds开发了Linux,此时Linux才正式出现.</li>
-</ol>
-<h3 id="Linux内核版本"><a href="#Linux内核版本" class="headerlink" title="Linux内核版本"></a>Linux内核版本</h3><ul>
-<li>Linux内核官网: <a href="https://www.kernel.org/" target="_blank" rel="noopener">https://www.kernel.org/</a></li>
-<li>版本号说明</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">4.19.13</span><br><span class="line">4: 主版本号(本质变化)</span><br><span class="line">19: 次版本号(同一主版本大变动)</span><br><span class="line">13: 末版本(较小改动)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>目前最新:4.20</li>
-</ul>
-<h3 id="常见的发行版"><a href="#常见的发行版" class="headerlink" title="常见的发行版"></a>常见的发行版</h3><ul>
-<li><a href="http://www.ubuntu.com/" target="_blank" rel="noopener">Ubuntu</a></li>
-<li><a href="[http://www.redhat.com](http://www.redhat.com/">RedHat</a>)</li>
-<li><a href="http://www.centos.org/" target="_blank" rel="noopener">Centos</a></li>
-<li><a href="https://getfedora.org/" target="_blank" rel="noopener">Fedora</a></li>
-<li><a href="http://www.debian.org/" target="_blank" rel="noopener">Debian</a></li>
-<li><a href="http://www.gentoo.org/" target="_blank" rel="noopener">Gentoo</a></li>
-<li><a href="[https://www.suse.com](https://www.suse.com/">openSUSE</a>)</li>
-</ul>
-<h3 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h3><ul>
-<li>基于Linux的企业服务器</li>
-<li>嵌入式应用</li>
-<li>云</li>
-</ul>
+<h2 id="创建切片"><a href="#创建切片" class="headerlink" title="创建切片"></a>创建切片</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//基于数组创建切片</span></span><br><span class="line">	b:= []<span class="keyword">int</span>&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125; <span class="comment">//数组切片</span></span><br><span class="line">	a := b[<span class="number">2</span>:]</span><br><span class="line">	<span class="comment">//基于数组切片创建切片</span></span><br><span class="line">	d := a[<span class="number">1</span>:]</span><br><span class="line">	fmt.Println(d)</span><br><span class="line">	fmt.Println(a) <span class="comment">//[3 4 5]</span></span><br><span class="line">	a[<span class="number">1</span>] = <span class="number">3</span> <span class="comment">//可动态修改,同步的b中的b[3]也为被改为4,因为切片是指向指针的,并不是变量的拷贝</span></span><br><span class="line">	fmt.Println(<span class="string">"a切片:"</span>,a) <span class="comment">//a切片: [3 3 5]</span></span><br><span class="line">	fmt.Println(<span class="string">"b数组:"</span>,b) <span class="comment">//b数组: [1 2 3 3 5]</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//make直接创建数组切片</span></span><br><span class="line">	<span class="keyword">var</span> c = <span class="built_in">make</span>([]<span class="keyword">int</span>,<span class="number">5</span>,<span class="number">10</span>)</span><br><span class="line">	<span class="comment">//动态添加元素,即使范围比定义好的范围大也可以</span></span><br><span class="line">	<span class="comment">//append() 函数并不会改变原来的切片，而是会生成一个容量更大的切片，然后把原有的元素和新元素一并拷贝到新切片中，默认情况下，扩容后新切片的容量将会是原切片容量的 2 倍，</span></span><br><span class="line">	<span class="comment">// 如果还不足以容纳新元素，则按照同样的操作继续扩容，直到新容量不小于原长度与要追加的元素数量之和。但是，当原切片的长度大于或等于 1024 时，Go 语言将会以原容量的 1.25 倍作为新容量的基准。</span></span><br><span class="line">	<span class="comment">//因此，如果实现能预估切片的容量并在初始化时合理地设置容量值，可以大幅降低切片内部重新分配内存和搬送内存块的操作次数，从而提高程序性能。</span></span><br><span class="line">	<span class="keyword">var</span> newC = <span class="built_in">append</span>(c,<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">	c = <span class="built_in">append</span>(c,newC...)</span><br><span class="line">	fmt.Println(<span class="built_in">len</span>(c))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>切片的长度和容量需要特别注意下,<code>len()</code>可以获取切片的容量,<code>cap()</code>可以获取切片的真实长度</strong></p>
+<h2 id="增加元素"><a href="#增加元素" class="headerlink" title="增加元素"></a>增加元素</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">	//make直接创建数组切片</span><br><span class="line">	var c = make([]int,5,10)</span><br><span class="line">	//动态添加元素,即使范围比定义好的范围大也可以</span><br><span class="line">	//append() 函数并不会改变原来的切片，而是会生成一个容量更大的切片，然后把原有的元素和新元素一并拷贝到新切片中，默认情况下，扩容后新切片的容量将会是原切片容量的 2 倍，</span><br><span class="line">	// 如果还不足以容纳新元素，则按照同样的操作继续扩容，直到新容量不小于原长度与要追加的元素数量之和。但是，当原切片的长度大于或等于 1024 时，Go 语言将会以原容量的 1.25 倍作为新容量的基准。</span><br><span class="line">	//因此，如果实现能预估切片的容量并在初始化时合理地设置容量值，可以大幅降低切片内部重新分配内存和搬送内存块的操作次数，从而提高程序性能。</span><br><span class="line">	var newC = append(c,1,3,4)</span><br><span class="line">	c = append(c,newC...)</span><br><span class="line">	fmt.Println(len(c))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="遍历数组切片"><a href="#遍历数组切片" class="headerlink" title="遍历数组切片"></a>遍历数组切片</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(a); i++ &#123;</span><br><span class="line">    fmt.Println(<span class="string">"a["</span>, i, <span class="string">"] ="</span>, summer[i]) </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> i, v := <span class="keyword">range</span> a &#123; </span><br><span class="line">    fmt.Println(<span class="string">"a["</span>, i, <span class="string">"] ="</span>, v) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -408,7 +380,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+            <a href="/tags/go/" rel="tag"><i class="fa fa-tag"></i> go</a>
           
         </div>
       
@@ -421,8 +393,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/04/计算机基础/" rel="next" title="计算机基础">
-                <i class="fa fa-chevron-left"></i> 计算机基础
+              <a href="/2019/06/28/go数据类型-数组/" rel="next" title="go数据类型-数组">
+                <i class="fa fa-chevron-left"></i> go数据类型-数组
               </a>
             
           </div>
@@ -430,10 +402,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/04/MBR和GPT/" rel="prev" title="MBR和GPT">
-                MBR和GPT <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -583,7 +551,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux是什么"><span class="nav-number">1.</span> <span class="nav-text">Linux是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#系统-程序"><span class="nav-number">1.1.</span> <span class="nav-text">系统/程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux发展史"><span class="nav-number">1.2.</span> <span class="nav-text">Linux发展史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux内核版本"><span class="nav-number">1.3.</span> <span class="nav-text">Linux内核版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见的发行版"><span class="nav-number">1.4.</span> <span class="nav-text">常见的发行版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用途"><span class="nav-number">1.5.</span> <span class="nav-text">用途</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建切片"><span class="nav-number">2.</span> <span class="nav-text">创建切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增加元素"><span class="nav-number">3.</span> <span class="nav-text">增加元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历数组切片"><span class="nav-number">4.</span> <span class="nav-text">遍历数组切片</span></a></li></ol></div>
             
 
           </div>
