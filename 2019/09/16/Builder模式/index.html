@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Life,PHP,Code">
+  <meta name="keywords" content="PHP,设计模式,">
 
 
 
@@ -86,17 +86,18 @@
 
 
 
-<meta name="description" content="代码的搬运工">
+<meta name="description" content="建造者模式定义建造者模式是一种创建型模式，它可以让一个产品的内部表象和和产品的生产过程分离开，从而可以生成具有不同内部表象的产品 建造者模式中的主要角色 抽象建造者(Builder)角色：定义抽象接口，规范产品各个部分的建造，必须包括建造方法和返回方法。 具体建造者(Concrete)角色：实现抽象建造者接口。应用程序最终根据此角色中实现的业务逻辑创造产品。 导演者(Director)角色：调用具">
+<meta name="keywords" content="PHP,设计模式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Builder模式">
 <meta property="og:url" content="http://yoursite.com/2019/09/16/Builder模式/index.html">
 <meta property="og:site_name" content="Livfer&#39;s Blog">
-<meta property="og:description" content="代码的搬运工">
+<meta property="og:description" content="建造者模式定义建造者模式是一种创建型模式，它可以让一个产品的内部表象和和产品的生产过程分离开，从而可以生成具有不同内部表象的产品 建造者模式中的主要角色 抽象建造者(Builder)角色：定义抽象接口，规范产品各个部分的建造，必须包括建造方法和返回方法。 具体建造者(Concrete)角色：实现抽象建造者接口。应用程序最终根据此角色中实现的业务逻辑创造产品。 导演者(Director)角色：调用具">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-16T01:59:04.979Z">
+<meta property="og:updated_time" content="2019-09-16T02:31:31.563Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Builder模式">
-<meta name="twitter:description" content="代码的搬运工">
+<meta name="twitter:description" content="建造者模式定义建造者模式是一种创建型模式，它可以让一个产品的内部表象和和产品的生产过程分离开，从而可以生成具有不同内部表象的产品 建造者模式中的主要角色 抽象建造者(Builder)角色：定义抽象接口，规范产品各个部分的建造，必须包括建造方法和返回方法。 具体建造者(Concrete)角色：实现抽象建造者接口。应用程序最终根据此角色中实现的业务逻辑创造产品。 导演者(Director)角色：调用具">
 
 
 
@@ -299,6 +300,39 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -326,7 +360,20 @@
       
 
       
-        
+        <h2 id="建造者模式定义"><a href="#建造者模式定义" class="headerlink" title="建造者模式定义"></a>建造者模式定义</h2><p>建造者模式是一种创建型模式，它可以让一个产品的内部表象和和产品的生产过程分离开，从而可以生成具有不同内部表象的产品</p>
+<h3 id="建造者模式中的主要角色"><a href="#建造者模式中的主要角色" class="headerlink" title="建造者模式中的主要角色"></a>建造者模式中的主要角色</h3><ul>
+<li>抽象建造者(Builder)角色：定义抽象接口，规范产品各个部分的建造，必须包括建造方法和返回方法。</li>
+<li>具体建造者(Concrete)角色：实现抽象建造者接口。应用程序最终根据此角色中实现的业务逻辑创造产品。</li>
+<li>导演者(Director)角色：调用具体的建造者角色创造产品。</li>
+<li>产品(Product)角色：在导演者的指导下所创建的复杂对象。</li>
+</ul>
+<h3 id="适用性"><a href="#适用性" class="headerlink" title="适用性"></a>适用性</h3><ul>
+<li>当创建复杂对象的算法应该独立于该对象的组成部分以及它们的装配方式时。</li>
+<li>当构造过程必须允许被构造的对象有不同的表示时。</li>
+</ul>
+<a id="more"></a>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by PhpStorm.</span></span><br><span class="line"><span class="comment"> * User: Livfer</span></span><br><span class="line"><span class="comment"> * Desc:</span></span><br><span class="line"><span class="comment"> * Date: 2019/9/12</span></span><br><span class="line"><span class="comment"> * Time: 18:09</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 地图产品-产品角色</span></span><br><span class="line"><span class="comment"> * Class Product</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $mapType;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;mapType = [];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">createMap</span><span class="params">($mapType)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> array_push(<span class="keyword">$this</span>-&gt;mapType, $mapType);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">productResult</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;mapType;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 建造者抽象类-建造者角色</span></span><br><span class="line"><span class="comment"> * Class Builder</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Builder</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="function"><span class="keyword">function</span> <span class="title">createMap</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="function"><span class="keyword">function</span> <span class="title">getResult</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 具体建造者类</span></span><br><span class="line"><span class="comment"> * Class HighMapBuilder</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HighMapBuilder</span> <span class="keyword">extends</span> <span class="title">Builder</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $product;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;product = <span class="keyword">new</span> Product();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">createMap</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;product-&gt;createMap(<span class="string">"高清地图"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getResult</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;product;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 具体建造者类</span></span><br><span class="line"><span class="comment"> * Class SlowMapBuilder</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SlowMapBuilder</span> <span class="keyword">extends</span> <span class="title">Builder</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $product;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;product = <span class="keyword">new</span> Product();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">createMap</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;product-&gt;createMap(<span class="string">'低画质地图'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getResult</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;product;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 具体执行的类-导演者角色</span></span><br><span class="line"><span class="comment"> * Class Director</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Director</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> $builder;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(Builder $builder)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $builder-&gt;createMap();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//高清地图创建</span></span><br><span class="line">$highBuilder = <span class="keyword">new</span> HighMapBuilder();</span><br><span class="line">$highMap = <span class="keyword">new</span> Director($highBuilder);</span><br><span class="line">$highMapResult = $highBuilder-&gt;getResult();</span><br><span class="line"></span><br><span class="line"><span class="comment">//低画质地图创建</span></span><br><span class="line">$slowBuilder = <span class="keyword">new</span> SlowMapBuilder();</span><br><span class="line">$slowMap = <span class="keyword">new</span> Director($slowBuilder);</span><br><span class="line">$slowMapResult = $slowBuilder-&gt;getResult();</span><br><span class="line"></span><br><span class="line"><span class="comment">//$result = $slowMapResult-&gt;productResult();</span></span><br><span class="line"><span class="comment">//var_dump($result);</span></span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -340,6 +387,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP-设计模式/" rel="tag"><i class="fa fa-tag"></i> PHP,设计模式</a>
+          
+        </div>
       
 
       
@@ -359,6 +412,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/16/Singleton模式/" rel="prev" title="Singleton模式">
+                Singleton模式 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -410,8 +467,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -428,7 +494,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -439,7 +505,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -450,7 +516,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -489,6 +555,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#建造者模式定义"><span class="nav-number">1.</span> <span class="nav-text">建造者模式定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#建造者模式中的主要角色"><span class="nav-number">1.1.</span> <span class="nav-text">建造者模式中的主要角色</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适用性"><span class="nav-number">1.2.</span> <span class="nav-text">适用性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">2.</span> <span class="nav-text">实例</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
