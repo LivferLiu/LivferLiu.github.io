@@ -259,6 +259,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/05/Homebrew换源/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Livfer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Livfer's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/05/Homebrew换源/" itemprop="url">Homebrew换源</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-05T17:19:04+08:00">
+                2019-09-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Homebrew/" itemprop="url" rel="index">
+                    <span itemprop="name">Homebrew</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>使用国内的镜像替换homebrew镜像，对镜像进行加速源</p>
+<p>原先我们执行brew命令安装的时候，跟3个仓库地址有关 </p>
+<p>1 brew.git</p>
+<p>2 homebrew-core.git</p>
+<p>3 homebrew-bottles</p>
+<p>把三个仓库地址全部替换成国内Alibaba提供的地址</p>
+<p>1 替换/还原brew.git仓库地址</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`# 替换成阿里巴巴的 brew.git 仓库地址:``cd ``"$(brew --repo)"``git remote ``set``-url origin https:``//mirrors.aliyun.com/homebrew/brew.git` `#=======================================================` `# 还原为官方提供的 brew.git 仓库地址``cd ``"$(brew --repo)"``git remote ``set``-url origin https:``//github.com/Homebrew/brew.git`</span><br></pre></td></tr></table></figure>
+<p> 2 替换/还原homebrew-core.git仓库地址</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`# 替换成阿里巴巴的 homebrew-core.git 仓库地址:``cd ``"$(brew --repo)/Library/Taps/homebrew/homebrew-core"``git remote ``set``-url origin https:``//mirrors.aliyun.com/homebrew/homebrew-core.git` `#=======================================================` `# 还原为官方提供的 homebrew-core.git 仓库地址``cd ``"$(brew --repo)/Library/Taps/homebrew/homebrew-core"``git remote ``set``-url origin https:``//github.com/Homebrew/homebrew-core.git`</span><br></pre></td></tr></table></figure>
+<p> 3 替换/还原homebrew-bottles</p>
+<p> 3.1 这个步骤跟你的macOs系统使用的shell版本有关系，首先查看shell版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`echo $SHELL` `# 如果你的输出结果是 /bin/zsh，参考?的 zsh 终端操作方式``# 如果你的输出结果是 /bin/bash，参考?的 bash 终端操作方式`</span><br></pre></td></tr></table></figure>
+<p> 3.2 zsh终端操作方式</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`# 替换成阿里巴巴的 homebrew-bottles 访问地址:``echo ``'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles'` `&gt;&gt; ~/.zshrc``source ~/.zshrc` `#=======================================================` `# 还原为官方提供的 homebrew-bottles 访问地址``vi ~/.zshrc``# 然后，删除 HOMEBREW_BOTTLE_DOMAIN 这一行配置``source ~/.zshrc`</span><br></pre></td></tr></table></figure>
+<p> 3.3 bash终端操作方式</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`# 替换 homebrew-bottles 访问 URL:``echo ``'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles'` `&gt;&gt; ~/.bash_profile``source ~/.bash_profile` `#=======================================================` `# 还原为官方提供的 homebrew-bottles 访问地址``vi ~/.bash_profile``# 然后，删除 HOMEBREW_BOTTLE_DOMAIN 这一行配置``source ~/.bash_profile`</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/06/Linux清理/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1624,152 +1781,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/09/break-contine和goto/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Livfer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Livfer's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/09/break-contine和goto/" itemprop="url">break,contine和goto</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-09T15:28:39+08:00">
-                2019-07-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/go/" itemprop="url" rel="index">
-                    <span itemprop="name">go</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="break-continue"><a href="#break-continue" class="headerlink" title="break,continue"></a><code>break</code>,<code>continue</code></h2><p><code>break</code>,<code>continue</code>与PHP中的类似,通过<code>break</code>跳出当前最内部循环,通过<code>continue</code>执行下一次循环,go中可以通过标签进行跳转标签处</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/07/09/break-contine和goto/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1822,7 +1833,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">48</span>
+                  <span class="site-state-item-count">49</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1833,7 +1844,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1844,7 +1855,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
