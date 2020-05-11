@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端,自省,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="HTML中常用行内,块级元素行内元素 a—超链接 b—粗体(不推荐使用) br—换行 i–区分普通文本,通常斜体 span strong—粗体显示 input select button form label textarea">
+<meta name="keywords" content="前端,自省">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自省系列-2">
+<meta property="og:url" content="http://yoursite.com/2020/05/11/自省系列-2/index.html">
+<meta property="og:site_name" content="Livfer&#39;s Blog">
+<meta property="og:description" content="HTML中常用行内,块级元素行内元素 a—超链接 b—粗体(不推荐使用) br—换行 i–区分普通文本,通常斜体 span strong—粗体显示 input select button form label textarea">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-05-11T06:05:57.110Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自省系列-2">
+<meta name="twitter:description" content="HTML中常用行内,块级元素行内元素 a—超链接 b—粗体(不推荐使用) br—换行 i–区分普通文本,通常斜体 span strong—粗体显示 input select button form label textarea">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/05/11/自省系列-2/">
+
+
+
+
+
+  <title>自省系列-2 | Livfer's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Livfer's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/11/自省系列-2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Livfer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Livfer's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">自省系列-2</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-11T09:49:00+08:00">
+                2020-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/自省系列/" itemprop="url" rel="index">
+                    <span itemprop="name">自省系列</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="HTML中常用行内-块级元素"><a href="#HTML中常用行内-块级元素" class="headerlink" title="HTML中常用行内,块级元素"></a>HTML中常用行内,块级元素</h2><h3 id="行内元素"><a href="#行内元素" class="headerlink" title="行内元素"></a>行内元素</h3><ul>
+<li><code>a</code>—超链接</li>
+<li><code>b</code>—粗体(不推荐使用)</li>
+<li><code>br</code>—换行</li>
+<li><code>i</code>–区分普通文本,通常斜体</li>
+<li><code>span</code></li>
+<li><code>strong</code>—粗体显示</li>
+<li><code>input</code></li>
+<li><code>select</code></li>
+<li><code>button</code></li>
+<li><code>form</code></li>
+<li><code>label</code></li>
+<li><code>textarea</code></li>
+</ul>
+<a id="more"></a>
+<h3 id="块级元素"><a href="#块级元素" class="headerlink" title="块级元素"></a>块级元素</h3><ul>
+<li><code>div</code></li>
+<li><code>p</code></li>
+<li><code>h1~h6</code></li>
+<li><code>ol</code></li>
+<li><code>ul</code></li>
+<li><code>li</code></li>
+<li><code>table</code></li>
+<li><code>td,tr,thead,tbody</code></li>
+<li><code>dl,dt,dd</code></li>
+<li><code>section</code> —h5新增</li>
+<li><code>header,footer</code>—h5新增</li>
+<li><code>article,aside,nav,menu</code> –同上</li>
+</ul>
+<h2 id="CSS3新增的特性"><a href="#CSS3新增的特性" class="headerlink" title="CSS3新增的特性"></a>CSS3新增的特性</h2><h3 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h3><ul>
+<li><code>border-radus:水平半径 垂直半径</code>—边框圆角</li>
+</ul>
+<blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; border-radius: 1em/5em;</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="comment">/* 等价于： */</span></span><br><span class="line">&gt; <span class="selector-tag">border-top-left-radius</span>:     1<span class="selector-tag">em</span> 5<span class="selector-tag">em</span>;</span><br><span class="line">&gt; <span class="selector-tag">border-top-right-radius</span>:    1<span class="selector-tag">em</span> 5<span class="selector-tag">em</span>;</span><br><span class="line">&gt; <span class="selector-tag">border-bottom-right-radius</span>: 1<span class="selector-tag">em</span> 5<span class="selector-tag">em</span>;</span><br><span class="line">&gt; <span class="selector-tag">border-bottom-left-radius</span>:  1<span class="selector-tag">em</span> 5<span class="selector-tag">em</span>;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ul>
+<li><code>box-shadow:水平阴影位置 | 垂直阴影 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色 |inset(将外部阴影 (outset) 改为内部阴影)</code>–添加阴影</li>
+<li><code>border-image</code></li>
+</ul>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ul>
+<li><code>background-size:contain|cover|120px|120px 200px</code>–背景图片尺寸</li>
+<li><code>background-origin:border-box|centent-box|padding-box</code>–背景图片定位区域</li>
+<li><code>background-clip:border-box|centent-box|padding-box</code>–设置元素的背景（背景图片或颜色）是否延伸到边框、内边距盒子、内容盒子下面。</li>
+</ul>
+<h3 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h3><ul>
+<li><code>linear-gradient:渐变方向|开始颜色| 颜色 40%(增加中间渐变)|结束颜色</code>–线性渐变</li>
+<li><code>radial-gradient</code>–径向渐变</li>
+</ul>
+<h3 id="文本效果"><a href="#文本效果" class="headerlink" title="文本效果"></a>文本效果</h3><ul>
+<li><code>word-break:normal | break-all | keep-all | break-word</code>–规定非中日韩文本的换行规则</li>
+<li><code>word-wrap:normal|break-word</code>–允许对长的不可分割的单词进行分割并换行到下一行</li>
+<li><code>text-overflow:clip|ellipsis|string</code>–文本溢出当前元素的操作</li>
+<li><code>text-shadow:水平阴影位置 垂直阴影位置 模糊距离 阴影颜色</code>–文本阴影</li>
+</ul>
+<h3 id="2D-3D转换"><a href="#2D-3D转换" class="headerlink" title="2D/3D转换"></a>2D/3D转换</h3><ul>
+<li><code>transform</code>–2D/3D转换<ul>
+<li>none</li>
+<li>matrix/matrix3d</li>
+<li>translate/translate3d</li>
+<li>translateX/translateY/translateZ</li>
+<li>scale/scale3D</li>
+<li>scaleX/scaleY/scaleZX/scaleY/scaleZ —缩放</li>
+<li>rotate/rotate –旋转</li>
+<li>rotateX/rotateY/rotateZ</li>
+<li>skew/skewX/skewY –倾斜转换</li>
+<li>perspective–3D元素定义透视图</li>
+</ul>
+</li>
+</ul>
+<h3 id="过渡"><a href="#过渡" class="headerlink" title="过渡"></a>过渡</h3><ul>
+<li><code>transition</code>–过渡属性</li>
+<li><code>transition-property</code>–规定设置过渡效果的 CSS 属性的名称</li>
+<li><code>transition-duration</code>–完成过渡效果需要多少秒或毫秒</li>
+<li><code>transition-timeing-function</code>–速度效果的速度曲线</li>
+<li><code>transition-delay</code>–过渡效果何时开始</li>
+</ul>
+<h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><ul>
+<li><code>@Keyframes</code></li>
+<li><code>animation</code></li>
+</ul>
+<h2 id="隐藏元素的方法"><a href="#隐藏元素的方法" class="headerlink" title="隐藏元素的方法"></a>隐藏元素的方法</h2><blockquote>
+<p>回流: 当render tree因为宽高,布局,显示隐藏等引起页面布局发生变化会触发回流</p>
+<p>重绘:当只是改变了元素的外观风格,不会造成布局变化会触发重绘</p>
+<p>回流必定触发重绘,重绘不一定会回流</p>
+</blockquote>
+<h3 id="占位"><a href="#占位" class="headerlink" title="占位"></a>占位</h3><ul>
+<li><code>visibility:hidden</code>–会触发重绘</li>
+<li><code>margin-left:-100%</code>—触发回流</li>
+<li><code>opacity</code>–不会触发回流和重绘</li>
+<li><code>transform:scale(0)</code>—不会触发回流和重绘</li>
+</ul>
+<h3 id="不占位"><a href="#不占位" class="headerlink" title="不占位"></a>不占位</h3><ul>
+<li><code>display:none</code> –回流</li>
+<li><code>width:0;height:0;overflow:hidden</code>—重绘</li>
+</ul>
+<h2 id="CSS选择器"><a href="#CSS选择器" class="headerlink" title="CSS选择器"></a>CSS选择器</h2><ul>
+<li><p>通用选择器: <code>*</code></p>
+</li>
+<li><p>类选择器: <code>.class</code></p>
+</li>
+<li><p>ID选择器: <code>#id</code></p>
+</li>
+<li><p>标签选择器: <code>div</code></p>
+</li>
+<li><p>后代选择器: <code>div p</code></p>
+</li>
+<li><p>子选择器: <code>div&gt;p</code></p>
+</li>
+<li><p>群组选择器: <code>div,p</code></p>
+</li>
+<li><p>相邻同胞选择器: <code>div+p</code></p>
+</li>
+<li><p>伪类选择器:</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; :link,:visited,:hover,:active,:focus,:fist-child</span><br><span class="line">&gt; /*cs系新增*/</span><br><span class="line">&gt; :fist-of-type,:last-of-type,:only-of-type,:only-child</span><br><span class="line">&gt; :nth-child(n),:nth-last-of-type(n),:last-child</span><br><span class="line">&gt; :not(selector),:root</span><br><span class="line">&gt; :target,:checked,:disabled,:empty,:enable</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>属性选择器</p>
+<ul>
+<li><code>[attribute]</code></li>
+<li><code>[attribute=value]</code></li>
+<li><code>[attribute~=value]</code></li>
+<li><code>[attribute|=value]</code></li>
+<li><code>[atribute*=value]</code></li>
+<li><code>[attribute^=value]</code></li>
+<li><code>[attribute$=value]</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="border创建图形"><a href="#border创建图形" class="headerlink" title="border创建图形"></a>border创建图形</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Border<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">    <span class="comment">/*圆形*/</span></span></span><br><span class="line"><span class="css">    <span class="selector-class">.circle</span>&#123;</span></span><br><span class="line"><span class="undefined">        margin-bottom: 20px;</span></span><br><span class="line"><span class="undefined">        width: 100px;</span></span><br><span class="line"><span class="undefined">        height: 100px;</span></span><br><span class="line"><span class="undefined">        background-color: orange;</span></span><br><span class="line"><span class="undefined">        border-radius: 50%;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="comment">/*上半圆*/</span></span></span><br><span class="line"><span class="css">    <span class="selector-class">.top</span> &#123;</span></span><br><span class="line"><span class="undefined">        width: 100px;</span></span><br><span class="line"><span class="undefined">        height: 50px;</span></span><br><span class="line"><span class="undefined">        border-radius: 50px 50px 0 0;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="comment">/*右半圆*/</span></span></span><br><span class="line"><span class="css">    <span class="selector-class">.right</span> &#123;</span></span><br><span class="line"><span class="undefined">        width: 50px;</span></span><br><span class="line"><span class="undefined">        height: 100px;</span></span><br><span class="line"><span class="undefined">        border-radius: 0 50px 50px 0;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="comment">/*左半圆*/</span></span></span><br><span class="line"><span class="css">    <span class="selector-class">.left</span> &#123;</span></span><br><span class="line"><span class="undefined">        width: 50px;</span></span><br><span class="line"><span class="undefined">        height: 100px;</span></span><br><span class="line"><span class="undefined">        border-radius: 50px 0 0 50px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="comment">/*下半圆*/</span></span></span><br><span class="line"><span class="css">    <span class="selector-class">.bottom</span> &#123;</span></span><br><span class="line"><span class="undefined">        width: 100px;</span></span><br><span class="line"><span class="undefined">        height: 50px;</span></span><br><span class="line"><span class="undefined">        border-radius: 0 0 50px 50px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="comment">/*左上扇形*/</span></span></span><br><span class="line"><span class="css">    <span class="selector-class">.quarterCircle</span>  <span class="selector-class">.top</span> &#123;</span></span><br><span class="line"><span class="undefined">        width: 100px;</span></span><br><span class="line"><span class="undefined">        height: 100px;</span></span><br><span class="line"><span class="undefined">        border-radius: 100px 0 0 0 ;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="comment">/*右上扇形*/</span></span></span><br><span class="line"><span class="css">    <span class="selector-class">.quarterCircle</span> <span class="selector-class">.right</span> &#123;</span></span><br><span class="line"><span class="undefined">        width: 100px;</span></span><br><span class="line"><span class="undefined">        height: 100px;</span></span><br><span class="line"><span class="undefined">        border-radius: 0 100px 0 0;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="comment">/*右下扇形*/</span></span></span><br><span class="line"><span class="css">    <span class="selector-class">.quarterCircle</span> <span class="selector-class">.bottom</span> &#123;</span></span><br><span class="line"><span class="undefined">        width: 100px;</span></span><br><span class="line"><span class="undefined">        height: 100px;</span></span><br><span class="line"><span class="undefined">        border-radius: 0 0 100px 0;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="comment">/*左下扇形*/</span></span></span><br><span class="line"><span class="css">    <span class="selector-class">.quarterCircle</span> <span class="selector-class">.left</span> &#123;</span></span><br><span class="line"><span class="undefined">        width: 100px;</span></span><br><span class="line"><span class="undefined">        height: 100px;</span></span><br><span class="line"><span class="undefined">        border-radius: 100px 0 0 0 ;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="comment">/*三角形*/</span></span></span><br><span class="line"><span class="css">    <span class="selector-class">.triangle</span> &#123;</span></span><br><span class="line"><span class="undefined">        width: 0;</span></span><br><span class="line"><span class="undefined">        height: 0;</span></span><br><span class="line"><span class="undefined">        border-left: 100px solid transparent;</span></span><br><span class="line"><span class="undefined">        border-right: 100px solid transparent;</span></span><br><span class="line"><span class="undefined">        border-top: 100px solid red;</span></span><br><span class="line"><span class="undefined">        border-bottom: 100px solid transparent;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"circle border-circle"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"circle top"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"circle right"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"circle left"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"circle bottom"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">section</span> <span class="attr">class</span>=<span class="string">"quarterCircle"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"circle top"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"circle right"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"circle bottom"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"circle left"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"triangle"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h2><p>BFC全程”块级格式化上下文”(Block Formatting Context)</p>
+<h3 id="形成条件-任意一条"><a href="#形成条件-任意一条" class="headerlink" title="形成条件(任意一条)"></a>形成条件(任意一条)</h3><ul>
+<li><code>html</code>根元素</li>
+<li><code>float</code>不是none</li>
+<li><code>position</code>不是static或relative</li>
+<li><code>display</code>是<code>inline-block,table-inline-block,table-cell,table-caption,flex,inline-flex</code></li>
+</ul>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><ul>
+<li>内部的盒子会在垂直方向上一个接一个的放置</li>
+<li>对于同一个BFC的俩个相邻的盒子的margin会发生重叠，与方向无关。</li>
+<li>每个元素的左外边距与包含块的左边界相接触（从左到右），即使浮动元素也是如此</li>
+<li>BFC的区域不会与float的元素区域重叠</li>
+<li>计算BFC的高度时，浮动子元素也参与计算</li>
+<li>BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素，反之亦然</li>
+</ul>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
+<li>解决浮动子元素导致父元素高度坍塌问题,因为在BFC中计算告诉是包含浮动元素的高度在内的</li>
+<li>解决文字环绕在float周围</li>
+<li>解决<code>margin</code>重叠问题,BFC中的垂直的两个元素,margin不重叠</li>
+</ul>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>BFC<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    * &#123;</span></span><br><span class="line"><span class="undefined">        margin: 0;</span></span><br><span class="line"><span class="undefined">        padding: 0;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    p &#123;</span></span><br><span class="line"><span class="undefined">        color: turquoise;</span></span><br><span class="line"><span class="undefined">        background: yellow;</span></span><br><span class="line"><span class="undefined">        width: 200px;</span></span><br><span class="line"><span class="undefined">        text-align: center;</span></span><br><span class="line"><span class="undefined">        margin: 30px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.bfc-2</span> &#123;</span></span><br><span class="line"><span class="undefined">        overflow: hidden;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.bfc-3</span> &#123;</span></span><br><span class="line"><span class="undefined">        width: 100%;</span></span><br><span class="line"><span class="undefined">        position: relative;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.left</span> &#123;</span></span><br><span class="line"><span class="undefined">        float: left;</span></span><br><span class="line"><span class="undefined">        width: 100px;</span></span><br><span class="line"><span class="undefined">        height: 100px;</span></span><br><span class="line"><span class="undefined">        background: gray;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.right</span> &#123;</span></span><br><span class="line"><span class="undefined">        overflow: hidden;</span></span><br><span class="line"><span class="undefined">        height: 100px;</span></span><br><span class="line"><span class="undefined">        background: greenyellow;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.bfc-3</span> &#123;</span></span><br><span class="line"><span class="undefined">        margin-top: 20px;</span></span><br><span class="line"><span class="undefined">        width: 300px;</span></span><br><span class="line"><span class="undefined">        border: 2px solid greenyellow;</span></span><br><span class="line"><span class="css">        <span class="comment">/* 如果不是BFC情况下,div高度坍塌 */</span></span></span><br><span class="line"><span class="undefined">        overflow: hidden; </span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.child</span> &#123;</span></span><br><span class="line"><span class="undefined">        float: left;</span></span><br><span class="line"><span class="undefined">        width: 100px;</span></span><br><span class="line"><span class="undefined">        height: 100px;</span></span><br><span class="line"><span class="undefined">        border: 2px solid yellow;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 跟元素是HTML 两个p是形成了一个bfc,同属于一个bfc,margin会重叠 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>margin-30px<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>margin-30px<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 新建一个bfc,margin都会生效 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"bfc-2"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>margin-30px<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 每个元素的左外边距与包含块的左边界相接触（从左到右），即使浮动元素也是如此 --&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- left是一个BFC float浮动触发 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span>left<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- right是一个BFC overflow触发 BFC的区域不会与float的元素区域重叠--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"right"</span>&gt;</span>right<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 计算BFC的高度时，浮动元素也参与计算 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"bfc-3"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"child"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端-自省/" rel="tag"><i class="fa fa-tag"></i> 前端,自省</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/10/前端自省-1/" rel="next" title="前端自省-1">
+                <i class="fa fa-chevron-left"></i> 前端自省-1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Livfer">
+            
+              <p class="site-author-name" itemprop="name">Livfer</p>
+              <p class="site-description motion-element" itemprop="description">代码的搬运工</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LivferLiu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:livfer@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML中常用行内-块级元素"><span class="nav-number">1.</span> <span class="nav-text">HTML中常用行内,块级元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#行内元素"><span class="nav-number">1.1.</span> <span class="nav-text">行内元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#块级元素"><span class="nav-number">1.2.</span> <span class="nav-text">块级元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS3新增的特性"><span class="nav-number">2.</span> <span class="nav-text">CSS3新增的特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#边框"><span class="nav-number">2.1.</span> <span class="nav-text">边框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#背景"><span class="nav-number">2.2.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#渐变"><span class="nav-number">2.3.</span> <span class="nav-text">渐变</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文本效果"><span class="nav-number">2.4.</span> <span class="nav-text">文本效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2D-3D转换"><span class="nav-number">2.5.</span> <span class="nav-text">2D/3D转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过渡"><span class="nav-number">2.6.</span> <span class="nav-text">过渡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动画"><span class="nav-number">2.7.</span> <span class="nav-text">动画</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐藏元素的方法"><span class="nav-number">3.</span> <span class="nav-text">隐藏元素的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#占位"><span class="nav-number">3.1.</span> <span class="nav-text">占位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不占位"><span class="nav-number">3.2.</span> <span class="nav-text">不占位</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS选择器"><span class="nav-number">4.</span> <span class="nav-text">CSS选择器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#border创建图形"><span class="nav-number">5.</span> <span class="nav-text">border创建图形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BFC"><span class="nav-number">6.</span> <span class="nav-text">BFC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#形成条件-任意一条"><span class="nav-number">6.1.</span> <span class="nav-text">形成条件(任意一条)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特性"><span class="nav-number">6.2.</span> <span class="nav-text">特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景"><span class="nav-number">6.3.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例"><span class="nav-number">6.4.</span> <span class="nav-text">示例</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Livfer</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
