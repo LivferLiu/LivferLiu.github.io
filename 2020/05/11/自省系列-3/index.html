@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="优雅降级和渐进增强 优雅降级是优先考虑新版本浏览器可用性,使用最新写法,最后兼容老版本 渐进增强是优先考虑老版本浏览器,最后考虑新版本增强写法">
+<meta name="description" content="优雅降级和渐进增强 优雅降级是优先考虑新版本浏览器可用性,使用最新写法,最后兼容老版本 渐进增强是优先考虑老版本浏览器,最后考虑新版本增强写法  viewport手机浏览器把页面放在一个虚拟的“窗口”（viewport）中，通常这个虚拟的“窗口”（viewport）比屏幕宽，这样就不用把每个网页挤到很小的窗口中（这样会破坏没有针对手机浏览器优化的网页的布局），用户可以通过平移和缩放来看网页的不同部">
 <meta name="keywords" content="前端,自省.HTML">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自省系列-3">
 <meta property="og:url" content="http://yoursite.com/2020/05/11/自省系列-3/index.html">
 <meta property="og:site_name" content="Livfer&#39;s Blog">
-<meta property="og:description" content="优雅降级和渐进增强 优雅降级是优先考虑新版本浏览器可用性,使用最新写法,最后兼容老版本 渐进增强是优先考虑老版本浏览器,最后考虑新版本增强写法">
+<meta property="og:description" content="优雅降级和渐进增强 优雅降级是优先考虑新版本浏览器可用性,使用最新写法,最后兼容老版本 渐进增强是优先考虑老版本浏览器,最后考虑新版本增强写法  viewport手机浏览器把页面放在一个虚拟的“窗口”（viewport）中，通常这个虚拟的“窗口”（viewport）比屏幕宽，这样就不用把每个网页挤到很小的窗口中（这样会破坏没有针对手机浏览器优化的网页的布局），用户可以通过平移和缩放来看网页的不同部">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-11T08:21:59.028Z">
+<meta property="og:updated_time" content="2020-05-11T11:45:07.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自省系列-3">
-<meta name="twitter:description" content="优雅降级和渐进增强 优雅降级是优先考虑新版本浏览器可用性,使用最新写法,最后兼容老版本 渐进增强是优先考虑老版本浏览器,最后考虑新版本增强写法">
+<meta name="twitter:description" content="优雅降级和渐进增强 优雅降级是优先考虑新版本浏览器可用性,使用最新写法,最后兼容老版本 渐进增强是优先考虑老版本浏览器,最后考虑新版本增强写法  viewport手机浏览器把页面放在一个虚拟的“窗口”（viewport）中，通常这个虚拟的“窗口”（viewport）比屏幕宽，这样就不用把每个网页挤到很小的窗口中（这样会破坏没有针对手机浏览器优化的网页的布局），用户可以通过平移和缩放来看网页的不同部">
 
 
 
@@ -375,6 +375,94 @@
 <li>优雅降级是优先考虑新版本浏览器可用性,使用最新写法,最后兼容老版本</li>
 <li>渐进增强是优先考虑老版本浏览器,最后考虑新版本增强写法</li>
 </ul>
+<h2 id="viewport"><a href="#viewport" class="headerlink" title="viewport"></a>viewport</h2><p>手机浏览器把页面放在一个虚拟的“窗口”（viewport）中，通常这个虚拟的“窗口”（viewport）比屏幕宽，这样就不用把每个网页挤到很小的窗口中（这样会破坏没有针对手机浏览器优化的网页的布局），用户可以通过平移和缩放来看网页的不同部分。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name=”viewport” content=”width=device-width, initial-scale=1, maximum-scale=1″&gt;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>属性名</th>
+<th>取值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width</td>
+<td>正整数 (device-width)</td>
+<td>定义视口的宽度，单位为像素</td>
+</tr>
+<tr>
+<td>height</td>
+<td>正整数 (device-height)</td>
+<td>定义视口的高度，单位为像素，一般不用</td>
+</tr>
+<tr>
+<td>initial-scale</td>
+<td>[0.0-10.0]</td>
+<td>定义初始缩放值</td>
+</tr>
+<tr>
+<td>minimum-scale</td>
+<td>[0.0-10.0]</td>
+<td>定义缩小最小比例，它必须小于或等于maximum-scale设置</td>
+</tr>
+<tr>
+<td>maximum-scale</td>
+<td>[0.0-10.0]</td>
+<td>定义放大最大比例，它必须大于或等于minimum-scale设置</td>
+</tr>
+<tr>
+<td>user-scalable</td>
+<td>yes &#124; no</td>
+<td>定义是否允许用户手动缩放页面，默认值yes</td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h2 id="px-em-rem区别"><a href="#px-em-rem区别" class="headerlink" title="px,em,rem区别"></a>px,em,rem区别</h2><h3 id="px"><a href="#px" class="headerlink" title="px"></a>px</h3><ul>
+<li>IE无法调整使用px作为单位的字体大小</li>
+<li>相对长度单位,像素px是相对于显示器屏幕分辨率而言的</li>
+</ul>
+<h3 id="em"><a href="#em" class="headerlink" title="em"></a>em</h3><ul>
+<li><p>相对长度单位.</p>
+</li>
+<li><p>如果当前行内文本字体未被设置,则相对于浏览器的默认字体尺寸</p>
+</li>
+<li><p>em的值不固定</p>
+</li>
+<li><p>em会继承父级元素的字体大小</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">        div &#123;</span></span><br><span class="line"><span class="undefined">            font-size: 30px;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        p &#123;</span></span><br><span class="line"><span class="undefined">            font-size: 2em;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>lorem<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>使用浏览器默认大小作为基准<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        30px大小</span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>继承div的font-size作为基准<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="rem"><a href="#rem" class="headerlink" title="rem"></a>rem</h3><ul>
+<li>CSS3新增的相对单位</li>
+<li>rem以根元素的font-size大小作为基准来计算大小</li>
+</ul>
+<h2 id="浏览器内核"><a href="#浏览器内核" class="headerlink" title="浏览器内核"></a>浏览器内核</h2><p>浏览器内核：浏览器核心的部分，即 <code>渲染引擎</code>，负责对网页语法的解释 并渲染（显示）网页。</p>
+<ul>
+<li>Trident （IE内核）</li>
+<li>Gecko （FireFox内核）</li>
+<li>Webkit （Safari内核，Chrome内核原型）</li>
+<li>Blink （Chrome(28及往后版本)、Opera(15及往后版本)和Yandex）</li>
+</ul>
+<h2 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h2><ul>
+<li>标准模型: 包括margin,border,padding,content,标准模型的content不包括其他部分</li>
+<li>IE模型: 包括margin,border,padding,content,IE模型的content包含padding,border部分</li>
+<li>box-sizing: box-sizing|centent-box</li>
+</ul>
+<h2 id="伪类和伪元素"><a href="#伪类和伪元素" class="headerlink" title="伪类和伪元素"></a>伪类和伪元素</h2><ul>
+<li>伪类不存在文档流中,可以理解为对元素的样式控制</li>
+<li>伪元素存在于文档流中</li>
+<li>伪类使用<code>:</code>,伪元素使用<code>::</code></li>
+</ul>
+<h2 id="为什么HTML5只要写-lt-DOCTYPE-HTML-gt-就可以了"><a href="#为什么HTML5只要写-lt-DOCTYPE-HTML-gt-就可以了" class="headerlink" title="为什么HTML5只要写&lt;!DOCTYPE HTML&gt;就可以了"></a>为什么HTML5只要写<code>&lt;!DOCTYPE HTML&gt;</code>就可以了</h2><p>HTML5和HTML4基于的标准不同.HTML4基于SGML,该标准是通用标记语言的集合.其中包含HTML,XHTML,因此需要DTD指定渲染标准.</p>
+<h2 id="CSS让文字变细"><a href="#CSS让文字变细" class="headerlink" title="CSS让文字变细"></a>CSS让文字变细</h2><p>影响文字的粗细有三个元素</p>
+<ul>
+<li><code>font-weight</code>:字体粗细设置</li>
+<li><code>font-family</code>:指定的字体其实是一个系列,当字体变细时,会在系列中寻找细的字体.因此如果字体系列中只有一种,这个时候不管怎么调整都不会变化</li>
+<li><code>-webkit-font-smoothing</code>:Chrome 的抗锯齿属性。加上后会显得细一些，但是只针对 webkit 内核的浏览器才有效。</li>
+</ul>
+<h2 id="div模拟textarea"><a href="#div模拟textarea" class="headerlink" title="div模拟textarea"></a>div模拟textarea</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>div模拟textarea的实现<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">        <span class="selector-class">.edit</span> &#123;</span></span><br><span class="line"><span class="undefined">            width: 200px;</span></span><br><span class="line"><span class="undefined">            height: 200px;</span></span><br><span class="line"><span class="css">            <span class="selector-tag">border</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#ccc</span>;</span></span><br><span class="line"><span class="undefined">            resize: both;</span></span><br><span class="line"><span class="undefined">            overflow: auto;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h3</span>&gt;</span>div模拟textarea的实现<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"edit"</span> <span class="attr">contenteditable</span>=<span class="string">"true"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -414,6 +502,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/11/自省系列JS-1/" rel="prev" title="JS自省系列-1">
+                JS自省系列-1 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -492,7 +584,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -503,7 +595,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -514,7 +606,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -563,7 +655,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#优雅降级和渐进增强"><span class="nav-number">1.</span> <span class="nav-text">优雅降级和渐进增强</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#优雅降级和渐进增强"><span class="nav-number">1.</span> <span class="nav-text">优雅降级和渐进增强</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#viewport"><span class="nav-number">2.</span> <span class="nav-text">viewport</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#px-em-rem区别"><span class="nav-number">3.</span> <span class="nav-text">px,em,rem区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#px"><span class="nav-number">3.1.</span> <span class="nav-text">px</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#em"><span class="nav-number">3.2.</span> <span class="nav-text">em</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rem"><span class="nav-number">3.3.</span> <span class="nav-text">rem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器内核"><span class="nav-number">4.</span> <span class="nav-text">浏览器内核</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#盒模型"><span class="nav-number">5.</span> <span class="nav-text">盒模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#伪类和伪元素"><span class="nav-number">6.</span> <span class="nav-text">伪类和伪元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么HTML5只要写-lt-DOCTYPE-HTML-gt-就可以了"><span class="nav-number">7.</span> <span class="nav-text">为什么HTML5只要写&lt;!DOCTYPE HTML&gt;就可以了</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS让文字变细"><span class="nav-number">8.</span> <span class="nav-text">CSS让文字变细</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#div模拟textarea"><span class="nav-number">9.</span> <span class="nav-text">div模拟textarea</span></a></li></ol></div>
             
 
           </div>
