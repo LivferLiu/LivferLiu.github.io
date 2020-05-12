@@ -259,6 +259,265 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/12/自省-类型转换-1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Livfer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Livfer's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/12/自省-类型转换-1/" itemprop="url">类型转换-1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-12T22:48:53+08:00">
+                2020-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/自省系列/" itemprop="url" rel="index">
+                    <span itemprop="name">自省系列</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/自省系列/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="转布尔"><a href="#转布尔" class="headerlink" title="转布尔"></a>转布尔</h2><blockquote>
+<p>使用<code>Boolean</code>函数将类型转换成布尔类型</p>
+<p>除了👇的情况,其他都转换成<code>true</code></p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>()) </span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(<span class="literal">false</span>)) </span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(<span class="literal">undefined</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(<span class="literal">null</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(<span class="number">0</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(+<span class="number">0</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(<span class="literal">NaN</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Boolean</span>(<span class="string">""</span>))</span><br></pre></td></tr></table></figure>
+<h2 id="原始值转数字"><a href="#原始值转数字" class="headerlink" title="原始值转数字"></a>原始值转数字</h2><blockquote>
+<p>使用<code>Number</code>函数转换为数字,如果无法转换则返回<code>NaN</code></p>
+</blockquote>
+<h3 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h3><table>
+<thead>
+<tr>
+<th>参数类型</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>undefined</td>
+<td>NaN</td>
+</tr>
+<tr>
+<td>null</td>
+<td>+0</td>
+</tr>
+<tr>
+<td>Bollean</td>
+<td>true=&gt;1 false=&gt;0</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>原样返回</td>
+</tr>
+<tr>
+<td>String</td>
+<td>将字符串转化成一个整数或浮点数 无法解析的转成NaN</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="string">"123"</span>)); <span class="comment">//123</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="string">"-123"</span>)); <span class="comment">//-123</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="string">"1.2"</span>)); <span class="comment">//1.2</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="string">"000123"</span>)); <span class="comment">//123 会忽略前置0</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="string">"-00123"</span>)); <span class="comment">//-123</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="string">"0x11"</span>)); <span class="comment">//17 0x16进制转换</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="string">""</span>)); <span class="comment">//0</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="string">" "</span>)); <span class="comment">//0</span></span><br><span class="line"><span class="comment">//无法解析的情况</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="string">"123 123"</span>)) <span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="string">"foo"</span>)) <span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="string">"100a"</span>)) <span class="comment">//NaN 如果有一个字符不是数字，结果都会返回 NaN</span></span><br></pre></td></tr></table></figure>
+<h3 id="parseInt和parseFloat"><a href="#parseInt和parseFloat" class="headerlink" title="parseInt和parseFloat"></a><code>parseInt</code>和<code>parseFloat</code></h3><blockquote>
+<p>parseInt 只解析整数，parseFloat 则可以解析整数和浮点数，如果字符串前缀是 “0x” 或者”0X”，parseInt 将其解释为十六进制数，parseInt 和 parseFloat 都会跳过任意数量的前导空格，尽可能解析更多数值字符，并忽略后面的内容。如果第一个非空格字符是非法的数字直接量，将最终返回 NaN</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(<span class="string">"3 abc"</span>)) <span class="comment">//3</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseFloat</span>(<span class="string">"-3.4ddd"</span>)) <span class="comment">//-3.4</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseFloat</span>(<span class="string">".1"</span>)) <span class="comment">// 0.1</span></span><br></pre></td></tr></table></figure>
+<h2 id="原始值转字符串"><a href="#原始值转字符串" class="headerlink" title="原始值转字符串"></a>原始值转字符串</h2><blockquote>
+<p>转化为对应的字符串形式</p>
+</blockquote>
+<h2 id="原始值转对象"><a href="#原始值转对象" class="headerlink" title="原始值转对象"></a>原始值转对象</h2><blockquote>
+<p>通过类型的构造函数转化成包装对象 </p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> num = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> num); <span class="comment">//number</span></span><br><span class="line"><span class="keyword">const</span> obj = <span class="keyword">new</span> <span class="built_in">Number</span>(num);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> obj); <span class="comment">//object</span></span><br></pre></td></tr></table></figure>
+<h2 id="对象转布尔"><a href="#对象转布尔" class="headerlink" title="对象转布尔"></a>对象转布尔</h2><blockquote>
+<p>所有对象(包括数组和函数)都转换为 true</p>
+</blockquote>
+<h2 id="对象转字符串"><a href="#对象转字符串" class="headerlink" title="对象转字符串"></a>对象转字符串</h2><ul>
+<li>如果对象具有<code>toString</code>方法,则调用这个方法.如果返回一个原始值,JavaScript将这个值转化为字符串,并返回字符串结果</li>
+<li>如果对象没有<code>toString</code>,或者这个方法返回的不是一个原始值,则调用<code>valueOf</code>,如果是原始值将这个值转化为字符串,并返回字符串结果</li>
+<li>前两种都无法获得一个原始值,则抛类型错误异常</li>
+<li><code>String(obj)</code></li>
+</ul>
+<h2 id="对象转数字"><a href="#对象转数字" class="headerlink" title="对象转数字"></a>对象转数字</h2><ul>
+<li>先调用<code>valueOf</code>,返回一个原始值,则转化为数字返回</li>
+<li>否则调用<code>toString</code>,返回一个原始值,转化为数字返回</li>
+<li>都不满足,则跑类型错误异常</li>
+<li><code>Number(obj)</code></li>
+</ul>
+<h2 id="一元操作符"><a href="#一元操作符" class="headerlink" title="一元操作符+"></a>一元操作符<code>+</code></h2><blockquote>
+<p>可以理解为将数据转化为number</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(+<span class="literal">true</span>); <span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(+<span class="literal">false</span>) <span class="comment">//0</span></span><br><span class="line"><span class="built_in">console</span>.log(+<span class="string">"1"</span>); <span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(+&#123;&#125;) <span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">console</span>.log(+<span class="string">"1a"</span>) <span class="comment">//NaN</span></span><br></pre></td></tr></table></figure>
+<h2 id="二元操作符"><a href="#二元操作符" class="headerlink" title="二元操作符+"></a>二元操作符<code>+</code></h2><ul>
+<li>任意一边存在字符串,则转化为字符串</li>
+<li>不存在字符串,任意一边是数组,则转化为数字</li>
+<li>任意一边不是数字,比如数组,或对象,则转化为数字</li>
+</ul>
+<h2 id=""><a href="#" class="headerlink" title="=="></a><code>==</code></h2><h3 id="x-y规范"><a href="#x-y规范" class="headerlink" title="x==y规范"></a><code>x==y</code>规范</h3><ol>
+<li>x,y同类型<ol>
+<li>x是undefined,返回true</li>
+<li>x是null,返回true</li>
+<li>x是数字<ol>
+<li>x或y是NaN,返回false</li>
+<li>+0,-0返回true</li>
+<li>x,y相等,返回true</li>
+<li>其他返回false</li>
+</ol>
+</li>
+<li>x是字符串,完全相等返回true</li>
+<li>x是布尔,xy都是true或false,返回true,其他false</li>
+<li>x,y指向同一个对象返回true,其他false</li>
+</ol>
+</li>
+<li>null,undefined在宽松相等下是true</li>
+<li>字符串和数字比较,优先转化为数字</li>
+<li>布尔值优先转化为数字</li>
+<li>x,y一个是字符串或数字,一个是对象,将对象先<code>valueOf</code>,然后<code>toString</code>比较</li>
+</ol>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://juejin.im/post/5e7d7670f265da797f4afa84" target="_blank" rel="noopener">感谢冴羽大佬-深入系列的类型转换</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/12/自省JS-3/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1786,157 +2045,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/23/代理模式/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Livfer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Livfer's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/23/代理模式/" itemprop="url">代理模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-23T09:49:50+08:00">
-                2019-10-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/PHP-设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">PHP,设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>代理模式是一种结构型模式，它可以为其他对象提供一种代理以控制对这个对象的访问</p>
-<h2 id="主要角色"><a href="#主要角色" class="headerlink" title="主要角色"></a>主要角色</h2><ul>
-<li>抽象主题角色(Subject)：它的作用是统一接口。此角色定义了真实主题角色和代理主题角色共用的接口，这样就可以在使用真实主题角色的地方使用代理主题角色。</li>
-<li>真实主题角色(RealSubject)：隐藏在代理角色后面的真实对象。</li>
-<li>代理主题角色(ProxySubject)：它的作用是代理真实主题，在其内部保留了对真实主题角色的引用。它与真实主题角色都继承自抽象主题角色，保持接口的统一。它可以控制对真实主题的存取，并可能负责创建和删除真实对象。代理角色并不是简单的转发，通常在将调用传递给真实对象之前或之后执行某些操作，当然你也可以只是简单的转发。 与适配器模式相比：适配器模式是为了改变对象的接口，而代理模式并不能改变所代理对象的接口</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/10/23/代理模式/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1989,7 +2097,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
