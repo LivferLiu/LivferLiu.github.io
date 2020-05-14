@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="函数声明和函数表达式区别 函数声明会被变量提升到顶部作用域 函数表达式只有执行到此处才会赋值,执行必须在表达式之后 函数声明必须有函数名  document.write和innerHTML区别 document.write:将需要展示的内容添加到一个文档模型(DOM)里,会造成页面重绘 innerHTML: 设置或获取HTML某个元素中的内容.只会对影响的DOM元素重绘  将多维数组降维12345">
+<meta name="description" content="函数声明和函数表达式区别 函数声明会被变量提升到顶部作用域 函数表达式只有执行到此处才会赋值,执行必须在表达式之后 函数声明必须有函数名">
 <meta name="keywords" content="JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自省JS-5">
 <meta property="og:url" content="http://yoursite.com/2020/05/13/自省JS-5/index.html">
 <meta property="og:site_name" content="Livfer&#39;s Blog">
-<meta property="og:description" content="函数声明和函数表达式区别 函数声明会被变量提升到顶部作用域 函数表达式只有执行到此处才会赋值,执行必须在表达式之后 函数声明必须有函数名  document.write和innerHTML区别 document.write:将需要展示的内容添加到一个文档模型(DOM)里,会造成页面重绘 innerHTML: 设置或获取HTML某个元素中的内容.只会对影响的DOM元素重绘  将多维数组降维12345">
+<meta property="og:description" content="函数声明和函数表达式区别 函数声明会被变量提升到顶部作用域 函数表达式只有执行到此处才会赋值,执行必须在表达式之后 函数声明必须有函数名">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-14T13:19:43.112Z">
+<meta property="og:updated_time" content="2020-05-14T14:30:49.428Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自省JS-5">
-<meta name="twitter:description" content="函数声明和函数表达式区别 函数声明会被变量提升到顶部作用域 函数表达式只有执行到此处才会赋值,执行必须在表达式之后 函数声明必须有函数名  document.write和innerHTML区别 document.write:将需要展示的内容添加到一个文档模型(DOM)里,会造成页面重绘 innerHTML: 设置或获取HTML某个元素中的内容.只会对影响的DOM元素重绘  将多维数组降维12345">
+<meta name="twitter:description" content="函数声明和函数表达式区别 函数声明会被变量提升到顶部作用域 函数表达式只有执行到此处才会赋值,执行必须在表达式之后 函数声明必须有函数名">
 
 
 
@@ -376,6 +376,7 @@
 <li>函数表达式只有执行到此处才会赋值,执行必须在表达式之后</li>
 <li>函数声明必须有函数名</li>
 </ul>
+<a id="more"></a>
 <h1 id="document-write和innerHTML区别"><a href="#document-write和innerHTML区别" class="headerlink" title="document.write和innerHTML区别"></a><code>document.write</code>和<code>innerHTML</code>区别</h1><ul>
 <li><code>document.write</code>:将需要展示的内容添加到一个文档模型(DOM)里,会造成页面重绘</li>
 <li><code>innerHTML</code>: 设置或获取HTML某个元素中的内容.只会对影响的DOM元素重绘</li>
@@ -421,6 +422,42 @@
 <li>发送请求 <code>xhr.send()</code></li>
 <li>接受响应 <code>xhr.onreadychange = function () {}</code></li>
 </ul>
+<h1 id="ajax请求状态"><a href="#ajax请求状态" class="headerlink" title="ajax请求状态"></a>ajax请求状态</h1><table>
+<thead>
+<tr>
+<th>状态码</th>
+<th>状态常量</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>XMLHttpRequest.UNSENT</td>
+<td>代理被创建，但尚未调用 open() 方法。</td>
+</tr>
+<tr>
+<td>1</td>
+<td>XMLHttpRequest.OPENED</td>
+<td>open() 方法已经被调用</td>
+</tr>
+<tr>
+<td>2</td>
+<td>XMLHttpRequest.HEADERS_RECEIVED</td>
+<td>send() 方法已经被调用，并且头部和状态已经可获得。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>XMLHttpRequest.LOADING</td>
+<td>下载中； responseText 属性已经包含部分数据</td>
+</tr>
+<tr>
+<td>4</td>
+<td>XMLHttpRequest.DONE</td>
+<td>下载操作已完成。</td>
+</tr>
+</tbody>
+</table>
 <h1 id="函数执行过程"><a href="#函数执行过程" class="headerlink" title="函数执行过程"></a>函数执行过程</h1><ul>
 <li>当执行一个函数时,会先创建一个执行上下文,然后将函数放到函数栈的顶部</li>
 <li>执行函数,如果函数中还有其他函数,则将遇到的函数放到函数栈的顶部,执行该函数</li>
@@ -466,6 +503,30 @@
 <li><p>可以通过<code>encodeURIComponent</code>编码,在base64</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> string = <span class="string">"我爱中国"</span>;</span><br><span class="line"><span class="keyword">const</span> encodeString = btoa(<span class="built_in">encodeURIComponent</span>(string));</span><br><span class="line"><span class="keyword">const</span> decodeString = <span class="built_in">decodeURIComponent</span>(atob(encodeString));</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(encodeString,<span class="string">"编码"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(decodeString,<span class="string">"解码"</span>);</span><br><span class="line"><span class="comment">//JUU2JTg4JTkxJUU3JTg4JUIxJUU0JUI4JUFEJUU1JTlCJUJE 编码</span></span><br><span class="line"><span class="comment">//我爱中国 解码</span></span><br></pre></td></tr></table></figure>
 </li>
+</ul>
+<h1 id="获取当前的url和来源的url"><a href="#获取当前的url和来源的url" class="headerlink" title="获取当前的url和来源的url"></a>获取当前的url和来源的url</h1><ul>
+<li><code>window.location.href</code>:当前url</li>
+<li><code>window.referrer</code>: 来源url</li>
+</ul>
+<h1 id="document-getElelmentById和document-querySelector区别"><a href="#document-getElelmentById和document-querySelector区别" class="headerlink" title="document.getElelmentById和document.querySelector区别"></a><code>document.getElelmentById</code>和<code>document.querySelector</code>区别</h1><blockquote>
+<p>getElementById 获取的是动态集合,querySelecto或querySelectorAll获取的是静态集合。</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"ul"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"></span><br><span class="line">var ul = document.getElementById('ul'),</span><br><span class="line">     liCollection = document.getElementsByTagName("li");</span><br><span class="line">for(var i = 0; i <span class="tag">&lt; <span class="attr">5</span> ; <span class="attr">i</span>++)&#123;</span></span><br><span class="line"><span class="tag">     <span class="attr">ul.appendChild</span>(<span class="attr">document.createElement</span>("<span class="attr">li</span>"));</span></span><br><span class="line"><span class="tag">&#125;</span></span><br><span class="line"><span class="tag"><span class="attr">console.log</span>(<span class="attr">liCollection.length</span>);  //<span class="attr">li</span>增加了,长度就会变</span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag"><span class="attr">var</span> <span class="attr">ul</span> = <span class="string">document.getElementById(</span>'<span class="attr">ul</span>'),</span></span><br><span class="line"><span class="tag">    <span class="attr">liCollection</span> = <span class="string">document.querySelectorAll(</span>"<span class="attr">li</span>");</span></span><br><span class="line">for(var i = 0; i &lt; liCollection.length ; i++)&#123;</span><br><span class="line">     ul.appendChild(document.createElement("li"));</span><br><span class="line">&#125;</span><br><span class="line">console.log(liCollection.length);  //3 新增的li,无法获得</span><br></pre></td></tr></table></figure>
+<h1 id="原生获取DOM元素方法"><a href="#原生获取DOM元素方法" class="headerlink" title="原生获取DOM元素方法"></a>原生获取DOM元素方法</h1><ul>
+<li><code>document.getElementById</code>:通过ID获取</li>
+<li><code>document.getElementsByName</code>: 通过nam属性名</li>
+<li><code>document.getElementsByClassName</code>:通过类名</li>
+<li><code>document.getElementsByTagName</code>:通过标签名</li>
+<li><code>document.querySelector</code>:通过标签名,返回匹配的第一个</li>
+<li><code>document.querySelectorAll</code>:通过标签名,返回集合</li>
+<li><code>document.body</code>: 获取body</li>
+<li><code>document.documentElement</code>:获取HTML</li>
+</ul>
+<p><code>console.log</code>结果可信吗</p>
+<ul>
+<li>一般对于基本类型<code>number、string、boolean、null、undefined</code>的输出是可信的。但对于<code>Object</code>等引用类型来说,会有些不一样</li>
+<li>不展开对象看时，console.log()是按照代码执行顺序，同步地输出了对象当时的快照。所以我们看到的是预期的值。</li>
+<li>展开对象时，它其实是重新去内存中读取对象的属性值，此时对象属性已被更改，所以展开对象后，可能看到的不是预期值了</li>
 </ul>
 
       
@@ -669,7 +730,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#函数声明和函数表达式区别"><span class="nav-number">1.</span> <span class="nav-text">函数声明和函数表达式区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#document-write和innerHTML区别"><span class="nav-number">2.</span> <span class="nav-text">document.write和innerHTML区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#将多维数组降维"><span class="nav-number">3.</span> <span class="nav-text">将多维数组降维</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#全屏和退出全屏"><span class="nav-number">4.</span> <span class="nav-text">全屏和退出全屏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用字符串函数"><span class="nav-number">5.</span> <span class="nav-text">常用字符串函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#substr-start-length-slice-beginIndex-endIndex-substring-beginIndex-endIndex-区别"><span class="nav-number">6.</span> <span class="nav-text">substr(start,length),slice(beginIndex[,endIndex]),substring(beginIndex[,endIndex]) 区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数为正"><span class="nav-number">6.1.</span> <span class="nav-text">参数为正</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数为负"><span class="nav-number">6.2.</span> <span class="nav-text">参数为负</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简述ajax请求步骤"><span class="nav-number">7.</span> <span class="nav-text">简述ajax请求步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数执行过程"><span class="nav-number">8.</span> <span class="nav-text">函数执行过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异步编程的方式"><span class="nav-number">9.</span> <span class="nav-text">异步编程的方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复制粘贴"><span class="nav-number">10.</span> <span class="nav-text">复制粘贴</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES5-ES6-ES7区别"><span class="nav-number">11.</span> <span class="nav-text">ES5,ES6,ES7区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ES5"><span class="nav-number">11.1.</span> <span class="nav-text">ES5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6"><span class="nav-number">11.2.</span> <span class="nav-text">ES6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES7"><span class="nav-number">11.3.</span> <span class="nav-text">ES7</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#onload和onDOMContentLoaded"><span class="nav-number">12.</span> <span class="nav-text">onload和onDOMContentLoaded</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#btoa和atob"><span class="nav-number">13.</span> <span class="nav-text">btoa和atob</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#函数声明和函数表达式区别"><span class="nav-number">1.</span> <span class="nav-text">函数声明和函数表达式区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#document-write和innerHTML区别"><span class="nav-number">2.</span> <span class="nav-text">document.write和innerHTML区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#将多维数组降维"><span class="nav-number">3.</span> <span class="nav-text">将多维数组降维</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#全屏和退出全屏"><span class="nav-number">4.</span> <span class="nav-text">全屏和退出全屏</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用字符串函数"><span class="nav-number">5.</span> <span class="nav-text">常用字符串函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#substr-start-length-slice-beginIndex-endIndex-substring-beginIndex-endIndex-区别"><span class="nav-number">6.</span> <span class="nav-text">substr(start,length),slice(beginIndex[,endIndex]),substring(beginIndex[,endIndex]) 区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#参数为正"><span class="nav-number">6.1.</span> <span class="nav-text">参数为正</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数为负"><span class="nav-number">6.2.</span> <span class="nav-text">参数为负</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简述ajax请求步骤"><span class="nav-number">7.</span> <span class="nav-text">简述ajax请求步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ajax请求状态"><span class="nav-number">8.</span> <span class="nav-text">ajax请求状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#函数执行过程"><span class="nav-number">9.</span> <span class="nav-text">函数执行过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#异步编程的方式"><span class="nav-number">10.</span> <span class="nav-text">异步编程的方式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复制粘贴"><span class="nav-number">11.</span> <span class="nav-text">复制粘贴</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES5-ES6-ES7区别"><span class="nav-number">12.</span> <span class="nav-text">ES5,ES6,ES7区别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ES5"><span class="nav-number">12.1.</span> <span class="nav-text">ES5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6"><span class="nav-number">12.2.</span> <span class="nav-text">ES6</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES7"><span class="nav-number">12.3.</span> <span class="nav-text">ES7</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#onload和onDOMContentLoaded"><span class="nav-number">13.</span> <span class="nav-text">onload和onDOMContentLoaded</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#btoa和atob"><span class="nav-number">14.</span> <span class="nav-text">btoa和atob</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取当前的url和来源的url"><span class="nav-number">15.</span> <span class="nav-text">获取当前的url和来源的url</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#document-getElelmentById和document-querySelector区别"><span class="nav-number">16.</span> <span class="nav-text">document.getElelmentById和document.querySelector区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原生获取DOM元素方法"><span class="nav-number">17.</span> <span class="nav-text">原生获取DOM元素方法</span></a></li></ol></div>
             
 
           </div>
