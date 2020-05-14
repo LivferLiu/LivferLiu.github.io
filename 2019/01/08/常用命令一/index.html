@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux,Linux命令,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="env查看环境参数123456789[root@izj6cd5mlh03qbmrwa801iz ~]# envXDG_SESSION_ID=4766HOSTNAME=izj6cd5mlh03qbmrwa801izTERM=vt100SHELL=/bin/bashHISTSIZE=1000SSH_TTY=/dev/pts/0JRE_HOME=/usr/local/src/jdk1.8.0_40/jr">
+<meta name="keywords" content="Linux,Linux命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux命令(一)">
+<meta property="og:url" content="http://yoursite.com/2019/01/08/常用命令一/index.html">
+<meta property="og:site_name" content="Livfer&#39;s Blog">
+<meta property="og:description" content="env查看环境参数123456789[root@izj6cd5mlh03qbmrwa801iz ~]# envXDG_SESSION_ID=4766HOSTNAME=izj6cd5mlh03qbmrwa801izTERM=vt100SHELL=/bin/bashHISTSIZE=1000SSH_TTY=/dev/pts/0JRE_HOME=/usr/local/src/jdk1.8.0_40/jr">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-08T08:03:04.952Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux命令(一)">
+<meta name="twitter:description" content="env查看环境参数123456789[root@izj6cd5mlh03qbmrwa801iz ~]# envXDG_SESSION_ID=4766HOSTNAME=izj6cd5mlh03qbmrwa801izTERM=vt100SHELL=/bin/bashHISTSIZE=1000SSH_TTY=/dev/pts/0JRE_HOME=/usr/local/src/jdk1.8.0_40/jr">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/08/常用命令一/">
+
+
+
+
+
+  <title>Linux命令(一) | Livfer's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Livfer's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/08/常用命令一/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Livfer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Livfer's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux命令(一)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-08T10:13:22+08:00">
+                2019-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="env查看环境参数"><a href="#env查看环境参数" class="headerlink" title="env查看环境参数"></a><code>env</code>查看环境参数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# env</span><br><span class="line">XDG_SESSION_ID=4766</span><br><span class="line">HOSTNAME=izj6cd5mlh03qbmrwa801iz</span><br><span class="line">TERM=vt100</span><br><span class="line">SHELL=/bin/bash</span><br><span class="line">HISTSIZE=1000</span><br><span class="line">SSH_TTY=/dev/pts/0</span><br><span class="line">JRE_HOME=/usr/local/src/jdk1.8.0_40/jre</span><br><span class="line">USER=root</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="set查看环境参数和自定义参数"><a href="#set查看环境参数和自定义参数" class="headerlink" title="set查看环境参数和自定义参数"></a><code>set</code>查看环境参数和自定义参数</h2><h2 id="export-自定义参数转成环境参数"><a href="#export-自定义参数转成环境参数" class="headerlink" title="export 自定义参数转成环境参数"></a><code>export</code> 自定义参数转成环境参数</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="built_in">export</span> 不带任何参数情况下将打印出所有环境参数</span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="built_in">export</span> 还可以将自定义参数转化成环境参数,那么在子程序中也可以使用自定义的参数</span></span><br></pre></td></tr></table></figure>
+<!--more-->
+<h2 id="ulimit-设定系统以及程序使用资源"><a href="#ulimit-设定系统以及程序使用资源" class="headerlink" title="ulimit 设定系统以及程序使用资源"></a><code>ulimit</code> 设定系统以及程序使用资源</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="built_in">ulimit</span>主要是用来限制进程对资源的使用情况的，它支持各种类型的限制，常用的有：</span></span><br><span class="line"><span class="meta">#</span><span class="bash">内核文件的大小限制</span></span><br><span class="line"><span class="meta">#</span><span class="bash">进程数据块的大小限制</span></span><br><span class="line"><span class="meta">#</span><span class="bash">Shell进程创建文件大小限制</span></span><br><span class="line"><span class="meta">#</span><span class="bash">可加锁内存大小限制</span></span><br><span class="line"><span class="meta">#</span><span class="bash">常驻内存集的大小限制</span></span><br><span class="line"><span class="meta">#</span><span class="bash">打开文件句柄数限制</span></span><br><span class="line"><span class="meta">#</span><span class="bash">分配堆栈的最大大小限制</span></span><br><span class="line"><span class="meta">#</span><span class="bash">CPU占用时间限制用户最大可用的进程数限制</span></span><br><span class="line"><span class="meta">#</span><span class="bash">Shell进程所能使用的最大虚拟内存限制</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">查看系统<span class="built_in">ulimit</span>设置</span></span><br><span class="line">ulimit -a</span><br><span class="line">core file size          (blocks, -c) 0  &lt;== 代表没限制</span><br><span class="line">data seg size           (kbytes, -d) unlimited</span><br><span class="line">max nice                        (-e) 0</span><br><span class="line">file size               (blocks, -f) unlimited &lt;==可建立一个文件的大小</span><br><span class="line">pending signals                 (-i) 4096</span><br><span class="line">max locked memory       (kbytes, -l) 32</span><br><span class="line">max memory size         (kbytes, -m) unlimited</span><br><span class="line">open files                      (-n) 1024 &lt;==同时可打开文件的数量(句柄)</span><br><span class="line">pipe size            (512 bytes, -p) 8</span><br><span class="line">POSIX message queues     (bytes, -q) 819200</span><br><span class="line">max rt priority                 (-r) 0</span><br><span class="line">stack size              (kbytes, -s) 10240</span><br><span class="line">cpu time               (seconds, -t) unlimited</span><br><span class="line">max user processes              (-u) 4096</span><br><span class="line">virtual memory          (kbytes, -v) unlimited</span><br><span class="line">file locks                      (-x) unlimited||&lt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 限制只能创建小于10M的文件</span></span><br><span class="line">ulimit -f 10240</span><br><span class="line">ulimit -a | grep 'file size'</span><br><span class="line">core file size          (blocks, -c) 0</span><br><span class="line">file size               (blocks, -f) 10240 &lt;==最大量為10240Kbyes，相當10Mbytes</span><br><span class="line">dd if=/dev/zero of=123 bs=1M count=20 &lt;== 创建一个20M的文件 123 创建失败</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">永久配置<span class="built_in">ulimit</span>需要修改`/etc/security/limits.conf`</span></span><br><span class="line"> vim /etc/security/limits.conf</span><br><span class="line"> vbird1	soft		fsize		 90000</span><br><span class="line"> vbird1	hard		fsize		100000</span><br><span class="line"><span class="meta"> #</span><span class="bash"> 账号  限制依据     限制项目     限制值</span></span><br><span class="line"><span class="meta"> #</span><span class="bash"> 第一栏账号,或者是群组,如果是群组的话需要在前面加上@,比如@root</span></span><br><span class="line"><span class="meta"> #</span><span class="bash"> 第二栏 hard 严格模式,soft警告模式</span></span><br></pre></td></tr></table></figure>
+<h2 id="别名alias-unalias"><a href="#别名alias-unalias" class="headerlink" title="别名alias unalias"></a>别名<code>alias</code> <code>unalias</code></h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">查看别名</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# alias</span><br><span class="line">alias acme.sh='/root/.acme.sh/acme.sh'</span><br><span class="line">alias cp='cp -i'</span><br><span class="line">alias egrep='egrep --color=auto'</span><br><span class="line">alias fgrep='fgrep --color=auto'</span><br><span class="line">alias grep='grep --color=auto'</span><br><span class="line">alias l.='ls -d .* --color=auto'</span><br><span class="line">alias ll='ls -l --color=auto'</span><br><span class="line">alias ls='ls --color=auto'</span><br><span class="line">alias mv='mv -i'</span><br><span class="line">alias rm='rm -i'</span><br><span class="line">alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'</span><br><span class="line"><span class="meta">#</span><span class="bash">设置别名</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# alias lm='ls -al|more'</span><br><span class="line"><span class="meta">#</span><span class="bash">取消别名</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# unalias lm</span><br></pre></td></tr></table></figure>
+<h2 id="历史命令history"><a href="#历史命令history" class="headerlink" title="历史命令history"></a>历史命令<code>history</code></h2><h3 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># n-&gt;数字 代表查看最近的N条命令</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]<span class="comment"># hsitory [n]</span></span><br><span class="line"><span class="comment"># 将目前shell中所有命令全部清除</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]<span class="comment"># history [-c]</span></span><br><span class="line"><span class="comment"># -a 将目前新增的history指令新增到histfile中,预设在 ~/.bash_history</span></span><br><span class="line"><span class="comment"># -r 将histfiles的内容读到目前这个shell的history中</span></span><br><span class="line"><span class="comment"># -w 将目前history的内容写入到histfiles中</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]<span class="comment"># history [-raw]</span></span><br><span class="line"><span class="comment"># 执行第几条指令</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]<span class="comment"># !number</span></span><br><span class="line"><span class="comment"># 向前搜索 『开头为 command』的指令并执行</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]<span class="comment"># !command</span></span><br><span class="line"><span class="comment"># 执行上一次命令</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]<span class="comment"># !!</span></span><br></pre></td></tr></table></figure>
+<h3 id="增加历史命令时间"><a href="#增加历史命令时间" class="headerlink" title="增加历史命令时间"></a>增加历史命令时间</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">%T ： 替换为时间（ %H:%M:%S ）。</span></span><br><span class="line"><span class="meta">#</span><span class="bash">%F ： 等同于 %Y-%m-%d （ISO 8601:2000 标准日期格式）。</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">临时设置当前用户的环境变量</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# export HISTTIMEFORMAT = '%F %T'</span><br><span class="line"><span class="meta">#</span><span class="bash">永久设置当前/其他用户的环境变量 两种方式</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# echo 'HISTTIMEFORMAT = "%F %T"' &gt;&gt; ~/.bashrc</span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# source ~/.bashrc</span><br><span class="line"></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# echo 'HISTTIEMFORMAT = "%F % T"' &gt;&gt; ~/.bash_profile</span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# source ~/.bash_profile</span><br><span class="line"><span class="meta">#</span><span class="bash">永久设置所有用户的环境变量</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# echo 'HISTTIMEFORMAT = "%F %T"' &gt;&gt; /etc/profile</span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# source /etc/profile</span><br></pre></td></tr></table></figure>
+<h2 id="bash欢迎信息"><a href="#bash欢迎信息" class="headerlink" title="bash欢迎信息"></a>bash欢迎信息</h2><h3 id="本地端"><a href="#本地端" class="headerlink" title="本地端"></a>本地端</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> /etc/issue文件配置欢迎信息</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> \d 本地端日期</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> \l 显示第几个终端界面</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> \m 显示硬件架构</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> \n 显示主机网络名称</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> \O 显示 domain name</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> \r 系统版本(相当于 uname -r)</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> \t 本地端时间</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> \S 系统名称 </span></span><br><span class="line"><span class="meta">#</span><span class="bash"> \v 系统版本</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">修改文件</span></span><br><span class="line">\S(terminal: \l)</span><br><span class="line">Date: \d \t</span><br><span class="line">Kernel \r on an \m</span><br><span class="line">Welcome!</span><br><span class="line"><span class="meta">#</span><span class="bash">显示为</span></span><br><span class="line">CentOS Linux 7 (Core) (terminal: tty3)</span><br><span class="line">Date: 2019-01-08 17:29:19</span><br><span class="line">Kernel 3.10.0-229.el7.x86_64 on an x86_64</span><br><span class="line">Welcome!</span><br></pre></td></tr></table></figure>
+<h3 id="远程端"><a href="#远程端" class="headerlink" title="远程端"></a>远程端</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 通过telnet连接到主机时,登录信息修改/ect/motd</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# vim /etc/motd</span><br><span class="line">Hello everyone!</span><br><span class="line"><span class="meta">#</span><span class="bash"> 当通过telenet连接到主机时会显示</span></span><br><span class="line">Last login: Wed Jul  8 23:22:25 2018 from 127.0.0.1</span><br><span class="line">Hello everyone!</span><br></pre></td></tr></table></figure>
+<h2 id="截取命令cut-grep"><a href="#截取命令cut-grep" class="headerlink" title="截取命令cut grep"></a>截取命令<code>cut</code> <code>grep</code></h2><h3 id="cut"><a href="#cut" class="headerlink" title="cut"></a><code>cut</code></h3><p>将某一段的信息其中一段截取出来,以行为单位</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 按照 [分割字符]分割,去除第[number]段</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# cut -d '分割字符' -f number</span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# echo $&#123;PATH&#125;</span><br><span class="line">/usr/local/src/jdk1.8.0_40/bin:/usr/local/src/jdk1.8.0_40/jre/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/root/bin:/usr/local/imagemagick/bin:/bin:/root/bin</span><br><span class="line"><span class="meta">#</span><span class="bash"> 以:分割,取出第二个</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# echo $&#123;PATH&#125; | cut -d ':' -f 2</span><br><span class="line">/usr/local/src/jdk1.8.0_40/jre/bin</span><br><span class="line"><span class="meta">#</span><span class="bash"> 以:分割,取出第一个和第二个</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# echo $&#123;PATH&#125; | cut -d ':' -f 1,2</span><br><span class="line">/usr/local/src/jdk1.8.0_40/bin:/usr/local/src/jdk1.8.0_40/jre/bin</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 取出12个字符之后的</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# export |cut -c 12-</span><br><span class="line">CLASSPATH=".:/usr/local/src/jdk1.8.0_40/lib:/usr/local/src/jdk1.8.0_40/jre/lib:"</span><br><span class="line">HISTCONTROL="ignoredups"</span><br><span class="line">HISTSIZE="1000"</span><br><span class="line">HOME="/root"</span><br><span class="line">HOSTNAME="izj6cd5mlh03qbmrwa801iz"</span><br><span class="line">JAVA_HOME="/usr/local/src/jdk1.8.0_40"</span><br><span class="line"><span class="meta">#</span><span class="bash">去除1-10之间的</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# export |cut -c 1-10</span><br><span class="line">declare -x</span><br><span class="line">declare -x</span><br><span class="line">declare -x</span><br><span class="line">declare -x</span><br><span class="line">declare -x</span><br><span class="line">declare -x</span><br><span class="line">declare -x</span><br><span class="line">declare -x</span><br></pre></td></tr></table></figure>
+<h3 id="grep"><a href="#grep" class="headerlink" title="grep"></a><code>grep</code></h3><p>通过分析是否有符合我们要求的字符,如果有就取出来</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> -a 将binary文件已text文件方式搜索</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -c 计算找到<span class="string">'搜索字符串'</span>的次数</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -i 忽略大小写</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -n 顺序输出行号</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -v 反向选择,级显示没有<span class="string">"搜索字符串"</span>的</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# grep [-acinv][--color-auto] "搜索字符串" filename</span><br><span class="line"></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# last | grep "root"</span><br><span class="line">root     pts/0        222.95.76.15     Tue Jan  8 14:53   still logged in   </span><br><span class="line">root     pts/0        222.95.76.15     Tue Jan  8 10:04 - 11:33  (01:29)    </span><br><span class="line">root     pts/0        222.95.76.15     Mon Jan  7 15:55 - 17:12  (01:16)   </span><br><span class="line"></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# last | grep -v "root"</span><br><span class="line">reboot   system boot  3.10.0-693.2.2.e Wed Dec 12 00:10 - 15:05 (27+14:55)  </span><br><span class="line">reboot   system boot  3.10.0-693.2.2.e Fri Aug  3 19:54 - 16:10 (129+20:15)</span><br></pre></td></tr></table></figure>
+<p>##排序<code>sort</code> <code>wc</code> <code>uniq</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> -f : 忽略大小写</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -b : 忽略最前面空格</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -M : 以月份名字排序,例如JAN,DEC</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -n : 使用纯数字排序(预设文字)</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -r : 反向</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -u : uniq,相同资料,仅出现一次</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -t : 分隔符,预设是用tab来分隔</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -k : 以区间来进行排序</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# sort [-fbMnrtuk] [file or stdin]</span><br><span class="line"></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# cat /etc/passwd |sort</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">chrony:x:998:996::/var/lib/chrony:/sbin/nologin</span><br><span class="line"><span class="meta">#</span><span class="bash"> 通过:分隔,按照3,3这个区间,通过数字排序 </span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# cat /etc/passwd |sort -t ':' -k 3,3 -n</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line"><span class="meta">#</span><span class="bash"> 取出登录信息第一栏进行排序,重复的只显示一次</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# last | cut -d' ' -f1 | sort |uniq</span><br><span class="line">reboot</span><br><span class="line">root</span><br><span class="line">wtmp</span><br><span class="line"><span class="meta">#</span><span class="bash"> 取出登录信息第一栏进行排序,重复的只显示一次,但是统计次数</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# last | cut -d' ' -f1 | sort |uniq -c</span><br><span class="line">      1 </span><br><span class="line">      3 reboot</span><br><span class="line">    111 root</span><br><span class="line">      1 wtmp</span><br><span class="line"><span class="meta">#</span><span class="bash"> -l:仅列出行 -w:显示单词计数 -m:多少字符 -c:字节</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# wc [-lwm]</span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# cat /etc/man_db.conf |wc</span><br><span class="line">    131     723    5171</span><br><span class="line">    行		字数  </span><br><span class="line"><span class="meta">#</span><span class="bash">获取登录系统的总次数,排除 wtmp,reboot,unknown</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# last | grep [a-zA-Z] | grep -v 'wtmp' | grep -v 'reboot' | grep -v 'unkonwn' |wc -l</span><br><span class="line">111</span><br></pre></td></tr></table></figure>
+<h2 id="tee"><a href="#tee" class="headerlink" title="tee"></a><code>tee</code></h2><p><code>tee</code> 可以让标准输出转存一份到文件内并将同样的内容输出到屏幕上</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> -a : 以追加方式存入file中</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]# tee [-a] file</span><br><span class="line"><span class="meta">#</span><span class="bash"> 1.将last输出存一份到last.list中 2.将last内容截取第一栏输出到屏幕</span></span><br><span class="line">[root@izj6cd5mlh03qbmrwa801iz ~]#  last | tee last.list | cut -d " " -f1</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+          
+            <a href="/tags/Linux命令/" rel="tag"><i class="fa fa-tag"></i> Linux命令</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/07/文件-目录常用命令/" rel="next" title="文件/目录常用命令">
+                <i class="fa fa-chevron-left"></i> 文件/目录常用命令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/08/资料重倒向/" rel="prev" title="资料重倒向">
+                资料重倒向 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Livfer">
+            
+              <p class="site-author-name" itemprop="name">Livfer</p>
+              <p class="site-description motion-element" itemprop="description">代码的搬运工</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LivferLiu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:livfer@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cc1021.com/" title="程成🍊" target="_blank">程成🍊</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#env查看环境参数"><span class="nav-number">1.</span> <span class="nav-text">env查看环境参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set查看环境参数和自定义参数"><span class="nav-number">2.</span> <span class="nav-text">set查看环境参数和自定义参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#export-自定义参数转成环境参数"><span class="nav-number">3.</span> <span class="nav-text">export 自定义参数转成环境参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ulimit-设定系统以及程序使用资源"><span class="nav-number">4.</span> <span class="nav-text">ulimit 设定系统以及程序使用资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#别名alias-unalias"><span class="nav-number">5.</span> <span class="nav-text">别名alias unalias</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#历史命令history"><span class="nav-number">6.</span> <span class="nav-text">历史命令history</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用"><span class="nav-number">6.1.</span> <span class="nav-text">常用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增加历史命令时间"><span class="nav-number">6.2.</span> <span class="nav-text">增加历史命令时间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bash欢迎信息"><span class="nav-number">7.</span> <span class="nav-text">bash欢迎信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#本地端"><span class="nav-number">7.1.</span> <span class="nav-text">本地端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#远程端"><span class="nav-number">7.2.</span> <span class="nav-text">远程端</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#截取命令cut-grep"><span class="nav-number">8.</span> <span class="nav-text">截取命令cut grep</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cut"><span class="nav-number">8.1.</span> <span class="nav-text">cut</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#grep"><span class="nav-number">8.2.</span> <span class="nav-text">grep</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tee"><span class="nav-number">9.</span> <span class="nav-text">tee</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Livfer</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

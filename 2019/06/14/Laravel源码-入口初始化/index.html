@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="PHP,Laravel,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="laravel 入口文件/laravel/public/index.php12345678910111213141516171819//项目开始运行时间define(&apos;LARAVEL_START&apos;, microtime(true));//加载项目依赖require __DIR__.&apos;/../vendor/autoload.php&apos;;//创建Laravel应用实例(服务容器),项目初始化包括:注册项">
+<meta name="keywords" content="PHP,Laravel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel源码-入口初始化">
+<meta property="og:url" content="http://yoursite.com/2019/06/14/Laravel源码-入口初始化/index.html">
+<meta property="og:site_name" content="Livfer&#39;s Blog">
+<meta property="og:description" content="laravel 入口文件/laravel/public/index.php12345678910111213141516171819//项目开始运行时间define(&apos;LARAVEL_START&apos;, microtime(true));//加载项目依赖require __DIR__.&apos;/../vendor/autoload.php&apos;;//创建Laravel应用实例(服务容器),项目初始化包括:注册项">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-15T09:08:05.159Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Laravel源码-入口初始化">
+<meta name="twitter:description" content="laravel 入口文件/laravel/public/index.php12345678910111213141516171819//项目开始运行时间define(&apos;LARAVEL_START&apos;, microtime(true));//加载项目依赖require __DIR__.&apos;/../vendor/autoload.php&apos;;//创建Laravel应用实例(服务容器),项目初始化包括:注册项">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/14/Laravel源码-入口初始化/">
+
+
+
+
+
+  <title>Laravel源码-入口初始化 | Livfer's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Livfer's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/14/Laravel源码-入口初始化/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Livfer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Livfer's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Laravel源码-入口初始化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-14T09:31:02+08:00">
+                2019-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/Laravel/" itemprop="url" rel="index">
+                    <span itemprop="name">Laravel</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="laravel-入口文件-laravel-public-index-php"><a href="#laravel-入口文件-laravel-public-index-php" class="headerlink" title="laravel 入口文件/laravel/public/index.php"></a>laravel 入口文件<code>/laravel/public/index.php</code></h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//项目开始运行时间</span></span><br><span class="line">define(<span class="string">'LARAVEL_START'</span>, microtime(<span class="keyword">true</span>));</span><br><span class="line"><span class="comment">//加载项目依赖</span></span><br><span class="line"><span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">'/../vendor/autoload.php'</span>;</span><br><span class="line"><span class="comment">//创建Laravel应用实例(服务容器),项目初始化包括:注册项目基础服务,注册服务提供别名,注册路径等一系列注册工作</span></span><br><span class="line">$app = <span class="keyword">require_once</span> <span class="keyword">__DIR__</span>.<span class="string">'/../bootstrap/app.php'</span>;</span><br><span class="line"><span class="comment">//接受请求并响应</span></span><br><span class="line"><span class="comment">//通过APP容器实例化Kernel类 注册中间件组合中间件别名</span></span><br><span class="line">$kernel = $app-&gt;make(Illuminate\Contracts\Http\Kernel::class);</span><br><span class="line"><span class="comment">//处理请求</span></span><br><span class="line">$response = $kernel-&gt;handle(</span><br><span class="line">    <span class="comment">//通过Symfony Request类 创建请求实例</span></span><br><span class="line">    $request = Illuminate\Http\Request::capture()</span><br><span class="line">);</span><br><span class="line"><span class="comment">//发送响应由 Illuminate\Http\Response 父类 Symfony\Component\HttpFoundation\Response 中的 send() 方法完成</span></span><br><span class="line">$response-&gt;send();</span><br><span class="line"><span class="comment">//发送响应之后,如果有终止中间件的话,则执行终止中间件 Illuminate/Foundation/Http/Kernel.php的terminate方法</span></span><br><span class="line">$kernel-&gt;terminate($request, $response);</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="Composer-自动加载"><a href="#Composer-自动加载" class="headerlink" title="Composer 自动加载"></a>Composer 自动加载</h2><p>composer将通过命名空间/文件目录的形式存储到/laravel/vendor/composer/autoload_classmap.php中,自动加载时通过命名空间寻找类文件,并实现加载</p>
+<h2 id="创建app实例"><a href="#创建app实例" class="headerlink" title="创建app实例"></a>创建app实例</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//创建应用实例 注册服务,路径,别名到APP容器中</span></span><br><span class="line">$app = <span class="keyword">new</span> Illuminate\Foundation\Application(</span><br><span class="line">    realpath(<span class="keyword">__DIR__</span>.<span class="string">'/../'</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//绑定kernel到容器中 web请求 加载中间件,通过bootstrappers数组完成环境监测,配置加载,异常处理,Facades注册,服务提供者注册,启动服务</span></span><br><span class="line">$app-&gt;singleton(</span><br><span class="line">    Illuminate\Contracts\Http\Kernel::class,</span><br><span class="line">    App\Http\Kernel::class</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">//控制台请求</span></span><br><span class="line">$app-&gt;singleton(</span><br><span class="line">    Illuminate\Contracts\Console\Kernel::class,</span><br><span class="line">    App\Console\Kernel::class</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">//错误异常处理</span></span><br><span class="line">$app-&gt;singleton(</span><br><span class="line">    Illuminate\Contracts\Debug\ExceptionHandler::class,</span><br><span class="line">    App\Exceptions\Handler::class</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回APP容器</span></span><br><span class="line"><span class="keyword">return</span> $app;</span><br></pre></td></tr></table></figure>
+<h3 id="创建应用实例"><a href="#创建应用实例" class="headerlink" title="创建应用实例"></a>创建应用实例</h3><p><code>/laravel/vendor/laravel/framework/src/Illuminate/Foundation/Application.php</code></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($basePath = null)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//绑定路径,将路径添加到容器的instances属性数组中</span></span><br><span class="line">    <span class="keyword">if</span> ($basePath) &#123;</span><br><span class="line">            <span class="comment">//定义app目录路径,根目录,语言路径,配置路径,public路径,storage路径,databases路径,resource路径,bootstrap路径,写入到属性instance中</span></span><br><span class="line">        <span class="keyword">$this</span>-&gt;setBasePath($basePath);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//将application本身以及父类Container写入到instance中,并分别起了2个名字:app,Illuminate\Container\Container</span></span><br><span class="line">    <span class="comment">//同时将Illuminate\Foundation\PackageManifest添加到容器instances属性数组,并且</span></span><br><span class="line">    <span class="keyword">$this</span>-&gt;registerBaseBindings();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//注册EventService,LogService,RouterService服务</span></span><br><span class="line">    <span class="keyword">$this</span>-&gt;registerBaseServiceProviders();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//注册核心类的别名,以key/value形式存储记录</span></span><br><span class="line">    <span class="keyword">$this</span>-&gt;registerCoreContainerAliases();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>总体来说app初始化的工作为: 1、设置路径  2、绑定了app对象和packages包的实例 3、注册了基本服务提供者 4、增加了核心类的别名</p>
+<h3 id="绑定核心接口到容器"><a href="#绑定核心接口到容器" class="headerlink" title="绑定核心接口到容器"></a>绑定核心接口到容器</h3><p>主要的动作为绑定一些重要的接口到容器,以便之后可以直接使用.</p>
+<p>此过程中加载中间件,通过bootstrappers数组完成环境监测,配置加载,异常处理,Facades注册,服务提供者注册,启动服务</p>
+<p>singleton方法 将传入的类名路径转换为一个启动服务的闭包，并保存在容器的bindings属性中</p>
+<h2 id="通过APP容器实例化Kernel类"><a href="#通过APP容器实例化Kernel类" class="headerlink" title="通过APP容器实例化Kernel类"></a>通过APP容器实例化Kernel类</h2><ul>
+<li><p>通过<code>make</code>方法解析kernel类</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">make</span><span class="params">($abstract, array $parameters = [])</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">     <span class="comment">//获取之前创建app实例中的别名,这个时候还没有别名,直接返回类路径</span></span><br><span class="line">        $abstract = <span class="keyword">$this</span>-&gt;getAlias($abstract);</span><br><span class="line"></span><br><span class="line">     <span class="comment">//不是延迟加载的服务</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="keyword">$this</span>-&gt;deferredServices[$abstract]) &amp;&amp; ! <span class="keyword">isset</span>(<span class="keyword">$this</span>-&gt;instances[$abstract])) &#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;loadDeferredProvider($abstract);</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//通过父类make方法解析kernel类</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">parent</span>::make($abstract, $parameters);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>父类<code>make</code>方法解析</p>
+</li>
+<li><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">make</span><span class="params">($abstract, array $parameters = [])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;resolve($abstract, $parameters);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">resolve</span><span class="params">($abstract, $parameters = [])</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $abstract = <span class="keyword">$this</span>-&gt;getAlias($abstract);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//检测上下文绑定，这个属于契约接口的动态调用</span></span><br><span class="line">        $needsContextualBuild = ! <span class="keyword">empty</span>($parameters) || ! is_null(</span><br><span class="line">            <span class="keyword">$this</span>-&gt;getContextualConcrete($abstract)</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        <span class="comment">// If an instance of the type is currently being managed as a singleton we'll</span></span><br><span class="line">        <span class="comment">// just return an existing instance instead of instantiating new instances</span></span><br><span class="line">        <span class="comment">// so the developer can keep using the same objects instance every time.</span></span><br><span class="line">        <span class="comment">//instances数组中有该类，并且不需要构建上下文的话，便直接返回该类实例</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="keyword">$this</span>-&gt;instances[$abstract]) &amp;&amp; ! $needsContextualBuild) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;instances[$abstract];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//将实例化类的参数存入数组</span></span><br><span class="line">        <span class="keyword">$this</span>-&gt;with[] = $parameters;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取该类闭包，若无则还是返回类名字符串</span></span><br><span class="line">        $concrete = <span class="keyword">$this</span>-&gt;getConcrete($abstract);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// We're ready to instantiate an instance of the concrete type registered for</span></span><br><span class="line">        <span class="comment">// the binding. This will instantiate the types, as well as resolve any of</span></span><br><span class="line">        <span class="comment">// its "nested" dependencies recursively until all have gotten resolved.</span></span><br><span class="line">        <span class="comment">//如果当前解析的类没有上下文绑定,并且是一个闭包则直接进行构建,否则递归make方法获得该契约绑定的类</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;isBuildable($concrete, $abstract)) &#123;</span><br><span class="line">            $object = <span class="keyword">$this</span>-&gt;build($concrete);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            $object = <span class="keyword">$this</span>-&gt;make($concrete);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// If we defined any extenders for this type, we'll need to spin through them</span></span><br><span class="line">        <span class="comment">// and apply them to the object being built. This allows for the extension</span></span><br><span class="line">        <span class="comment">// of services, such as changing configuration or decorating the object.</span></span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">$this</span>-&gt;getExtenders($abstract) <span class="keyword">as</span> $extender) &#123;</span><br><span class="line">            $object = $extender($object, <span class="keyword">$this</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// If the requested type is registered as a singleton we'll want to cache off</span></span><br><span class="line">        <span class="comment">// the instances in "memory" so we can return it later without creating an</span></span><br><span class="line">        <span class="comment">// entirely new instance of an object on each subsequent request for it.</span></span><br><span class="line">        <span class="comment">//若该类绑定时设置为共享，则缓存至instances单例数组</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;isShared($abstract) &amp;&amp; ! $needsContextualBuild) &#123;</span><br><span class="line">            <span class="keyword">$this</span>-&gt;instances[$abstract] = $object;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">$this</span>-&gt;fireResolvingCallbacks($abstract, $object);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Before returning, we will also set the resolved flag to "true" and pop off</span></span><br><span class="line">        <span class="comment">// the parameter overrides for this build. After those two things are done</span></span><br><span class="line">        <span class="comment">// we will be ready to return back the fully constructed class instance.</span></span><br><span class="line">        <span class="keyword">$this</span>-&gt;resolved[$abstract] = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">        array_pop(<span class="keyword">$this</span>-&gt;with);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> $object;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>加载中间件</p>
+<p>解析kernel类时,最终会构建在实例化app时绑定的kernel实现(<code>App\Http\kernel</code>),通过构造方法加载中间,中间件组,以及路由中间件.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="处理请求"><a href="#处理请求" class="headerlink" title="处理请求"></a>处理请求</h2><p>解析kernel后,在index.php文件中利用kernel的handle方法，传入了一个request对象，来处理这次的网页url请求。此处是通过使用管道模式进行路由分发,定位到控制器,被response类包装成响应对象返回至index.php，通过send方法发送至浏览器.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/PHP-Laravel/" rel="tag"><i class="fa fa-tag"></i> PHP,Laravel</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/06/Hexo常用指令/" rel="next" title="Hexo常用指令">
+                <i class="fa fa-chevron-left"></i> Hexo常用指令
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/14/PHP中的闭包-Closure/" rel="prev" title="PHP中的闭包-Closure">
+                PHP中的闭包-Closure <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Livfer">
+            
+              <p class="site-author-name" itemprop="name">Livfer</p>
+              <p class="site-description motion-element" itemprop="description">代码的搬运工</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LivferLiu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:livfer@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cc1021.com/" title="程成🍊" target="_blank">程成🍊</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#laravel-入口文件-laravel-public-index-php"><span class="nav-number">1.</span> <span class="nav-text">laravel 入口文件/laravel/public/index.php</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Composer-自动加载"><span class="nav-number">2.</span> <span class="nav-text">Composer 自动加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建app实例"><span class="nav-number">3.</span> <span class="nav-text">创建app实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建应用实例"><span class="nav-number">3.1.</span> <span class="nav-text">创建应用实例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定核心接口到容器"><span class="nav-number">3.2.</span> <span class="nav-text">绑定核心接口到容器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过APP容器实例化Kernel类"><span class="nav-number">4.</span> <span class="nav-text">通过APP容器实例化Kernel类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理请求"><span class="nav-number">5.</span> <span class="nav-text">处理请求</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Livfer</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

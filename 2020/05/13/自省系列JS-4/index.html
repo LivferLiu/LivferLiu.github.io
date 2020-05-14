@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JS,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="FormData概念FormData接口提供一种表示表单数据的键值对的构造方式.可以通过JavaScript模拟表单控件操作.可以通过XMLHttpRequest的send方法异步提交表单 使用FormData 初始化表单对象,可以传入dom元素,可以为空  12345//创建一个空的FormData对象let formData = new FormData();//创建一个存在的form对象 这">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自省系列JS-4">
+<meta property="og:url" content="http://yoursite.com/2020/05/13/自省系列JS-4/index.html">
+<meta property="og:site_name" content="Livfer&#39;s Blog">
+<meta property="og:description" content="FormData概念FormData接口提供一种表示表单数据的键值对的构造方式.可以通过JavaScript模拟表单控件操作.可以通过XMLHttpRequest的send方法异步提交表单 使用FormData 初始化表单对象,可以传入dom元素,可以为空  12345//创建一个空的FormData对象let formData = new FormData();//创建一个存在的form对象 这">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-05-13T15:32:17.665Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自省系列JS-4">
+<meta name="twitter:description" content="FormData概念FormData接口提供一种表示表单数据的键值对的构造方式.可以通过JavaScript模拟表单控件操作.可以通过XMLHttpRequest的send方法异步提交表单 使用FormData 初始化表单对象,可以传入dom元素,可以为空  12345//创建一个空的FormData对象let formData = new FormData();//创建一个存在的form对象 这">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/05/13/自省系列JS-4/">
+
+
+
+
+
+  <title>自省系列JS-4 | Livfer's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Livfer's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/13/自省系列JS-4/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Livfer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Livfer's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">自省系列JS-4</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-13T10:18:57+08:00">
+                2020-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/自省系列/" itemprop="url" rel="index">
+                    <span itemprop="name">自省系列</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/自省系列/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="FormData"><a href="#FormData" class="headerlink" title="FormData"></a>FormData</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p><code>FormData</code>接口提供一种表示表单数据的键值对的构造方式.可以通过JavaScript模拟表单控件操作.可以通过<code>XMLHttpRequest</code>的<code>send</code>方法异步提交表单</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="FormData-1"><a href="#FormData-1" class="headerlink" title="FormData"></a>FormData</h3><blockquote>
+<p>初始化表单对象,可以传入dom元素,可以为空</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建一个空的FormData对象</span></span><br><span class="line"><span class="keyword">let</span> formData = <span class="keyword">new</span> FormData();</span><br><span class="line"><span class="comment">//创建一个存在的form对象 这个对象包含这个表单的数据</span></span><br><span class="line"><span class="keyword">const</span> formOne = <span class="built_in">document</span>.getElementById(<span class="string">"myform"</span>);</span><br><span class="line"><span class="keyword">let</span> formData = <span class="keyword">new</span> FormData(formOne);</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="append-set"><a href="#append-set" class="headerlink" title="append,set"></a><code>append</code>,<code>set</code></h3><blockquote>
+<p><code>append</code>:添加一个新值对到FormData对象,键存在将新值添加到值的集合中,不存在则添加新的键值对</p>
+<p><code>set</code>: 通<code>append</code>,区别在于如果键存在情况下,新的值覆盖旧值</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//formData.append(name,value)</span></span><br><span class="line"><span class="comment">//formData.append(name,value,[filename])--value为文件对象时,可以通过filename定义文件名字如果value是Blob对象,默认文件名是"blob"</span></span><br><span class="line">formData.append(<span class="string">"name"</span>,<span class="string">"lily"</span>);</span><br><span class="line">formData.appen(<span class="string">"name"</span>,<span class="string">"hello"</span>); <span class="comment">//此时name的值是 lily,hello的集合</span></span><br><span class="line">formData.append(<span class="string">"avatar"</span>,fileInput.files[<span class="number">0</span>],<span class="string">'avatar1.jpg'</span>) <span class="comment">//上传头像文件,指定文件名称</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//formData.set(name,value);</span></span><br><span class="line"><span class="comment">//formData.set(name,value,filename) //同append</span></span><br></pre></td></tr></table></figure>
+<h3 id="delete"><a href="#delete" class="headerlink" title="delete"></a><code>delete</code></h3><blockquote>
+<p>删除键值对</p>
+</blockquote>
+<p><code>formData.delete(&quot;name&quot;)</code>;</p>
+<h3 id="entries和keys"><a href="#entries和keys" class="headerlink" title="entries和keys"></a><code>entries</code>和<code>keys</code></h3><blockquote>
+<p><code>entries</code>:返回FormData的键值对数据集合,是一个<code>iterator</code>对象</p>
+<p><code>keys</code>: 返回FormData的键集合,是一个<code>iterator</code>对象</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> formOne = <span class="keyword">new</span> FormData();</span><br><span class="line">formData.entries(formOne);</span><br><span class="line">formData.keys(formOne);</span><br></pre></td></tr></table></figure>
+<h3 id="get和getAll"><a href="#get和getAll" class="headerlink" title="get和getAll"></a><code>get</code>和<code>getAll</code></h3><blockquote>
+<p><code>get</code>: 返回指定key的第一个值</p>
+<p><code>getAll</code>: 返回指定key的所有值</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">formData.get(<span class="string">"keyName"</span>);</span><br><span class="line">formData.getAll(<span class="string">"keyName"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="has"><a href="#has" class="headerlink" title="has"></a><code>has</code></h3><blockquote>
+<p>检测某个key是否存在</p>
+</blockquote>
+<p><code>formData.has(&quot;keyName&quot;)</code></p>
+<h3 id="values"><a href="#values" class="headerlink" title="values"></a><code>values</code></h3><blockquote>
+<p>返回一个允许遍历该对象中所有值的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Iteration_protocols" target="_blank" rel="noopener"><code>迭代器</code></a></p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建一个FormData测试对象</span></span><br><span class="line"><span class="keyword">var</span> formData = <span class="keyword">new</span> FormData();</span><br><span class="line">formData.append(<span class="string">'key1'</span>, <span class="string">'value1'</span>);</span><br><span class="line">formData.append(<span class="string">'key2'</span>, <span class="string">'value2'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//显示值</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> value <span class="keyword">of</span> formData.values()) &#123;</span><br><span class="line">   <span class="built_in">console</span>.log(value); </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//value1</span></span><br><span class="line"><span class="comment">//value2</span></span><br></pre></td></tr></table></figure>
+<h1 id="base64场景"><a href="#base64场景" class="headerlink" title="base64场景"></a>base64场景</h1><ul>
+<li>上传图片,可以转化为base64上传</li>
+<li>可以在页面显示base64图片,适应于不是很大的图</li>
+<li>url加密</li>
+</ul>
+<h1 id="移动端点击事件延迟"><a href="#移动端点击事件延迟" class="headerlink" title="移动端点击事件延迟"></a>移动端点击事件延迟</h1><blockquote>
+<p>移动端会延迟300ms,来判断是否还有下一次点击,以此来判定是点击还是双击</p>
+</blockquote>
+<h2 id="避免延迟"><a href="#避免延迟" class="headerlink" title="避免延迟"></a>避免延迟</h2><h3 id="禁止缩放"><a href="#禁止缩放" class="headerlink" title="禁止缩放"></a>禁止缩放</h3><p><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width user-scalable= &#39;no&#39;&quot;&gt;</code></p>
+<h3 id="fastclick-js"><a href="#fastclick-js" class="headerlink" title="fastclick.js"></a><code>fastclick.js</code></h3><h1 id="随机字符串"><a href="#随机字符串" class="headerlink" title="随机字符串"></a>随机字符串</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 随即字符串</span></span><br><span class="line"><span class="comment"> * @param &#123;Number&#125; length </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">randomString</span>(<span class="params">length</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//如果转换的基数大于10，则会使用字母来表示大于9的数字，比如基数为16的情况，则使用a到f的字母来表示10到15</span></span><br><span class="line">    <span class="comment">//如果radix是36，就会把数字表示为由0-9, a-z组成的的36进制字符串</span></span><br><span class="line">    <span class="keyword">let</span> str = <span class="built_in">Math</span>.random().toString(<span class="number">36</span>).substr(<span class="number">2</span>);</span><br><span class="line">    <span class="keyword">if</span>(str.length &gt;= length) &#123;</span><br><span class="line">        <span class="keyword">return</span> str.substr(<span class="number">0</span>,length);</span><br><span class="line">    &#125;</span><br><span class="line">    str += randomString((str.length) - length);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="typeof-null-quot-object-quot"><a href="#typeof-null-quot-object-quot" class="headerlink" title="typeof null == &quot;object&quot;"></a><code>typeof null == &quot;object&quot;</code></h1><blockquote>
+<p>不同的对象在底层都表示为二进制， 在 JavaScript 中二进制前三位都为 0 的话会被判断为 object 类型， null 的二进制表示是全 0， 自然前三位也是 0， 所以执行 typeof 时会返回“object”</p>
+</blockquote>
+<p>在 javascript 的最初版本中，使用的 32 位系统，为了性能考虑使用低位存储了变量的类型信息：</p>
+<ul>
+<li>000：对象</li>
+<li>1：整数</li>
+<li>010：浮点数</li>
+<li>100：字符串</li>
+<li>110：布尔</li>
+</ul>
+<h1 id="九九乘法表"><a href="#九九乘法表" class="headerlink" title="九九乘法表"></a>九九乘法表</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 九九乘法表</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">nine</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = <span class="string">""</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> index = <span class="number">1</span>; index &lt;= <span class="number">9</span>; index++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= index; i++) &#123;</span><br><span class="line">      result += <span class="string">`<span class="subst">$&#123;i&#125;</span> x <span class="subst">$&#123;index&#125;</span> = <span class="subst">$&#123;index * i&#125;</span> `</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    result += <span class="string">`\t\n`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(nine());</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1 x 1 = 1 	</span></span><br><span class="line"><span class="comment">1 x 2 = 2 2 x 2 = 4 	</span></span><br><span class="line"><span class="comment">1 x 3 = 3 2 x 3 = 6 3 x 3 = 9 	</span></span><br><span class="line"><span class="comment">1 x 4 = 4 2 x 4 = 8 3 x 4 = 12 4 x 4 = 16 	</span></span><br><span class="line"><span class="comment">1 x 5 = 5 2 x 5 = 10 3 x 5 = 15 4 x 5 = 20 5 x 5 = 25 	</span></span><br><span class="line"><span class="comment">1 x 6 = 6 2 x 6 = 12 3 x 6 = 18 4 x 6 = 24 5 x 6 = 30 6 x 6 = 36 	</span></span><br><span class="line"><span class="comment">1 x 7 = 7 2 x 7 = 14 3 x 7 = 21 4 x 7 = 28 5 x 7 = 35 6 x 7 = 42 7 x 7 = 49 	</span></span><br><span class="line"><span class="comment">1 x 8 = 8 2 x 8 = 16 3 x 8 = 24 4 x 8 = 32 5 x 8 = 40 6 x 8 = 48 7 x 8 = 56 8 x 8 = 64 	</span></span><br><span class="line"><span class="comment">1 x 9 = 9 2 x 9 = 18 3 x 9 = 27 4 x 9 = 36 5 x 9 = 45 6 x 9 = 54 7 x 9 = 63 8 x 9 = 72 9 x 9 = 81 	</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h1 id="浏览器同源策略"><a href="#浏览器同源策略" class="headerlink" title="浏览器同源策略"></a>浏览器同源策略</h1><ul>
+<li>相同协议,host,端口才是同源</li>
+<li>防止了<code>CSRF</code>的安全问题</li>
+<li>防止<code>DOM</code>操作的安全问题</li>
+</ul>
+<h1 id="JS延迟加载"><a href="#JS延迟加载" class="headerlink" title="JS延迟加载"></a>JS延迟加载</h1><ul>
+<li><code>defer属性</code></li>
+<li><code>async属性</code></li>
+<li><code>body</code>之后</li>
+<li><code>setTimeOut</code>放到异步队列中</li>
+</ul>
+<h1 id="写一个暂停函数"><a href="#写一个暂停函数" class="headerlink" title="写一个暂停函数"></a>写一个暂停函数</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * @param &#123;Number&#125; wait 微秒</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sleep</span>(<span class="params">wait</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> setTimeout(resolve, wait));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">sleep(<span class="number">2000</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">1</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">    <span class="built_in">console</span>.log(test.prototype);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">Object</span>.getPrototypeOf(test));</span><br><span class="line">    <span class="comment">//如果函数返回的值是引用类型（对象）的值时，new运算符将返回这个值</span></span><br><span class="line">    <span class="keyword">return</span> test; </span><br><span class="line">&#125; </span><br><span class="line"><span class="keyword">new</span> test() <span class="keyword">instanceof</span> <span class="built_in">Object</span>; <span class="comment">//true</span></span><br><span class="line"><span class="keyword">new</span> test() <span class="keyword">instanceof</span> test; <span class="comment">//false</span></span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line">test <span class="keyword">instanceof</span> test; <span class="comment">//false</span></span><br><span class="line"><span class="comment">//test是一个Function,原型链为 Function.prototype -&gt; Object.prototype -&gt; null</span></span><br><span class="line"><span class="comment">//原型链上没有 test.prototype 出现，所以 test 并不是 test 的一个实例</span></span><br></pre></td></tr></table></figure>
+<h1 id="随即打乱一个数组"><a href="#随即打乱一个数组" class="headerlink" title="随即打乱一个数组"></a>随即打乱一个数组</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 洗牌算法-快速打乱数组顺序</span></span><br><span class="line"><span class="comment"> * 倒序循环这个数组</span></span><br><span class="line"><span class="comment"> * 取范围从1到n的随机数k</span></span><br><span class="line"><span class="comment"> * k与n交换</span></span><br><span class="line"><span class="comment"> * 直到循环至数组的首个元素</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">arrShuffle</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> length = arr.length - <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> n = length; n &gt;= <span class="number">0</span>; n--) &#123;</span><br><span class="line">    <span class="keyword">let</span> randomIndex = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (n + <span class="number">1</span>));</span><br><span class="line">    <span class="keyword">let</span> randomArr = arr[randomIndex]; <span class="comment">//随机数k</span></span><br><span class="line">    <span class="comment">//k与n交换</span></span><br><span class="line">    arr[randomIndex] = arr[n];</span><br><span class="line">    arr[n] = randomArr;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;<span class="string">`</span></span><br></pre></td></tr></table></figure>
+<h1 id="为什么-0"><a href="#为什么-0" class="headerlink" title="为什么{}+[]===0"></a>为什么<code>{}+[]===0</code></h1><ul>
+<li><code>{}</code> 被当成一个独立的空代码块</li>
+<li>所以上述表达式等价于<code>+[] = 0</code></li>
+<li><code>0 === 0</code></li>
+</ul>
+<h1 id="等于什么"><a href="#等于什么" class="headerlink" title="({}+[])等于什么"></a><code>({}+[])</code>等于什么</h1><ul>
+<li>加上括号后会当做表达式计算</li>
+<li>{}和[]都不是字符串</li>
+<li>{}-&gt;valueOf-&gt;返回对象本身-&gt;非原始值-&gt;toString-&gt;[object Object]</li>
+<li>[]-&gt;valueIOf-&gt;返回对象本身-&gt;非原始值-&gt;toString-&gt;””</li>
+<li>“[object Object]” + “ “ = “[object Object]”</li>
+</ul>
+<h1 id="数组的交集-差集-补集-并集"><a href="#数组的交集-差集-补集-并集" class="headerlink" title="数组的交集,差集,补集,并集"></a>数组的交集,差集,补集,并集</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">const</span> arr2 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">const</span> setArr1 = <span class="keyword">new</span> <span class="built_in">Set</span>(arr1);</span><br><span class="line"><span class="keyword">const</span> setArr2 = <span class="keyword">new</span> <span class="built_in">Set</span>(arr2);</span><br><span class="line"><span class="comment">//交集</span></span><br><span class="line"><span class="keyword">let</span> intersect = arr1.filter(<span class="function">(<span class="params">item</span>) =&gt;</span> setArr2.has(item));</span><br><span class="line"><span class="comment">//差集</span></span><br><span class="line"><span class="keyword">let</span> minus = arr1.filter(<span class="function">(<span class="params">item</span>) =&gt;</span> !setArr2.has(item));</span><br><span class="line"><span class="comment">//补集</span></span><br><span class="line"><span class="keyword">let</span> complement = [</span><br><span class="line">  ...arr1.filter(<span class="function">(<span class="params">item</span>) =&gt;</span> !setArr2.has(item)),</span><br><span class="line">  ...arr2.filter(<span class="function">(<span class="params">item</span>) =&gt;</span> !setArr1.has(item)),</span><br><span class="line">];</span><br><span class="line"><span class="comment">//并集</span></span><br><span class="line"><span class="keyword">let</span> union = <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>([...arr1, ...arr2]));</span><br><span class="line"><span class="built_in">console</span>.log(intersect, <span class="string">"交集"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(minus, <span class="string">"差集"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(complement, <span class="string">"补集"</span>);</span><br><span class="line"><span class="built_in">console</span>.log(union, <span class="string">"并集"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//[ 1, 4 ] 交集</span></span><br><span class="line"><span class="comment">//[ 3 ] 差集</span></span><br><span class="line"><span class="comment">//[ 3, 2, 5 ] 补集</span></span><br><span class="line"><span class="comment">//[ 1, 3, 4, 2, 5 ] 并集</span></span><br></pre></td></tr></table></figure>
+<h1 id="如何给li绑定事件（ul下有1000-个li）"><a href="#如何给li绑定事件（ul下有1000-个li）" class="headerlink" title="如何给li绑定事件（ul下有1000+个li）"></a>如何给li绑定事件（ul下有1000+个li）</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过事件冒泡,在父元素ul上绑定事件</span></span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"ul-id"</span>).addEventListener(<span class="string">"click"</span>,(e) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (e.target.tagName === <span class="string">"li"</span>) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="quot-1-2-3-4-quot-split"><a href="#quot-1-2-3-4-quot-split" class="headerlink" title="&quot;1,2,3,4&quot;split()"></a><code>&quot;1,2,3,4&quot;split()</code></h1><blockquote>
+<p><code>split</code>有两个参数,第一个参数是字符串或正则表达式,表明按照什么规则分隔字符串.如果为空,则将整个字符串返回.第二个参数规定分隔的数量</p>
+</blockquote>
+<p><code>&quot;1,2,3,4&quot;.split() -&gt; [&quot;1,2,3,4&quot;]</code></p>
+<p><code>&quot;1234&quot;.split(&quot;&quot;,2) -&gt; [&quot;1,2&quot;]</code></p>
+<h1 id="Ajax请求"><a href="#Ajax请求" class="headerlink" title="Ajax请求"></a>Ajax请求</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ajax请求</span></span><br><span class="line"><span class="comment"> * 不可跨域请求</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">params</span>) </span>&#123;</span><br><span class="line">  params = params || &#123;&#125;;</span><br><span class="line">  <span class="comment">//要发送的数据</span></span><br><span class="line">  params.data = params.data || &#123;&#125;;</span><br><span class="line">  <span class="comment">//GET,POST</span></span><br><span class="line">  params.type = (params.type || <span class="string">"get"</span>).toUpperCase();</span><br><span class="line">  <span class="comment">//格式化数据</span></span><br><span class="line">  params.data = formatParams(params.data);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span><br><span class="line">  xhr.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//4已接收到全部响应数据</span></span><br><span class="line">    <span class="keyword">if</span> (xhr.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> response = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">const</span> responseType = xhr.getResponseHeader;</span><br><span class="line">        <span class="comment">//获取响应数据格式</span></span><br><span class="line">        <span class="keyword">if</span> (responseType === <span class="string">"application/json"</span>) &#123;</span><br><span class="line">          response = <span class="built_in">JSON</span>.parse(xhr.responseText);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (responseType.indexOf(<span class="string">"xml"</span>) !== <span class="number">-1</span> &amp;&amp; xhr.responseXML) &#123;</span><br><span class="line">          response = xhr.responseXML;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          response = xhr.responseText;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//成功回调函数</span></span><br><span class="line">        params.success &amp;&amp; params.success(response);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">//失败回调函数</span></span><br><span class="line">        params.error &amp;&amp; params.error(status);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//true异步 false同步</span></span><br><span class="line">  <span class="keyword">const</span> asyncFlag = params.async || <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">if</span> (params.type === <span class="string">"GET"</span>) &#123;</span><br><span class="line">    xhr.open(params.type, params.url + <span class="string">"?"</span> + params.data, <span class="literal">true</span>);</span><br><span class="line">    xhr.send();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    xhr.open(params.type, params.url, asyncFlag);</span><br><span class="line">    xhr.setRequestHeader(</span><br><span class="line">      <span class="string">"Content-Type"</span>,</span><br><span class="line">      <span class="string">"application/x-www-form-urlencoded; charset=UTF-8"</span></span><br><span class="line">    );</span><br><span class="line">    xhr.send(params.data);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 数据格式化</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatParams</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> params = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> name <span class="keyword">in</span> data) &#123;</span><br><span class="line">    params.push(</span><br><span class="line">      <span class="built_in">encodeURIComponent</span>(name) + <span class="string">"="</span> + <span class="built_in">encodeURIComponent</span>(data[name])</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//时间戳 防止缓存</span></span><br><span class="line">  params.push(<span class="string">"v="</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().getTime());</span><br><span class="line">  <span class="comment">//name=a&amp;pwd=1&amp;v=时间戳微秒</span></span><br><span class="line">  <span class="keyword">return</span> params.join(<span class="string">"&amp;"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//示例</span></span><br><span class="line">ajax(&#123;</span><br><span class="line">  url: <span class="string">"http://www.baidu.com"</span>, <span class="comment">//请求地址</span></span><br><span class="line">  type: <span class="string">"GET"</span>, <span class="comment">//请求类型 GET|POST</span></span><br><span class="line">  data: &#123; <span class="attr">wd</span>: <span class="string">"时间戳"</span> &#125;, <span class="comment">//请求数据</span></span><br><span class="line">  success: <span class="function"><span class="keyword">function</span> (<span class="params">response</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 成功回调</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">JSON</span>.parse(response));</span><br><span class="line">  &#125;,</span><br><span class="line">  error: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//失败回调</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"失败"</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="红绿灯循环"><a href="#红绿灯循环" class="headerlink" title="红绿灯循环"></a>红绿灯循环</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">trafficLight</span>(<span class="params">color, wait</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">await</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(color);</span><br><span class="line">    setTimeout(resolve, wait);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">runLight</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span> (i &lt; <span class="number">3</span>) &#123;</span><br><span class="line">    <span class="keyword">await</span> trafficLight(<span class="string">"红灯"</span>, <span class="number">1000</span>);</span><br><span class="line">    <span class="keyword">await</span> trafficLight(<span class="string">"绿灯"</span>, <span class="number">2000</span>);</span><br><span class="line">    <span class="keyword">await</span> trafficLight(<span class="string">"黄灯"</span>, <span class="number">3000</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">runLight();</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JS/" rel="tag"><i class="fa fa-tag"></i> JS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/12/自省-类型转换-1/" rel="next" title="JS类型转换">
+                <i class="fa fa-chevron-left"></i> JS类型转换
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/13/自省JS-对象继承/" rel="prev" title="自省JS-对象继承">
+                自省JS-对象继承 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Livfer">
+            
+              <p class="site-author-name" itemprop="name">Livfer</p>
+              <p class="site-description motion-element" itemprop="description">代码的搬运工</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LivferLiu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:livfer@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cc1021.com/" title="程成🍊" target="_blank">程成🍊</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#FormData"><span class="nav-number">1.</span> <span class="nav-text">FormData</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">1.2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#FormData-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">FormData</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#append-set"><span class="nav-number">1.2.2.</span> <span class="nav-text">append,set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete"><span class="nav-number">1.2.3.</span> <span class="nav-text">delete</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#entries和keys"><span class="nav-number">1.2.4.</span> <span class="nav-text">entries和keys</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get和getAll"><span class="nav-number">1.2.5.</span> <span class="nav-text">get和getAll</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#has"><span class="nav-number">1.2.6.</span> <span class="nav-text">has</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#values"><span class="nav-number">1.2.7.</span> <span class="nav-text">values</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#base64场景"><span class="nav-number">2.</span> <span class="nav-text">base64场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#移动端点击事件延迟"><span class="nav-number">3.</span> <span class="nav-text">移动端点击事件延迟</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#避免延迟"><span class="nav-number">3.1.</span> <span class="nav-text">避免延迟</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止缩放"><span class="nav-number">3.1.1.</span> <span class="nav-text">禁止缩放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fastclick-js"><span class="nav-number">3.1.2.</span> <span class="nav-text">fastclick.js</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#随机字符串"><span class="nav-number">4.</span> <span class="nav-text">随机字符串</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#typeof-null-quot-object-quot"><span class="nav-number">5.</span> <span class="nav-text">typeof null == &quot;object&quot;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#九九乘法表"><span class="nav-number">6.</span> <span class="nav-text">九九乘法表</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#浏览器同源策略"><span class="nav-number">7.</span> <span class="nav-text">浏览器同源策略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JS延迟加载"><span class="nav-number">8.</span> <span class="nav-text">JS延迟加载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#写一个暂停函数"><span class="nav-number">9.</span> <span class="nav-text">写一个暂停函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码解析"><span class="nav-number">10.</span> <span class="nav-text">代码解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#随即打乱一个数组"><span class="nav-number">11.</span> <span class="nav-text">随即打乱一个数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么-0"><span class="nav-number">12.</span> <span class="nav-text">为什么{}+[]===0</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#等于什么"><span class="nav-number">13.</span> <span class="nav-text">({}+[])等于什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组的交集-差集-补集-并集"><span class="nav-number">14.</span> <span class="nav-text">数组的交集,差集,补集,并集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何给li绑定事件（ul下有1000-个li）"><span class="nav-number">15.</span> <span class="nav-text">如何给li绑定事件（ul下有1000+个li）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#quot-1-2-3-4-quot-split"><span class="nav-number">16.</span> <span class="nav-text">&quot;1,2,3,4&quot;split()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ajax请求"><span class="nav-number">17.</span> <span class="nav-text">Ajax请求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#红绿灯循环"><span class="nav-number">18.</span> <span class="nav-text">红绿灯循环</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Livfer</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

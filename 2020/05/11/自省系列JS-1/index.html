@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端,JS,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="去除字符串中最后一个指定的字符12345678910111213/** * 去除字符串中最后一个指定的字符 * @param &amp;#123;String&amp;#125; str  * @param &amp;#123;String&amp;#125; del  */function delLast(str, del) &amp;#123;  if (typeof str !== &quot;string&quot;) throw new Erro">
+<meta name="keywords" content="前端,JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS自省系列-1">
+<meta property="og:url" content="http://yoursite.com/2020/05/11/自省系列JS-1/index.html">
+<meta property="og:site_name" content="Livfer&#39;s Blog">
+<meta property="og:description" content="去除字符串中最后一个指定的字符12345678910111213/** * 去除字符串中最后一个指定的字符 * @param &amp;#123;String&amp;#125; str  * @param &amp;#123;String&amp;#125; del  */function delLast(str, del) &amp;#123;  if (typeof str !== &quot;string&quot;) throw new Erro">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-05-11T16:19:11.435Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS自省系列-1">
+<meta name="twitter:description" content="去除字符串中最后一个指定的字符12345678910111213/** * 去除字符串中最后一个指定的字符 * @param &amp;#123;String&amp;#125; str  * @param &amp;#123;String&amp;#125; del  */function delLast(str, del) &amp;#123;  if (typeof str !== &quot;string&quot;) throw new Erro">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/05/11/自省系列JS-1/">
+
+
+
+
+
+  <title>JS自省系列-1 | Livfer's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Livfer's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/11/自省系列JS-1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Livfer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Livfer's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JS自省系列-1</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-11T19:45:49+08:00">
+                2020-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/自省系列/" itemprop="url" rel="index">
+                    <span itemprop="name">自省系列</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/自省系列/JS/" itemprop="url" rel="index">
+                    <span itemprop="name">JS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="去除字符串中最后一个指定的字符"><a href="#去除字符串中最后一个指定的字符" class="headerlink" title="去除字符串中最后一个指定的字符"></a>去除字符串中最后一个指定的字符</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 去除字符串中最后一个指定的字符</span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; str </span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; del </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delLast</span>(<span class="params">str, del</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> str !== <span class="string">"string"</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"必须为字符串"</span>);</span><br><span class="line">  <span class="comment">//查找字符串的位置</span></span><br><span class="line">  <span class="keyword">let</span> index = str.lastIndexOf(del);</span><br><span class="line">  <span class="comment">//index之前的字符串+index之后的字符串</span></span><br><span class="line">  <span class="keyword">if</span>(index &gt; <span class="number">-1</span>) <span class="keyword">return</span> str.substring(<span class="number">0</span>, index) + str.substring(index + <span class="number">1</span>, str.length);</span><br><span class="line">  <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="把下划线字符串转化为驼峰"><a href="#把下划线字符串转化为驼峰" class="headerlink" title="把下划线字符串转化为驼峰"></a>把下划线字符串转化为驼峰</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 将下划线字符串转化为驼峰命名</span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; str</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toCamelName</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> str !== <span class="string">"string"</span>) <span class="keyword">return</span> str;</span><br><span class="line">  <span class="comment">//分割为数组</span></span><br><span class="line">  <span class="keyword">let</span> strArr = str.split(<span class="string">"_"</span>);</span><br><span class="line">  <span class="keyword">let</span> upperCaseArr = strArr.map(<span class="function">(<span class="params">item, i</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (i &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> item.charAt(<span class="number">0</span>).toUpperCase() + item.substr(<span class="number">1</span>, item.length);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> item;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> upperCaseArr.join(<span class="string">""</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(toCamelName(<span class="string">"dd_dd"</span>)); <span class="comment">//ddDd</span></span><br></pre></td></tr></table></figure>
+<h2 id="把一个字符串大小写切换"><a href="#把一个字符串大小写切换" class="headerlink" title="把一个字符串大小写切换"></a>把一个字符串大小写切换</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 将大写转小写 小写转大写</span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; str</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toReverse</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> str !== <span class="string">"string"</span>) <span class="keyword">return</span> str;</span><br><span class="line">  <span class="keyword">return</span> str</span><br><span class="line">    .split(<span class="string">""</span>)</span><br><span class="line">    .map(<span class="function">(<span class="params">item</span>) =&gt;</span></span><br><span class="line">      /[A-Z]/.test(item) ? item.toLowerCase() : item.toUpperCase()</span><br><span class="line">    )</span><br><span class="line">    .join(<span class="string">""</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(toReverse(<span class="string">"aBcD"</span>)); <span class="comment">//AbCd</span></span><br></pre></td></tr></table></figure>
+<h2 id="去除制表符"><a href="#去除制表符" class="headerlink" title="去除制表符"></a>去除制表符</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * \n 换行符 new line</span></span><br><span class="line"><span class="comment"> * \r 回车符 return</span></span><br><span class="line"><span class="comment"> * \t 制表符 tab</span></span><br><span class="line"><span class="comment"> * \b 退格符 backspace</span></span><br><span class="line"><span class="comment"> * \f 换页符 form feed</span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; str</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> str.replace(<span class="regexp">/[\t\n]/g</span>, <span class="string">""</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="统计某一字符在另一个字符中出现的次数"><a href="#统计某一字符在另一个字符中出现的次数" class="headerlink" title="统计某一字符在另一个字符中出现的次数"></a>统计某一字符在另一个字符中出现的次数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 统计needFind字符在target出现几次</span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; target</span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; needFind</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">strFindCount</span>(<span class="params">target, needFind</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//通过字符分隔数组</span></span><br><span class="line">  <span class="keyword">return</span> target.split(needFind).length - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">strFindCount2</span>(<span class="params">target, needFind</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> reg = <span class="keyword">new</span> <span class="built_in">RegExp</span>(needFind, <span class="string">"g"</span>);</span><br><span class="line">  <span class="keyword">return</span> target.match(reg).length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="判断数据类型"><a href="#判断数据类型" class="headerlink" title="判断数据类型"></a>判断数据类型</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 判断数据类型</span></span><br><span class="line"><span class="comment"> * @param &#123;*&#125; param</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">typeCheck</span>(<span class="params">param</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//[object Array]</span></span><br><span class="line">  <span class="keyword">const</span> typeStr = <span class="built_in">Object</span>.prototype.toString.call(param);</span><br><span class="line">  <span class="comment">//截取掉object</span></span><br><span class="line">  <span class="keyword">return</span> typeStr.toLowerCase().slice(<span class="number">8</span>, typeStr.length - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="JS内置对象"><a href="#JS内置对象" class="headerlink" title="JS内置对象"></a>JS内置对象</h2><ul>
+<li>String,RegExp</li>
+<li>Array</li>
+<li>Number,BigInt,Math,Date</li>
+<li>Objcet</li>
+<li>Function</li>
+<li>Error</li>
+<li>JSON</li>
+<li>Map,Set,WeakMap,WeakSet</li>
+</ul>
+<h2 id="获取连接中的查询参数"><a href="#获取连接中的查询参数" class="headerlink" title="获取连接中的查询参数"></a>获取连接中的查询参数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取链接中的查询参数</span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; url</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getQuery</span>(<span class="params">url</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> query = url.substr(url.indexOf(<span class="string">"?"</span>) + <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">let</span> result = &#123;&#125;;</span><br><span class="line">  query.split(<span class="string">"&amp;"</span>).forEach(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">    [key, value] = item.split(<span class="string">"="</span>);</span><br><span class="line">    result[key] = value;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="作用域的理解"><a href="#作用域的理解" class="headerlink" title="作用域的理解"></a>作用域的理解</h3><p>正常情况下JS中的作用域是在编写代码时候决定的,编译器在编译的时候,通过词法分析知道标识符在哪里和如何声明,相当于已经有映射关系一样.</p>
+<p>作用域就像是一个个气泡一样,标识符从属于哪个标识符,那么就只能在那个气泡范围内访问</p>
+<ul>
+<li>全局作用域: 顶级作用域,任何地方都能访问到</li>
+<li>函数作用域: 只能在函数内访问,闭包可以访问包围他的函数</li>
+<li>块作用域: ES6新增的,只能在块内访问</li>
+</ul>
+<h2 id="什么是闭包"><a href="#什么是闭包" class="headerlink" title="什么是闭包"></a>什么是闭包</h2><ul>
+<li><p>闭包可以访问另一个函数作用域的函数</p>
+</li>
+<li><p>闭包就是一个函数可以在脱离了声明函数的环境时还可以运行,并且可以调用当时环境内的变量</p>
+</li>
+<li><p>闭包以及当时声明环境的变量,保存在内存中,所以闭包是占用内存的</p>
+</li>
+<li><p>闭包可以防止变量污染作用域,作为函数内的私有变量</p>
+</li>
+<li><p>不主动释放的情况下,无法回收</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">incrementNum</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> num = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (num += <span class="number">1</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 此处函数执行完毕后 没有其他引用 会被释放回收</span></span><br><span class="line"><span class="built_in">console</span>.log(incrementNum()()); <span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(incrementNum()()); <span class="comment">//1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 此处被fn引用,闭包以及变量一直保存在内存中,没有得到释放</span></span><br><span class="line"><span class="keyword">var</span> fn = incrementNum();</span><br><span class="line"><span class="built_in">console</span>.log(fn());</span><br><span class="line"><span class="built_in">console</span>.log(fn());</span><br><span class="line"><span class="built_in">console</span>.log(fn());</span><br><span class="line"><span class="comment">// 手动释放</span></span><br><span class="line">fn = <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">1</span>, [<span class="number">1</span>, <span class="number">2</span>, [<span class="number">5</span>, <span class="number">6</span>]]];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">uniqueArr</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//数据扁平化,逗号相连的字符串,再转为数组</span></span><br><span class="line">  <span class="keyword">const</span> flatArr = arr.join(<span class="string">","</span>).split(<span class="string">","</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Array</span>.from(<span class="keyword">new</span> <span class="built_in">Set</span>(flatArr));</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(uniqueArr(arr)); <span class="comment">//[ '1', '3', '4', '2', '5', '6' ]</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 递归去重</span></span><br><span class="line"><span class="comment"> * @param &#123;Array&#125; arr </span></span><br><span class="line"><span class="comment"> * @param &#123;Array&#125; result </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reduceUniqueArr</span>(<span class="params">arr,result = []</span>) </span>&#123;</span><br><span class="line">  arr.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">Array</span>.isArray(item)) &#123;</span><br><span class="line">      reduceUniqueArr(item,result);</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(!result.includes(item)) &#123;</span><br><span class="line">        result.push(item);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(reduceUniqueArr(arr)); <span class="comment">////[ '1', '3', '4', '2', '5', '6' ]</span></span><br></pre></td></tr></table></figure>
+<h2 id="返回顶部"><a href="#返回顶部" class="headerlink" title="返回顶部"></a>返回顶部</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//更改scrollTop</span></span><br><span class="line"><span class="built_in">document</span>.documentElement.scrollTop = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//url加#</span></span><br><span class="line">location.href += <span class="string">"#"</span>;</span><br><span class="line"><span class="comment">//a标签加锚点</span></span><br><span class="line">&lt;a href=<span class="string">"#top"</span> target=<span class="string">"_self"</span>&gt;回到顶部&lt;<span class="regexp">/a&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="验证是否为中文"><a href="#验证是否为中文" class="headerlink" title="验证是否为中文"></a>验证是否为中文</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 验证是否为中文</span></span><br><span class="line"><span class="comment"> * u4e00-u9fa5 表示第一个汉子和最后一个汉子的编码</span></span><br><span class="line"><span class="comment"> * @param &#123;String&#125; str</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isChinese</span>(<span class="params">str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="regexp">/^[\u4e00-\u9fa5]+$/</span>.test(str);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="快速打乱数组顺序"><a href="#快速打乱数组顺序" class="headerlink" title="快速打乱数组顺序"></a>快速打乱数组顺序</h2><blockquote>
+<p>洗牌算法</p>
+<ol>
+<li>倒序循环这个数组</li>
+<li>取范围从1到n的随机数k</li>
+<li>k与n交换</li>
+<li>直到循环至数组的首个元素</li>
+</ol>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.shuffle = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> input = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">const</span> arrLength = input.length - <span class="number">1</span>;</span><br><span class="line">  <span class="comment">//倒序循环数组</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = arrLength; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">    <span class="comment">//从 [1-数组长度]中随即取一个值</span></span><br><span class="line">    <span class="keyword">let</span> randomIndex = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * (i + <span class="number">1</span>));</span><br><span class="line">    <span class="comment">//当前index对应的值</span></span><br><span class="line">    <span class="keyword">let</span> itemAtIndex = input[randomIndex];</span><br><span class="line">    <span class="comment">//当前index的值和范围最大值i互换</span></span><br><span class="line">    input[randomIndex] = input[i];</span><br><span class="line">    input[i] = itemAtIndex;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> input;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> tempArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>];</span><br><span class="line">tempArray.shuffle();</span><br><span class="line"><span class="built_in">console</span>.log(tempArray);</span><br></pre></td></tr></table></figure>
+<h2 id="为什么10-toFixed-10-会报错"><a href="#为什么10-toFixed-10-会报错" class="headerlink" title="为什么10.toFixed(10)会报错"></a>为什么10.toFixed(10)会报错</h2><p>因为 JS 的解释器对 <code>.</code> 操作符产生了歧义。在 JS 中 <code>.</code> 可以表示小数和从对象中取值。在这个例子中， 由于 10 是整数，所以在 <code>10.</code> 默认是小数点，因此会报错</p>
+<p>解决的办法有下面几种：</p>
+<ul>
+<li><code>(10).toFixed(10)</code> </li>
+<li><code>10..toFixed(10)</code></li>
+</ul>
+<h2 id="内存泄露有哪些"><a href="#内存泄露有哪些" class="headerlink" title="内存泄露有哪些"></a>内存泄露有哪些</h2><ul>
+<li>死循环</li>
+<li>过度递归</li>
+<li>对页面中的一些 副作用没有清除</li>
+<li>闭包</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端-JS/" rel="tag"><i class="fa fa-tag"></i> 前端,JS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/11/自省系列-3/" rel="next" title="自省系列-3">
+                <i class="fa fa-chevron-left"></i> 自省系列-3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/12/自省系列JS-2/" rel="prev" title="自省系列JS-2">
+                自省系列JS-2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Livfer">
+            
+              <p class="site-author-name" itemprop="name">Livfer</p>
+              <p class="site-description motion-element" itemprop="description">代码的搬运工</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LivferLiu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:livfer@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.cc1021.com/" title="程成🍊" target="_blank">程成🍊</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#去除字符串中最后一个指定的字符"><span class="nav-number">1.</span> <span class="nav-text">去除字符串中最后一个指定的字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把下划线字符串转化为驼峰"><span class="nav-number">2.</span> <span class="nav-text">把下划线字符串转化为驼峰</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把一个字符串大小写切换"><span class="nav-number">3.</span> <span class="nav-text">把一个字符串大小写切换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#去除制表符"><span class="nav-number">4.</span> <span class="nav-text">去除制表符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#统计某一字符在另一个字符中出现的次数"><span class="nav-number">5.</span> <span class="nav-text">统计某一字符在另一个字符中出现的次数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断数据类型"><span class="nav-number">6.</span> <span class="nav-text">判断数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS内置对象"><span class="nav-number">7.</span> <span class="nav-text">JS内置对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取连接中的查询参数"><span class="nav-number">8.</span> <span class="nav-text">获取连接中的查询参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域的理解"><span class="nav-number">8.1.</span> <span class="nav-text">作用域的理解</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是闭包"><span class="nav-number">9.</span> <span class="nav-text">什么是闭包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组去重"><span class="nav-number">10.</span> <span class="nav-text">数组去重</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#返回顶部"><span class="nav-number">11.</span> <span class="nav-text">返回顶部</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证是否为中文"><span class="nav-number">12.</span> <span class="nav-text">验证是否为中文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速打乱数组顺序"><span class="nav-number">13.</span> <span class="nav-text">快速打乱数组顺序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么10-toFixed-10-会报错"><span class="nav-number">14.</span> <span class="nav-text">为什么10.toFixed(10)会报错</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存泄露有哪些"><span class="nav-number">15.</span> <span class="nav-text">内存泄露有哪些</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Livfer</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
