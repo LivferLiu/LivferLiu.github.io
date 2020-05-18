@@ -259,7 +259,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/18/MVVM原理/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/18/Vue简易原理/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Livfer">
@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/05/18/MVVM原理/" itemprop="url">MVVM原理</a></h1>
+                <a class="post-title-link" href="/2020/05/18/Vue简易原理/" itemprop="url">Vue响应式原理</a></h1>
         
 
         <div class="post-meta">
@@ -324,8 +324,8 @@
                 
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/自省系列/" itemprop="url" rel="index">
-                    <span itemprop="name">自省系列</span>
+                  <a href="/categories/前端/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
                   </a>
                 </span>
 
@@ -362,9 +362,20 @@
 
       
         
-          
-            
-          
+          <h1 id="vue运行过程"><a href="#vue运行过程" class="headerlink" title="vue运行过程"></a>vue运行过程</h1><ul>
+<li><code>new Vue()</code>,创建Vue实例化对象</li>
+<li>vue初始化<code>init</code>,在这个过程中会初始化<code>生命周期</code>,执行<code>beforeCreated</code>,初始化<code>data</code>,<code>props</code>,<code>computed</code>,<code>watcher</code>,执行<code>created</code></li>
+<li>初始化后,对vue实例进行挂载,如果没有<code>render</code>方法,定义了<code>template</code>,执行编译阶段,开始解析<code>template</code>,将<code>template</code>编译成<code>render function</code></li>
+<li><code>beforeMounted</code>阶段将通过vue的<code>render</code>方法将生成虚拟DOM</li>
+<li><code>mounted</code>阶段,将虚拟DOM转化成真实的DOM文档,进行页面渲染,并完成数据双向绑定</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/18/Vue简易原理/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -430,7 +441,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/05/16/Vue-随笔/" itemprop="url">响应式原理</a></h1>
+                <a class="post-title-link" href="/2020/05/16/Vue-随笔/" itemprop="url">Vue随笔</a></h1>
         
 
         <div class="post-meta">
