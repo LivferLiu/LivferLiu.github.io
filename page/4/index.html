@@ -259,6 +259,475 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/06/elastic学习记录2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Livfer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Livfer's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/06/elastic学习记录2/" itemprop="url">elastic学习记录-2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-06T09:40:03+08:00">
+                2019-08-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/ElasticSearch/" itemprop="url" rel="index">
+                    <span itemprop="name">ElasticSearch</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/05/elastic/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Livfer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Livfer's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/05/elastic/" itemprop="url">elastic 学习记录-1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-05T17:14:39+08:00">
+                2019-08-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/ElasticSearch/" itemprop="url" rel="index">
+                    <span itemprop="name">ElasticSearch</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="查看所有Index"><a href="#查看所有Index" class="headerlink" title="查看所有Index"></a>查看所有Index</h2><p><code>curl -X GET &quot;localhost:9200/_cat/indices?v&quot;</code></p>
+<h2 id="创建Index"><a href="#创建Index" class="headerlink" title="创建Index"></a>创建Index</h2><p><code>curl -X PUT &quot;localhost:9200/customer?pretty&quot;</code></p>
+<h2 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vagrant@homestead:~$ curl -X DELETE  "localhost:9200/customer"</span><br><span class="line">&#123;"acknowledged":true&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="创建索引内容"><a href="#创建索引内容" class="headerlink" title="创建索引内容"></a>创建索引内容</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//指定ID建立内容 使用PUT 如果不需要指定ID,则只用POST</span></span><br><span class="line">curl -X PUT <span class="string">"localhost:9200/customer/_doc/1?pretty"</span> -H <span class="string">'Content-Type: application/json'</span> -d<span class="string">'</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">  "name": "John Doe"</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">'</span></span><br><span class="line">    curl -X POST <span class="string">"localhost:9200/customer/_doc/?pretty"</span> -H <span class="string">'Content-Type: application/json'</span> -d<span class="string">'</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">  "name": "John Doe"</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 返回</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"_index"</span> : <span class="string">"customer"</span>, <span class="comment">//索引名称</span></span><br><span class="line">  <span class="string">"_type"</span> : <span class="string">"_doc"</span>, <span class="comment">//索引类型</span></span><br><span class="line">  <span class="string">"_id"</span> : <span class="string">"1"</span>, <span class="comment">//类似于MySQL逐渐</span></span><br><span class="line">  <span class="string">"_version"</span> : <span class="number">1</span>, </span><br><span class="line">  <span class="string">"result"</span> : <span class="string">"created"</span>,</span><br><span class="line">  <span class="string">"_shards"</span> : &#123;</span><br><span class="line">    <span class="string">"total"</span> : <span class="number">2</span>,</span><br><span class="line">    <span class="string">"successful"</span> : <span class="number">1</span>,</span><br><span class="line">    <span class="string">"failed"</span> : <span class="number">0</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">"_seq_no"</span> : <span class="number">0</span>,</span><br><span class="line">  <span class="string">"_primary_term"</span> : <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/08/05/elastic/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/11/go内置函数/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Livfer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Livfer's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/11/go内置函数/" itemprop="url">go内置函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-11T17:53:12+08:00">
+                2019-07-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/go/" itemprop="url" rel="index">
+                    <span itemprop="name">go</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>close</td>
+<td>用于管道通信</td>
+</tr>
+<tr>
+<td>len、cap</td>
+<td>len 用于返回某个类型的长度或数量（字符串、数组、切片、map 和管道）；cap 是容量的意思，用于返回某个类型的最大容量（只能用于切片和 map）</td>
+</tr>
+<tr>
+<td>new、make</td>
+<td>new 和 make 均是用于分配内存：new 用于值类型和用户定义的类型，如自定义结构，make 用于内置引用类型（切片、map 和管道）。它们的用法就像是函数，但是将类型作为参数：new(type)、make(type)。new(T) 分配类型 T 的零值并返回其地址，也就是指向类型 T 的指针。它也可以被用于基本类型：<code>v := new(int)</code>。make(T) 返回类型 T 的初始化之后的值，因此它比 new 进行更多的工作<strong>new() 是一个函数，不要忘记它的括号</strong></td>
+</tr>
+<tr>
+<td>copy、append</td>
+<td>用于复制和连接切片</td>
+</tr>
+<tr>
+<td>panic、recover</td>
+<td>两者均用于错误处理机制</td>
+</tr>
+<tr>
+<td>print、println</td>
+<td>底层打印函数，在部署环境中建议使用 fmt 包</td>
+</tr>
+<tr>
+<td>complex、real imag</td>
+<td>用于创建和操作复数</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/11/go匿名函数/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1302,459 +1771,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/28/go数据类型-切片/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Livfer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Livfer's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/28/go数据类型-切片/" itemprop="url">go数据类型-切片</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-28T16:49:14+08:00">
-                2019-06-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/go/" itemprop="url" rel="index">
-                    <span itemprop="name">go</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>切片类似于PHP可操作的所以数据,属于go中可动态改变的特殊数组</p>
-<p>切片在go中是一个新的数据类型,与数组最大的不同在于，切片的类型字面量中只有元素的类型，没有长度</p>
-<p>切片有三种创建方式: 基于数组,数组切片,直接创建</p>
-<p>切片在内存中的组织方式实际上是一个有 3 个域的结构体：指向相关数组的指针，切片 长度以及切片容量。下图给出了一个长度为 2，容量为 4 的切片</p>
-<p><code>var x = []int{2, 3, 5, 7, 11}</code></p>
-<p><code>y := x[1:3] //右边不包括 3,5</code></p>
-<p><img src="http://ww3.sinaimg.cn/large/006tNc79gy1g4gzdnfjxhj30v00dngop.jpg" alt=""></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/06/28/go数据类型-切片/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/28/go数据类型-数组/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Livfer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Livfer's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/28/go数据类型-数组/" itemprop="url">go数据类型-数组</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-28T10:10:05+08:00">
-                2019-06-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/go/" itemprop="url" rel="index">
-                    <span itemprop="name">go</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="与PHP比较"><a href="#与PHP比较" class="headerlink" title="与PHP比较"></a>与PHP比较</h2><ul>
-<li>go中数组是固定长度的</li>
-<li>元素必须是同一类型的数据集合</li>
-<li>声明的时候必须制定元素类型和数组长度</li>
-</ul>
-<blockquote>
-<p>go中的数组可以理解为是PHP中的索引数组</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/06/28/go数据类型-数组/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/27/go基本数据类型转换/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Livfer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Livfer's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/27/go基本数据类型转换/" itemprop="url">go基本数据类型转换</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-27T17:25:30+08:00">
-                2019-06-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/go/" itemprop="url" rel="index">
-                    <span itemprop="name">go</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="PHP类型转化"><a href="#PHP类型转化" class="headerlink" title="PHP类型转化"></a>PHP类型转化</h2><p>PHP类型转化是自动转化的</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$a = <span class="number">1</span>;</span><br><span class="line">$b = <span class="number">2</span>;</span><br><span class="line">$c = <span class="string">"string"</span>;</span><br><span class="line">$d = <span class="keyword">true</span>;</span><br><span class="line"><span class="keyword">echo</span> $a+$b; <span class="comment">//3</span></span><br><span class="line"><span class="keyword">echo</span> $a+$d; <span class="comment">//3 true-&gt;1</span></span><br><span class="line"><span class="keyword">echo</span> $a.$c; <span class="comment">//1string $a转为字符串</span></span><br></pre></td></tr></table></figure>
-<h2 id="go类型转化"><a href="#go类型转化" class="headerlink" title="go类型转化"></a>go类型转化</h2>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/06/27/go基本数据类型转换/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1807,7 +1823,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1818,7 +1834,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1829,7 +1845,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
