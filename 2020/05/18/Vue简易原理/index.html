@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Livfer&#39;s Blog">
 <meta property="og:description" content="vue运行过程 new Vue(),创建Vue实例化对象 vue初始化init,在这个过程中会初始化生命周期,执行beforeCreated,初始化data,props,computed,watcher,执行created 初始化后,对vue实例进行挂载,如果没有render方法,定义了template,执行编译阶段,开始解析template,将template编译成render function">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-18T07:38:15.241Z">
+<meta property="og:updated_time" content="2020-05-18T08:02:39.199Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue响应式原理">
 <meta name="twitter:description" content="vue运行过程 new Vue(),创建Vue实例化对象 vue初始化init,在这个过程中会初始化生命周期,执行beforeCreated,初始化data,props,computed,watcher,执行created 初始化后,对vue实例进行挂载,如果没有render方法,定义了template,执行编译阶段,开始解析template,将template编译成render function">
@@ -370,9 +370,9 @@
 <a id="more"></a>
 <h1 id="什么是响应式"><a href="#什么是响应式" class="headerlink" title="什么是响应式"></a>什么是响应式</h1><p>不直接操作<code>dom</code>,当数据改变时,通过监听更新到到视图上,当视图上的改变,比如某个事件的操作,也会反过来更新数据.</p>
 <h1 id="vue2-x响应式"><a href="#vue2-x响应式" class="headerlink" title="vue2.x响应式"></a>vue2.x响应式</h1><ul>
-<li>在vue初始化<code>init</code>阶段,利用<code>Object.defineProperty</code>进行数据劫持</li>
-<li>在触发<code>render function</code>阶段,将与vue实例中和视图相关的数据通过<code>getter</code>进行依赖收集,通过<code>Object.defineProperty</code>将相关数据设置<code>getter</code>,<code>setter</code></li>
-<li>当数据发生变化,会触发<code>setter</code>,并通知视图进行变化</li>
+<li>在vue初始化<code>init</code>阶段,初始化数据,创建一个数据源<code>data</code>,构建一个<code>Observer</code>(数据观察者)对象,该对象会调用<code>defineReactive</code>(defineReactive通过Object.defineProperty设置对象的key属性)拦截每个属性的<code>getter</code>,<code>setter</code>方法</li>
+<li>在触发<code>render function</code>阶段,将与vue实例中和视图相关的数据通过<code>getter</code>进行依赖收集,(依赖收集器中内置一个<code>watcher</code>的数据订阅者)</li>
+<li>当数据发生变化,会被<code>Observer</code>观察到,触发<code>setter</code>,然后有依赖收集器(Dep<code>实例的</code>notify)通知到<code>watcher</code>并通知视图进行变化</li>
 </ul>
 <h1 id="vue2-x响应式弊端"><a href="#vue2-x响应式弊端" class="headerlink" title="vue2.x响应式弊端"></a>vue2.x响应式弊端</h1><ul>
 <li><code>Object.defineProperty</code>无法对属性进行响应式监听,所以如果对数组中某个索引进行修改,删除,新增等操作需要使用<code>vue.set</code>,<code>vue.delete</code>的方法</li>

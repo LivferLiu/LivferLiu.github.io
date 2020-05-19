@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="v-if和v-show区别 v-if通过条件来进行渲染和销毁 v-show通过条件,控制CSS的显示和隐藏 v-if比v-show开销大 经常需要控制显示和隐藏的用v-show  vue修饰符">
+<meta name="description" content="v-if和v-show区别 v-if通过条件来进行渲染和销毁 v-show通过条件,控制CSS的显示和隐藏 v-if比v-show开销大 经常需要控制显示和隐藏的用v-show">
 <meta name="keywords" content="Vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue随笔">
 <meta property="og:url" content="http://yoursite.com/2020/05/16/Vue-随笔/index.html">
 <meta property="og:site_name" content="Livfer&#39;s Blog">
-<meta property="og:description" content="v-if和v-show区别 v-if通过条件来进行渲染和销毁 v-show通过条件,控制CSS的显示和隐藏 v-if比v-show开销大 经常需要控制显示和隐藏的用v-show  vue修饰符">
+<meta property="og:description" content="v-if和v-show区别 v-if通过条件来进行渲染和销毁 v-show通过条件,控制CSS的显示和隐藏 v-if比v-show开销大 经常需要控制显示和隐藏的用v-show">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-18T07:37:56.082Z">
+<meta property="og:updated_time" content="2020-05-18T10:18:50.743Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue随笔">
-<meta name="twitter:description" content="v-if和v-show区别 v-if通过条件来进行渲染和销毁 v-show通过条件,控制CSS的显示和隐藏 v-if比v-show开销大 经常需要控制显示和隐藏的用v-show  vue修饰符">
+<meta name="twitter:description" content="v-if和v-show区别 v-if通过条件来进行渲染和销毁 v-show通过条件,控制CSS的显示和隐藏 v-if比v-show开销大 经常需要控制显示和隐藏的用v-show">
 
 
 
@@ -366,7 +366,58 @@
 <li><code>v-if</code>比<code>v-show</code>开销大</li>
 <li>经常需要控制显示和隐藏的用<code>v-show</code></li>
 </ul>
-<h1 id="vue修饰符"><a href="#vue修饰符" class="headerlink" title="vue修饰符"></a>vue修饰符</h1>
+<a id="more"></a>
+<h1 id="为什么用Proxy替换Object-defindProperty"><a href="#为什么用Proxy替换Object-defindProperty" class="headerlink" title="为什么用Proxy替换Object.defindProperty"></a>为什么用<code>Proxy</code>替换<code>Object.defindProperty</code></h1><ul>
+<li><code>Object.defineProperty</code>无法监控到数组下标变化,只能用<code>vue.set</code>,<code>vue.delete</code>api进行修改,删除</li>
+<li><code>Object.defineProperty</code>通过递归方式劫持对象的每个属性</li>
+<li><code>Proxy</code>可以劫持整个对象,对对象进行一次包装返回一个新对象,可以检测到数组变变化</li>
+</ul>
+<h1 id="vue修饰符"><a href="#vue修饰符" class="headerlink" title="vue修饰符"></a>vue修饰符</h1><h2 id="事件修饰符"><a href="#事件修饰符" class="headerlink" title="事件修饰符"></a>事件修饰符</h2><ul>
+<li><code>.stop</code>:组织事件冒泡</li>
+<li><code>.prevent</code>:组织默认行为,等同于JavaScript中的<code>event.preventDefault</code></li>
+<li><code>.capture</code>: 先执行父级函数,再执行子级的函数,等同于JavaScript中的捕获阶段,从父节点-&gt;子节点</li>
+<li><code>.selft</code>:只会触发子级范围内的子级的事件</li>
+<li><code>.once</code>:只执行一次</li>
+<li><code>.passive</code>:.passive 会告诉浏览器你不想阻止事件的默认行为</li>
+</ul>
+<h2 id="Vue键盘修饰符"><a href="#Vue键盘修饰符" class="headerlink" title="Vue键盘修饰符"></a>Vue键盘修饰符</h2><ul>
+<li><code>.enter</code>：回车键</li>
+<li><code>.tab</code>：制表键</li>
+<li><code>.delete</code>：含delete和backspace键</li>
+<li><code>.esc</code>：返回键</li>
+<li><code>.space</code>: 空格键</li>
+<li><code>.up</code>：向上键</li>
+<li><code>.down</code>：向下键</li>
+<li><code>.left</code>：向左键</li>
+<li><code>.right</code>：向右键</li>
+<li><code>.ctrl</code>: ctrl</li>
+<li><code>.alt</code>: alt</li>
+<li><code>.shift</code>:shift</li>
+<li><code>.meta</code>: Mac中对应<code>command</code></li>
+<li><code>.exact</code>:控制由精确的系统修饰符组合触发的事件</li>
+</ul>
+<h2 id="鼠标按钮修饰符"><a href="#鼠标按钮修饰符" class="headerlink" title="鼠标按钮修饰符"></a>鼠标按钮修饰符</h2><ul>
+<li><code>.left</code></li>
+<li><code>.right</code></li>
+<li><code>.middle</code></li>
+</ul>
+<h2 id="表单中的修饰符"><a href="#表单中的修饰符" class="headerlink" title="表单中的修饰符"></a>表单中的修饰符</h2><ul>
+<li><p><code>.lazy</code>: 把<code>input事件</code>同步修改,改为<code>change事件</code>后修改</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 在“change”时而非“input”时更新 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model.lazy</span>=<span class="string">"msg"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>.number</code>: 输入值转为数值</p>
+</li>
+<li><p><code>.trim</code>: 过滤输入的首尾空白符</p>
+</li>
+</ul>
+<h1 id="Vue中key值的作用"><a href="#Vue中key值的作用" class="headerlink" title="Vue中key值的作用"></a>Vue中key值的作用</h1><ul>
+<li>作为diff算法中的节点唯一标识符,在生成虚拟DOM时,可以快去定位到节点与旧的节点进行比对,是否需要改变,删除,加速虚拟DOM的生产</li>
+<li>key必须是要唯一的,如果无法通过key值作为节点标识符,那么当触发生成虚拟DOM时不能正确的定位要需要修改的节点</li>
+<li>还有一种情况,如果key是循环数据的索引的情况下,这个时候key并不能和数据有直接关联关系</li>
+<li>随机数作为key和不加key是一样的效果,因为随机数会变化,这个key并不能和数据产生关联关系</li>
+<li>key取值要唯一的,这个key能与对应的数据产生强绑定关系,必须每条数据的id(数据库中的id)</li>
+</ul>
+
       
     </div>
     
@@ -572,7 +623,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#v-if和v-show区别"><span class="nav-number">1.</span> <span class="nav-text">v-if和v-show区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue修饰符"><span class="nav-number">2.</span> <span class="nav-text">vue修饰符</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#v-if和v-show区别"><span class="nav-number">1.</span> <span class="nav-text">v-if和v-show区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么用Proxy替换Object-defindProperty"><span class="nav-number">2.</span> <span class="nav-text">为什么用Proxy替换Object.defindProperty</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue修饰符"><span class="nav-number">3.</span> <span class="nav-text">vue修饰符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#事件修饰符"><span class="nav-number">3.1.</span> <span class="nav-text">事件修饰符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue键盘修饰符"><span class="nav-number">3.2.</span> <span class="nav-text">Vue键盘修饰符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#鼠标按钮修饰符"><span class="nav-number">3.3.</span> <span class="nav-text">鼠标按钮修饰符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单中的修饰符"><span class="nav-number">3.4.</span> <span class="nav-text">表单中的修饰符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue中key值的作用"><span class="nav-number">4.</span> <span class="nav-text">Vue中key值的作用</span></a></li></ol></div>
             
 
           </div>
