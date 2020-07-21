@@ -259,6 +259,251 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/21/sign-mysql/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Livfer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Livfer's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/21/sign-mysql/" itemprop="url">sign_mysql</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-21T11:38:49+08:00">
+                2020-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="签到实现"><a href="#签到实现" class="headerlink" title="签到实现"></a>签到实现</h1><h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h3 id="传统版本"><a href="#传统版本" class="headerlink" title="传统版本"></a>传统版本</h3><ul>
+<li>表设计</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>主键</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>用户ID</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>签到日期</td>
+</tr>
+<tr>
+<td>continuous_count</td>
+<td>连续签到天数</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>业务处理<ul>
+<li>每次签到插入一条新数据</li>
+<li>计算连续签到天数</li>
+<li>如果非连续签到,连续签到天数为0</li>
+</ul>
+</li>
+</ul>
+<h3 id="按位存储"><a href="#按位存储" class="headerlink" title="按位存储"></a>按位存储</h3><ul>
+<li>表设计</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>key_id</td>
+<td>签到月份+用户ID作为主键</td>
+</tr>
+<tr>
+<td>user_id</td>
+<td>用户ID</td>
+</tr>
+<tr>
+<td>sign_month</td>
+<td>签到月份</td>
+</tr>
+<tr>
+<td>sign_record</td>
+<td>签到记录</td>
+</tr>
+<tr>
+<td>sign_count</td>
+<td>连续签到天数</td>
+</tr>
+<tr>
+<td>last_sign_date</td>
+<td>上次签到日期</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>业务处理<ul>
+<li>一个用户一个月一条记录,一年12条记录</li>
+<li>根据需要可查询当月,上月,或者连续几个月连续签到天数</li>
+<li>当月第一次签到插入一条新数据,之后则更新sign_record字段,记录当天是否已签到(位存储)</li>
+<li>sign_record = sign_record | (1 &lt;&lt; x),签到的天数对应的位是1,反之为0</li>
+<li>1 &lt;&lt; x 表示：1向左移动x位</li>
+</ul>
+</li>
+</ul>
+<h2 id="Redis的Bitmaps实现"><a href="#Redis的Bitmaps实现" class="headerlink" title="Redis的Bitmaps实现"></a>Redis的Bitmaps实现</h2><ul>
+<li>设定用户key <code>sign:userID</code></li>
+<li>对应的value为签到天数,通过bitmaps记录</li>
+<li>确定第0为的时间节点,然后计算出当天距离第0为的时间节点差值,比如0为2000年1月1日,在2000年1月3日签到,差值为2,则将此天数签到记录在第2位<code>setbit sign:user_key 2 1</code></li>
+<li>查询用户签到数据 <code>127.0.0.1:6379&gt; get sign:user_key</code></li>
+<li>查询用户某天是否签到,计算出指定日期和0位时间点的差值X, <code>127.0.0.1:6379&gt; get sign:user_key x</code></li>
+<li>通过<code>bitcount</code>获取范围内的1的数量,即签到天数</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/u010887744/article/details/107303229" target="_blank" rel="noopener">签到实现</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/15/PHP-随笔/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1744,174 +1989,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/12/自省JS-3/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Livfer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Livfer's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/12/自省JS-3/" itemprop="url">自省JS-3</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-12T19:31:07+08:00">
-                2020-05-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/自省系列/" itemprop="url" rel="index">
-                    <span itemprop="name">自省系列</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/自省系列/JS/" itemprop="url" rel="index">
-                    <span itemprop="name">JS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="instanceof-实现"><a href="#instanceof-实现" class="headerlink" title="instanceof 实现"></a>instanceof 实现</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * obj是否在targetObj的原型链上</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myInstanceOf</span>(<span class="params">obj, targetObj</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> objProto = obj.__proto__, <span class="comment">//instanceof 左边的值</span></span><br><span class="line">    targetProto = targetObj.prototype; <span class="comment">//instanceof 右边的值</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (objProto === <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (targetProto === <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (objProto === targetProto) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">//如果未发现相等,则像上级寻找原型,一直到顶级原型链,返回null为止</span></span><br><span class="line">    objProto = objProto.__proto__;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/05/12/自省JS-3/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1964,7 +2041,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
