@@ -86,18 +86,18 @@
 
 
 
-<meta name="description" content="签到实现MySQL传统版本 表设计     字段 说明     id 主键   user_id 用户ID   created_at 签到日期   continuous_count 连续签到天数     业务处理 每次签到插入一条新数据 计算连续签到天数 如果非连续签到,连续签到天数为0    按位存储 表设计     字段 说明     key_id 签到月份+用户ID作为主键   user_id">
+<meta name="description" content="签到实现MySQL传统版本 表设计     字段 说明     id 主键   user_id 用户ID   created_at 签到日期   continuous_count 连续签到天数     业务处理  每次签到插入一条新数据 计算连续签到天数 如果非连续签到,连续签到天数为0">
 <meta name="keywords" content="PHP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sign_mysql">
+<meta property="og:title" content="签到实现">
 <meta property="og:url" content="http://yoursite.com/2020/07/21/sign-mysql/index.html">
 <meta property="og:site_name" content="Livfer&#39;s Blog">
-<meta property="og:description" content="签到实现MySQL传统版本 表设计     字段 说明     id 主键   user_id 用户ID   created_at 签到日期   continuous_count 连续签到天数     业务处理 每次签到插入一条新数据 计算连续签到天数 如果非连续签到,连续签到天数为0    按位存储 表设计     字段 说明     key_id 签到月份+用户ID作为主键   user_id">
+<meta property="og:description" content="签到实现MySQL传统版本 表设计     字段 说明     id 主键   user_id 用户ID   created_at 签到日期   continuous_count 连续签到天数     业务处理  每次签到插入一条新数据 计算连续签到天数 如果非连续签到,连续签到天数为0">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-21T06:16:20.190Z">
+<meta property="og:updated_time" content="2020-07-21T06:20:05.245Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sign_mysql">
-<meta name="twitter:description" content="签到实现MySQL传统版本 表设计     字段 说明     id 主键   user_id 用户ID   created_at 签到日期   continuous_count 连续签到天数     业务处理 每次签到插入一条新数据 计算连续签到天数 如果非连续签到,连续签到天数为0    按位存储 表设计     字段 说明     key_id 签到月份+用户ID作为主键   user_id">
+<meta name="twitter:title" content="签到实现">
+<meta name="twitter:description" content="签到实现MySQL传统版本 表设计     字段 说明     id 主键   user_id 用户ID   created_at 签到日期   continuous_count 连续签到天数     业务处理  每次签到插入一条新数据 计算连续签到天数 如果非连续签到,连续签到天数为0">
 
 
 
@@ -133,7 +133,7 @@
 
 
 
-  <title>sign_mysql | Livfer's Blog</title>
+  <title>签到实现 | Livfer's Blog</title>
   
 
 
@@ -277,7 +277,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">sign_mysql</h1>
+          <h1 class="post-title" itemprop="name headline">签到实现</h1>
         
 
         <div class="post-meta">
@@ -390,11 +390,13 @@
 </tbody>
 </table>
 <ul>
-<li>业务处理<ul>
+<li><p>业务处理</p>
+<ul>
 <li>每次签到插入一条新数据</li>
 <li>计算连续签到天数</li>
 <li>如果非连续签到,连续签到天数为0</li>
 </ul>
+<a id="more"></a>
 </li>
 </ul>
 <h3 id="按位存储"><a href="#按位存储" class="headerlink" title="按位存储"></a>按位存储</h3><ul>

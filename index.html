@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/21/sign-mysql/" itemprop="url">sign_mysql</a></h1>
+                <a class="post-title-link" href="/2020/07/21/sign-mysql/" itemprop="url">签到实现</a></h1>
         
 
         <div class="post-meta">
@@ -362,8 +362,7 @@
 
       
         
-          
-            <h1 id="签到实现"><a href="#签到实现" class="headerlink" title="签到实现"></a>签到实现</h1><h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h3 id="传统版本"><a href="#传统版本" class="headerlink" title="传统版本"></a>传统版本</h3><ul>
+          <h1 id="签到实现"><a href="#签到实现" class="headerlink" title="签到实现"></a>签到实现</h1><h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h3 id="传统版本"><a href="#传统版本" class="headerlink" title="传统版本"></a>传统版本</h3><ul>
 <li>表设计</li>
 </ul>
 <table>
@@ -393,74 +392,22 @@
 </tbody>
 </table>
 <ul>
-<li>业务处理<ul>
+<li><p>业务处理</p>
+<ul>
 <li>每次签到插入一条新数据</li>
 <li>计算连续签到天数</li>
 <li>如果非连续签到,连续签到天数为0</li>
 </ul>
-</li>
-</ul>
-<h3 id="按位存储"><a href="#按位存储" class="headerlink" title="按位存储"></a>按位存储</h3><ul>
-<li>表设计</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>字段</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>key_id</td>
-<td>签到月份+用户ID作为主键</td>
-</tr>
-<tr>
-<td>user_id</td>
-<td>用户ID</td>
-</tr>
-<tr>
-<td>sign_month</td>
-<td>签到月份</td>
-</tr>
-<tr>
-<td>sign_record</td>
-<td>签到记录</td>
-</tr>
-<tr>
-<td>sign_count</td>
-<td>连续签到天数</td>
-</tr>
-<tr>
-<td>last_sign_date</td>
-<td>上次签到日期</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>业务处理<ul>
-<li>一个用户一个月一条记录,一年12条记录</li>
-<li>根据需要可查询当月,上月,或者连续几个月连续签到天数</li>
-<li>当月第一次签到插入一条新数据,之后则更新sign_record字段,记录当天是否已签到(位存储)</li>
-<li>sign_record = sign_record | (1 &lt;&lt; x),签到的天数对应的位是1,反之为0</li>
-<li>1 &lt;&lt; x 表示：1向左移动x位</li>
-</ul>
-</li>
-</ul>
-<h2 id="Redis的Bitmaps实现"><a href="#Redis的Bitmaps实现" class="headerlink" title="Redis的Bitmaps实现"></a>Redis的Bitmaps实现</h2><ul>
-<li>设定用户key <code>sign:userID</code></li>
-<li>对应的value为签到天数,通过bitmaps记录</li>
-<li>确定第0为的时间节点,然后计算出当天距离第0为的时间节点差值,比如0为2000年1月1日,在2000年1月3日签到,差值为2,则将此天数签到记录在第2位<code>setbit sign:user_key 2 1</code></li>
-<li>查询用户签到数据 <code>127.0.0.1:6379&gt; get sign:user_key</code></li>
-<li>查询用户某天是否签到,计算出指定日期和0位时间点的差值X, <code>127.0.0.1:6379&gt; get sign:user_key x</code></li>
-<li>通过<code>bitcount</code>获取范围内的1的数量,即签到天数</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://blog.csdn.net/u010887744/article/details/107303229" target="_blank" rel="noopener">签到实现</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/21/sign-mysql/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </li></ul></div>
     
     
     
