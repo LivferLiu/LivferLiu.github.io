@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/22/redis-2/" itemprop="url">Redis命令整理(String,List)</a></h1>
+                <a class="post-title-link" href="/2020/07/22/redis-2/" itemprop="url">Redis命令整理(SET,HASH)</a></h1>
         
 
         <div class="post-meta">
@@ -351,8 +351,7 @@
 
       
         
-          
-            <h1 id="Set"><a href="#Set" class="headerlink" title="Set"></a><code>Set</code></h1><blockquote>
+          <h1 id="Set"><a href="#Set" class="headerlink" title="Set"></a><code>Set</code></h1><blockquote>
 <p>键值无序且唯一</p>
 </blockquote>
 <h2 id="SETADD"><a href="#SETADD" class="headerlink" title="SETADD"></a><code>SETADD</code></h2><ul>
@@ -365,71 +364,13 @@
 <li><code>SCARD key</code></li>
 <li>返回<code>key</code>含有的元素数量</li>
 </ul>
-<h2 id="SISMEMBER"><a href="#SISMEMBER" class="headerlink" title="SISMEMBER"></a><code>SISMEMBER</code></h2><ul>
-<li><code>SISMEMBER key member</code></li>
-<li>判断<code>member</code>是否存在于键值为<code>key</code>的集合中</li>
-</ul>
-<h2 id="SMEMBERS"><a href="#SMEMBERS" class="headerlink" title="SMEMBERS"></a><code>SMEMBERS</code></h2><ul>
-<li><code>SMEMBERS key</code></li>
-<li>返回集合中所有元素</li>
-</ul>
-<h2 id="SMOVE"><a href="#SMOVE" class="headerlink" title="SMOVE"></a><code>SMOVE</code></h2><ul>
-<li><code>SMOVE source destination member</code></li>
-<li>将<code>member</code>从<code>source</code>集合中移动到<code>destination</code>集合中,是个原子性操作</li>
-<li>如果<code>source</code>没有<code>member</code>元素,则不执行操作</li>
-<li>如果<code>destination</code>存在<code>member</code>元素,则只执行<code>source</code>删除<code>member</code>元素</li>
-</ul>
-<h2 id="SPOP"><a href="#SPOP" class="headerlink" title="SPOP"></a><code>SPOP</code></h2><ul>
-<li><code>SPOP key</code></li>
-<li>随机删除集合中一个元素并返回</li>
-</ul>
-<h2 id="SRANDMEMBER"><a href="#SRANDMEMBER" class="headerlink" title="SRANDMEMBER"></a><code>SRANDMEMBER</code></h2><ul>
-<li><code>SRANDMEMBER key [count]</code></li>
-<li>随机返回集合中的元素,<code>count</code>不填时,返回一个</li>
-<li><code>count &gt;= 集合长度</code>,返回整个集合</li>
-<li><code>count &lt; 集合长度 &amp;&amp; count &gt; 0</code>,返回count个元素</li>
-<li><code>count &lt; 0</code>,返回的元素<strong>可能会重复出现多次</strong>，而数组的长度为 <code>count</code> 的绝对值</li>
-<li>只会返回元素,不会操作集合,和<code>SPOP</code>随即移除一个元素并返回不同</li>
-</ul>
-<h2 id="SREM"><a href="#SREM" class="headerlink" title="SREM"></a><code>SREM</code></h2><ul>
-<li><code>SREM key member[member...]</code></li>
-<li>移除一个或多个元素,不存在的元素会被忽略</li>
-</ul>
-<h2 id="SSCAN"><a href="#SSCAN" class="headerlink" title="SSCAN"></a><code>SSCAN</code></h2><ul>
-<li><code>SSCAN cursor [MATCH pattern][COUNT count]</code></li>
-<li><code>cursor</code>:游标，默认从0开始，每一次执行scan除了返回查询结果还会返回游标的位置，即便某次查询结果为空，并不能代表遍历结束，只有当返回的游标为0时，才能代表遍历结束</li>
-<li><code>match</code>: 默认是 * ，匹配指定的元素</li>
-<li><code>count</code>:默认是10，redis的底层实现类似java的hashmap，都是hash表，所以真正存储数据的是数组，<strong>count指定的是每次查询数组多少个元素</strong></li>
-</ul>
-<h2 id="SDIFF"><a href="#SDIFF" class="headerlink" title="SDIFF"></a><code>SDIFF</code></h2><ul>
-<li><code>SDIFF key[key...]</code></li>
-<li>返回第一个集合中存在,但是其他集合中不存在的元素集合</li>
-</ul>
-<h2 id="SDIFFSTORE"><a href="#SDIFFSTORE" class="headerlink" title="SDIFFSTORE"></a><code>SDIFFSTORE</code></h2><ul>
-<li><code>SDIFFSTORE destination key[key...]</code></li>
-<li>返回第一个集合中存在,但是其他集合中不存在的元素集合</li>
-<li>将返回的结果保存在<code>destination</code>中,如果<code>destination</code>集合已存在,则将其覆盖</li>
-</ul>
-<h2 id="SINTER"><a href="#SINTER" class="headerlink" title="SINTER"></a><code>SINTER</code></h2><ul>
-<li><code>SINTER key[key...]</code></li>
-<li>返回所有集合的交集元素</li>
-</ul>
-<h2 id="SINTERSTORE"><a href="#SINTERSTORE" class="headerlink" title="SINTERSTORE`"></a>SINTERSTORE`</h2><ul>
-<li><code>SINTERSTORE destination key[key...]</code></li>
-<li>返回所有集合的交集元素</li>
-<li>将返回的结果保存在<code>destination</code>中,如果<code>destination</code>集合已存在,则将其覆盖</li>
-</ul>
-<h2 id="SUNION"><a href="#SUNION" class="headerlink" title="SUNION"></a><code>SUNION</code></h2><ul>
-<li><code>SUNION key[key...]</code></li>
-<li>返回所有集合的并集</li>
-</ul>
-<h2 id="SUNIONSTORE"><a href="#SUNIONSTORE" class="headerlink" title="SUNIONSTORE"></a><code>SUNIONSTORE</code></h2><ul>
-<li><code>SUNIONSTORE destination key[key...]</code></li>
-<li>返回所有集合的并集</li>
-<li>将返回的结果保存在<code>destination</code>中,如果<code>destination</code>集合已存在,则将其覆盖</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/22/redis-2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
