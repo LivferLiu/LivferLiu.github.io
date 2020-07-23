@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Livfer&#39;s Blog">
 <meta property="og:description" content="Set 键值无序且唯一  SETADD SADD key member [member ...] 将一个或多个 member 元素加入到集合 key 当中，已经存在于集合的 member 元素将被忽略 假如 key 不存在，则创建一个只包含 member 元素作成员的集合 返回添加的新元素数量,重复值忽略  SCARD SCARD key 返回key含有的元素数量">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-23T06:45:52.926Z">
+<meta property="og:updated_time" content="2020-07-23T07:05:03.349Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis命令整理(SET,HASH)">
 <meta name="twitter:description" content="Set 键值无序且唯一  SETADD SADD key member [member ...] 将一个或多个 member 元素加入到集合 key 当中，已经存在于集合的 member 元素将被忽略 假如 key 不存在，则创建一个只包含 member 元素作成员的集合 返回添加的新元素数量,重复值忽略  SCARD SCARD key 返回key含有的元素数量">
@@ -426,6 +426,76 @@
 <li>返回所有集合的并集</li>
 <li>将返回的结果保存在<code>destination</code>中,如果<code>destination</code>集合已存在,则将其覆盖</li>
 </ul>
+<h1 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h1><h2 id="HSET"><a href="#HSET" class="headerlink" title="HSET"></a><code>HSET</code></h2><ul>
+<li><code>HSET key field value</code></li>
+<li>将哈希表中<code>key</code>中的<code>fields</code>设置值为<code>value</code></li>
+<li>如果<code>key</code>不存在,则创建一个新的<code>key</code>,并进行操作</li>
+<li>如果存在,则覆盖旧值</li>
+</ul>
+<h2 id="HMSET"><a href="#HMSET" class="headerlink" title="HMSET"></a><code>HMSET</code></h2><ul>
+<li><code>HMSET key field[field value...]</code></li>
+<li>批量创建</li>
+<li>如果<code>key</code>不存在,则创建一个新的<code>key</code>,并进行操作</li>
+<li>如果存在,则覆盖旧值</li>
+</ul>
+<h2 id="HSETNX"><a href="#HSETNX" class="headerlink" title="HSETNX"></a><code>HSETNX</code></h2><ul>
+<li><code>HSETNX key field value</code></li>
+<li>仅当key中的field不存在,才会操作,若已存在,则不操作</li>
+<li>如果key不存在,则创建一个新的key,并进行操作</li>
+</ul>
+<h2 id="HGET"><a href="#HGET" class="headerlink" title="HGET"></a><code>HGET</code></h2><ul>
+<li><code>HGET key field</code></li>
+<li>获取键为<code>key</code>的哈希表中字段为<code>field</code>的值</li>
+<li>给定域不存在或是给定 <code>key</code> 不存在时，返回 <code>nil</code></li>
+</ul>
+<h2 id="HMGET"><a href="#HMGET" class="headerlink" title="HMGET"></a><code>HMGET</code></h2><ul>
+<li><code>HMGET key field[field...]</code></li>
+<li>批量获取值</li>
+<li>如果给定的field不存在,则返回nil</li>
+<li>如果key不存在,则返回nil的列表</li>
+</ul>
+<h2 id="HGETALL"><a href="#HGETALL" class="headerlink" title="HGETALL"></a><code>HGETALL</code></h2><ul>
+<li><code>HGETALL key</code></li>
+<li>返回哈希表中key中的所有域和值</li>
+</ul>
+<h2 id="HKEYS"><a href="#HKEYS" class="headerlink" title="HKEYS"></a><code>HKEYS</code></h2><ul>
+<li><code>HKEYS key</code></li>
+<li>返回哈希表中key的所有域</li>
+</ul>
+<h2 id="HVALS"><a href="#HVALS" class="headerlink" title="HVALS"></a><code>HVALS</code></h2><ul>
+<li><code>HVALS key</code></li>
+<li>返回哈希表中key的所有域对应的值</li>
+</ul>
+<h2 id="HLEN"><a href="#HLEN" class="headerlink" title="HLEN"></a><code>HLEN</code></h2><ul>
+<li><code>HLEN key</code></li>
+<li>返回哈希表中key中域的数量</li>
+</ul>
+<h2 id="HDEL"><a href="#HDEL" class="headerlink" title="HDEL"></a><code>HDEL</code></h2><ul>
+<li><code>HDEL key field[field...]</code></li>
+<li>批量移除key中的域</li>
+</ul>
+<h2 id="HEXISTS"><a href="#HEXISTS" class="headerlink" title="HEXISTS"></a><code>HEXISTS</code></h2><ul>
+<li><code>HEXISTS key field</code></li>
+<li>判断是否key中是否存在字段field</li>
+</ul>
+<p><code>HINCRBY</code></p>
+<ul>
+<li><code>HINCRBY key field increment</code></li>
+<li>对字段field的值加上<code>increment</code></li>
+<li><code>increment</code>可以也可以为负数</li>
+<li>若<code>key</code>不存在,则创建一个新的哈希表,且将<code>field</code>的值,初始化为0</li>
+</ul>
+<h2 id="HINCRBYFLOAT"><a href="#HINCRBYFLOAT" class="headerlink" title="HINCRBYFLOAT"></a><code>HINCRBYFLOAT</code></h2><ul>
+<li><code>HINCRBYFLOAT key field increment</code></li>
+<li>为哈希表 <code>key</code> 中的域 <code>field</code> 加上浮点数增量 <code>increment</code></li>
+<li><code>increment</code>可以也可以为负数</li>
+<li>若<code>key</code>不存在,则创建一个新的哈希表,且将<code>field</code>的值,初始化为0</li>
+</ul>
+<h2 id="HSCAN"><a href="#HSCAN" class="headerlink" title="HSCAN"></a><code>HSCAN</code></h2><ul>
+<li><code>HSCAN key cursor [MATCH pattern] [COUNT count]</code></li>
+<li>基于游标迭代</li>
+<li>参考<code>SCAN</code></li>
+</ul>
 
       
     </div>
@@ -628,7 +698,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Set"><span class="nav-number">1.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SETADD"><span class="nav-number">1.1.</span> <span class="nav-text">SETADD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SCARD"><span class="nav-number">1.2.</span> <span class="nav-text">SCARD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SISMEMBER"><span class="nav-number">1.3.</span> <span class="nav-text">SISMEMBER</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMEMBERS"><span class="nav-number">1.4.</span> <span class="nav-text">SMEMBERS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMOVE"><span class="nav-number">1.5.</span> <span class="nav-text">SMOVE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SPOP"><span class="nav-number">1.6.</span> <span class="nav-text">SPOP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SRANDMEMBER"><span class="nav-number">1.7.</span> <span class="nav-text">SRANDMEMBER</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SREM"><span class="nav-number">1.8.</span> <span class="nav-text">SREM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSCAN"><span class="nav-number">1.9.</span> <span class="nav-text">SSCAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDIFF"><span class="nav-number">1.10.</span> <span class="nav-text">SDIFF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDIFFSTORE"><span class="nav-number">1.11.</span> <span class="nav-text">SDIFFSTORE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SINTER"><span class="nav-number">1.12.</span> <span class="nav-text">SINTER</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SINTERSTORE"><span class="nav-number">1.13.</span> <span class="nav-text">SINTERSTORE`</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SUNION"><span class="nav-number">1.14.</span> <span class="nav-text">SUNION</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SUNIONSTORE"><span class="nav-number">1.15.</span> <span class="nav-text">SUNIONSTORE</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Set"><span class="nav-number">1.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SETADD"><span class="nav-number">1.1.</span> <span class="nav-text">SETADD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SCARD"><span class="nav-number">1.2.</span> <span class="nav-text">SCARD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SISMEMBER"><span class="nav-number">1.3.</span> <span class="nav-text">SISMEMBER</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMEMBERS"><span class="nav-number">1.4.</span> <span class="nav-text">SMEMBERS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SMOVE"><span class="nav-number">1.5.</span> <span class="nav-text">SMOVE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SPOP"><span class="nav-number">1.6.</span> <span class="nav-text">SPOP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SRANDMEMBER"><span class="nav-number">1.7.</span> <span class="nav-text">SRANDMEMBER</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SREM"><span class="nav-number">1.8.</span> <span class="nav-text">SREM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSCAN"><span class="nav-number">1.9.</span> <span class="nav-text">SSCAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDIFF"><span class="nav-number">1.10.</span> <span class="nav-text">SDIFF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDIFFSTORE"><span class="nav-number">1.11.</span> <span class="nav-text">SDIFFSTORE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SINTER"><span class="nav-number">1.12.</span> <span class="nav-text">SINTER</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SINTERSTORE"><span class="nav-number">1.13.</span> <span class="nav-text">SINTERSTORE`</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SUNION"><span class="nav-number">1.14.</span> <span class="nav-text">SUNION</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SUNIONSTORE"><span class="nav-number">1.15.</span> <span class="nav-text">SUNIONSTORE</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hash"><span class="nav-number">2.</span> <span class="nav-text">Hash</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HSET"><span class="nav-number">2.1.</span> <span class="nav-text">HSET</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HMSET"><span class="nav-number">2.2.</span> <span class="nav-text">HMSET</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HSETNX"><span class="nav-number">2.3.</span> <span class="nav-text">HSETNX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HGET"><span class="nav-number">2.4.</span> <span class="nav-text">HGET</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HMGET"><span class="nav-number">2.5.</span> <span class="nav-text">HMGET</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HGETALL"><span class="nav-number">2.6.</span> <span class="nav-text">HGETALL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HKEYS"><span class="nav-number">2.7.</span> <span class="nav-text">HKEYS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HVALS"><span class="nav-number">2.8.</span> <span class="nav-text">HVALS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HLEN"><span class="nav-number">2.9.</span> <span class="nav-text">HLEN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HDEL"><span class="nav-number">2.10.</span> <span class="nav-text">HDEL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HEXISTS"><span class="nav-number">2.11.</span> <span class="nav-text">HEXISTS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HINCRBYFLOAT"><span class="nav-number">2.12.</span> <span class="nav-text">HINCRBYFLOAT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HSCAN"><span class="nav-number">2.13.</span> <span class="nav-text">HSCAN</span></a></li></ol></li></ol></div>
             
 
           </div>
