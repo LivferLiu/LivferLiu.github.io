@@ -351,8 +351,7 @@
 
       
         
-          
-            <blockquote>
+          <blockquote>
 <p>当时用缓存和DB之间配合时,如何更新缓存,更新DB数据,常用的是<strong>读数据,先读缓存,更新数据,先更新数据库,再写入缓存</strong>,除了这种策略还有哪些策略呢?</p>
 </blockquote>
 <h1 id="策略一"><a href="#策略一" class="headerlink" title="策略一"></a>策略一</h1><h2 id="读操作"><a href="#读操作" class="headerlink" title="读操作"></a>读操作</h2><ol>
@@ -365,30 +364,13 @@
 <li>更新数据库成功后,将数据更新缓存,返回数据</li>
 </ol>
 <h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>当频繁修改操作时,如果在修改操作还未完成时,又发起了读取操作,则会造成数据不一致</p>
-<h1 id="策略二"><a href="#策略二" class="headerlink" title="策略二"></a>策略二</h1><h2 id="读"><a href="#读" class="headerlink" title="读"></a>读</h2><ol>
-<li>先查询缓存,如果存在则直接返回</li>
-<li>如果缓存不存在,则查询数据库,查询到结果写入缓存,返回数据</li>
-<li>如果数据库中也不存在数据,则设置一个短期过期的key写入缓存,防止请求大量此数据</li>
-</ol>
-<h2 id="写"><a href="#写" class="headerlink" title="写"></a>写</h2><ol>
-<li>先更新数据库</li>
-<li>删除缓存中对应的值</li>
-<li>更新数据到缓存</li>
-</ol>
-<h2 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h2><p>一定程度上保证了数据一致性,但是在key被删除的情况下,如果此时有大量请求,会造成缓存穿透,大量请求到数据库</p>
-<h1 id="策略三"><a href="#策略三" class="headerlink" title="策略三"></a>策略三</h1><h2 id="读-1"><a href="#读-1" class="headerlink" title="读"></a>读</h2><ol>
-<li>先查询缓存,如果存在则直接返回</li>
-<li>如果缓存不存在,通过第三方组件查询数据库,查询到结果写入缓存,返回结果</li>
-</ol>
-<h2 id="写操作-1"><a href="#写操作-1" class="headerlink" title="写操作"></a>写操作</h2><ol>
-<li>先判断要写入的数据是否存在缓存中,存在则直接更新缓存数据,然后通过第三方组件写入数据库</li>
-<li>如果缓存中不存在,则通过第三方组件写入数据库,并且写入缓存</li>
-<li>第三方服务中判断是否需要重复写入数据库等操作</li>
-</ol>
-<h2 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h2><p>虽然数据都与缓存进行交互,但是使用第三方服务时可能会出现写入错误,也会造成数据不一致</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>选用哪种策略,要按照自己实际情况来选.也需要根据实际业务,进行改造和扩展</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/28/Redis与DB之间的缓存策略/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

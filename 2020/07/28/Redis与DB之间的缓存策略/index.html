@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="Livfer&#39;s Blog">
 <meta property="og:description" content="当时用缓存和DB之间配合时,如何更新缓存,更新DB数据,常用的是读数据,先读缓存,更新数据,先更新数据库,再写入缓存,除了这种策略还有哪些策略呢?  策略一读操作 先查询缓存,如果存在则直接返回 如果缓存不存在,则查询数据库,查询到结果写入缓存,返回数据 如果数据库中也不存在数据,则设置一个短期过期的key写入缓存,防止请求大量此数据  写操作 先更新数据库 更新数据库成功后,将数据更新缓存,返">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-28T01:50:13.908Z">
+<meta property="og:updated_time" content="2020-07-31T07:13:04.232Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis与DB之间的缓存策略">
 <meta name="twitter:description" content="当时用缓存和DB之间配合时,如何更新缓存,更新DB数据,常用的是读数据,先读缓存,更新数据,先更新数据库,再写入缓存,除了这种策略还有哪些策略呢?  策略一读操作 先查询缓存,如果存在则直接返回 如果缓存不存在,则查询数据库,查询到结果写入缓存,返回数据 如果数据库中也不存在数据,则设置一个短期过期的key写入缓存,防止请求大量此数据  写操作 先更新数据库 更新数据库成功后,将数据更新缓存,返">
@@ -362,6 +362,7 @@
 <li>更新数据库成功后,将数据更新缓存,返回数据</li>
 </ol>
 <h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>当频繁修改操作时,如果在修改操作还未完成时,又发起了读取操作,则会造成数据不一致</p>
+<a id="more"></a>
 <h1 id="策略二"><a href="#策略二" class="headerlink" title="策略二"></a>策略二</h1><h2 id="读"><a href="#读" class="headerlink" title="读"></a>读</h2><ol>
 <li>先查询缓存,如果存在则直接返回</li>
 <li>如果缓存不存在,则查询数据库,查询到结果写入缓存,返回数据</li>
